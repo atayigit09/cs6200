@@ -6,7 +6,9 @@ import torch
 
 
 class BaselineLLaMA(BaseLLM):
-    """Baseline LLaMA implementation using HF transformers"""
+    """
+    Baseline LLaMA implementation using HF transformers
+    """
     def __init__(self, config: Dict[str, Any]):
         super().__init__(config)
         self.load_model()
