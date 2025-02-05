@@ -52,4 +52,3 @@ class Factbot(BaseLLM):
             facts = self.get_facts_lst(ans)
             data[i][self.model + "_fact"] = facts
             self.save_data.append(data[i])
-

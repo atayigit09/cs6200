@@ -5,12 +5,10 @@ import argparse
 import pandas as pd
 
 
-
 def hallucination_score(reference, generated):
     # Implement your metric here
     score = 0
     return score
-
 
 
 def load_pure_data(data_dir, file):

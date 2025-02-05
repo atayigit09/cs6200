@@ -39,4 +39,3 @@ class BasePipeline:
     def save_results(self):
         with open(self.save_path, 'w') as f:
             json.dump(self.save_data, f, indent=2)
-
