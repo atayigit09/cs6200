@@ -1,46 +1,56 @@
 from typing import Any, Dict
-from transformers import AutoTokenizer, AutoModelForCausalLM
+from transformers import AutoTokenizer, AutoModelForCausalLM, BitsAndBytesConfig
 from models import BaseLLM
 import torch
 
 
 class BaselineLLaMA(BaseLLM):
     """
-    Baseline LLaMA implementation using HF transformers
+    Baseline LLaMA implementation using HF transformers with quantization
     """
     def __init__(self, config: Dict[str, Any]):
         super().__init__(config)
+        self.device = self.config.get('device', "cpu")
         self.load_model()
         
     def load_model(self):
         model_config = self.config['model']
-        quant_config = self.config['quantization']
-        
+        quant_config = self.config.get('quantization', {})
+
         self.tokenizer = AutoTokenizer.from_pretrained(
             model_config['path'],
             use_fast=model_config.get('use_fast', True)
         )
-        
+
+        # Define correct quantization settings
+        if quant_config.get('load_in_4bit', False) or quant_config.get('load_in_8bit', False):
+            bnb_config = BitsAndBytesConfig(
+                load_in_4bit=quant_config.get('load_in_4bit', False),
+                load_in_8bit=quant_config.get('load_in_8bit', False),
+                bnb_4bit_compute_dtype=torch.bfloat16 if quant_config.get('load_in_4bit', False) else torch.float16,
+                bnb_4bit_use_double_quant=True,
+                bnb_4bit_quant_type="nf4"
+            )
+        else:
+            bnb_config = None
+
         load_params = {
-            'device_map': 'auto',
-            'low_cpu_mem_usage': True
+            "torch_dtype": torch.bfloat16,
+            "device_map": "auto",
+            "low_cpu_mem_usage": True
         }
-        
-        if quant_config['load_in_4bit']:
-            load_params.update({
-                'load_in_4bit': True,
-                'bnb_4bit_compute_dtype': torch.bfloat16
-            })
-        elif quant_config['load_in_8bit']:
-            load_params['load_in_8bit'] = True
-            
+
+        if bnb_config:
+            load_params["quantization_config"] = bnb_config
+
         self.model = AutoModelForCausalLM.from_pretrained(
             model_config['path'],
             **load_params
         )
-        
+
     def generate(self, prompt: str, **kwargs) -> str:
-        inputs = self.tokenizer(prompt, return_tensors="pt").to(self.device)
+        inputs = self.tokenizer(prompt, return_tensors="pt")
+        inputs = {key: value.to(self.model.device) for key, value in inputs.items()}
         
         generation_config = {
             'max_new_tokens': self.config['generation']['max_length'],
@@ -48,9 +58,43 @@ class BaselineLLaMA(BaseLLM):
             'top_p': self.config['generation']['top_p'],
             **kwargs
         }
+
+        outputs = self.model.generate(**inputs, **generation_config)
+        return self.tokenizer.decode(outputs[0], skip_special_tokens=True)
+
+class MPSBaselineLLaMA(BaseLLM):
+    """
+    Baseline LLaMA implementation using HF transformers with GGUF quantization
+    """
+    def __init__(self, config: Dict[str, Any]):
+        super().__init__(config)
+        self.device = self.config.get('device', "cpu")
+        self.load_model()
         
-        outputs = self.model.generate(
-            **inputs,
-            **generation_config
+    def load_model(self):
+        model_config = self.config['model']
+
+        self.tokenizer = AutoTokenizer.from_pretrained(
+            model_config['model_id'],
+            gguf_file = model_config['file_name'],
+            #use_fast=model_config.get('use_fast', False)
         )
+
+        self.model = AutoModelForCausalLM.from_pretrained(
+            model_config['model_id'],
+            gguf_file = model_config['file_name'],
+        )
+
+    def generate(self, prompt: str, **kwargs) -> str:
+        inputs = self.tokenizer(prompt, return_tensors="pt")
+        inputs = {key: value.to(self.model.device) for key, value in inputs.items()}
+        
+        generation_config = {
+            'max_new_tokens': self.config['generation']['max_length'],
+            'temperature': self.config['generation']['temperature'],
+            'top_p': self.config['generation']['top_p'],
+            **kwargs
+        }
+
+        outputs = self.model.generate(**inputs, **generation_config)
         return self.tokenizer.decode(outputs[0], skip_special_tokens=True)
