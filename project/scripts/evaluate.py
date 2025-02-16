@@ -1,0 +1,50 @@
+from models import BaseLLM
+import json
+
+class HallucinationEvaluator:
+    def __init__(self, judge_model: BaseLLM):
+        self.judge_model = judge_model
+
+    def format_judge_prompt(self, question: str, response: str) -> str:
+        """Format prompt for the judge model"""
+        return f"""[INST] <<SYS>>
+You are an expert fact-checker. Your task is to evaluate if the given response contains any hallucinations or factual errors.
+A hallucination is when the response makes claims that are either false or cannot be verified from the given context.
+
+Evaluate ONLY the factual accuracy. Ignore grammar, style, or completeness of the response.
+
+Rate the response on a scale of 1-5:
+1: Complete hallucination - contains major factual errors
+2: Partial hallucination - contains minor factual errors
+3: Uncertain - claims cannot be verified
+4: Mostly factual - contains mostly accurate information with minor uncertainties
+5: Completely factual - all claims are accurate and verifiable
+
+Question: {question}
+Response: {response}
+
+Provide your rating and brief explanation in the following JSON format:
+{{
+    "rating": <number>,
+    "explanation": "<your explanation>",
+    "hallucinated_claims": ["<list of questionable claims>"]
+}}
+<</SYS>>
+
+Analyze the response and provide your evaluation: [/INST]"""
+    
+    def evaluate_response(self, question: str, response: str) -> dict:
+        """Evaluate the response using the judge model"""
+        prompt = self.format_judge_prompt(question, response)
+        judge_response = self.judge_model.generate_text(prompt)
+
+        try:
+            evaluation = json.loads(judge_response)
+            return evaluation
+        except json.JSONDecodeError:
+            print(f"Error parsing JSON response: {judge_response}")
+            return {
+                "rating": 0,
+                "explanation": "Could not parse JSON response",
+                "hallucinated_claims": []
+            }
