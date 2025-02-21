@@ -1,0 +1,6 @@
+torch>=2.0.0
+transformers>=4.30.0
+tqdm>=4.65.0
+pandas>=1.5.0
+pyyaml>=6.0
+bitsandbytes>=0.39.0  # For 4-bit and 8-bit quantization 
