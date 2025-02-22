@@ -62,10 +62,6 @@ if __name__ == "__main__":
     print("loading pipeline")
 
     pipeline = HallucinationEvalPipeline(test_llm, eval_llm, opt)
-    pipeline.generate_answers()
-    pipeline.generate_facts()
-    pipeline.evaluate_facts()
-    pipeline.save_results()
-    
+    pipeline.process()
 
     

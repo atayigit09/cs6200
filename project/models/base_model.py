@@ -47,15 +47,20 @@ class BaselineLLaMA(BaseLLM):
             **load_params
         )
 
-    def format_prompt(self, question: str) -> str:
-        """LLaMA-3 specific prompt formatting"""
+    def format_prompt(self, prompt: str) -> str:
+        """
+        Formats the input prompt for an instruction-tuned LLaMA model.
+        This template follows a structure that the model was fine-tuned on,
+        helping it distinguish between the instruction and the expected response.
+        """
         return (
-            "[INST] <<SYS>>\n"
-            "You are a highly advanced, factual assistant powered by LLaMA-3. "
-            "Provide clear, concise, and accurate responses.\n"
-            "<</SYS>>\n\n"
-            f"{question} [/INST]"
+            "Below is an instruction that describes a task. "
+            "Write a response that appropriately completes the request.\n\n"
+            "### Instruction:\n"
+            f"{prompt}\n\n"
+            "### Response:\n"
         )
+
     
     def generate(self, prompt: str, **kwargs) -> str:
         prompt = self.format_prompt(prompt) if self.config['generation']['format_prompt'] else prompt

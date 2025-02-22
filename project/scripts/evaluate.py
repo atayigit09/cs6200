@@ -1,10 +1,10 @@
 import argparse
 import yaml
 from pathlib import Path
+
 from models import create_model
 from models.evaluator import EvalLLM  
 from evaluation.pipeline import HallucinationEvalPipeline
-import yaml
 
 def load_model_config(model_name):
     """Loads the configuration file based on the model_name."""
@@ -33,16 +33,16 @@ def parse_args():
     parser = argparse.ArgumentParser(description="Hallucination Evaluation")
 
     parser.add_argument('--model_name', type=str, required=True,
-                        choices=['baseline', 'rag', 'finetuned'],
+                        choices=['base_model', 'rag', 'finetuned'],
                         help='Model type to evaluate')
     parser.add_argument("--model_class", type=str, required=True, 
                         choices=['BaselineLLaMA'],
                         help="Class of the model")
     parser.add_argument('--dataset', type=str, required=True,
-                        choices=['HEVAL2.0'],
+                        choices=['HaluEval2'],
                         help='Dataset to use for evaluation')
     parser.add_argument('--field', type=str, default='Open-Domain',
-                        choices=['Bio-Medical','Education','Finance','Open-Domain','Science'],
+                        choices=['Bio-Medical','Education','Finance','Open-Domain','Science','test'],
                         help='Dataset field to use for evaluation')
 
     args = parser.parse_args()
@@ -63,7 +63,6 @@ if __name__ == "__main__":
 
     print("loading Eval LLm")
     eval_llm = EvalLLM(opt.eval_config)
-
 
     print("loading pipeline")
     pipeline = HallucinationEvalPipeline(test_llm, eval_llm, opt)

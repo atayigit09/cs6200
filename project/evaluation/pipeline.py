@@ -59,8 +59,10 @@ class HallucinationEvalPipeline:
         for batch in tqdm(data_loader, desc="Generating Answers"):
             question_ids, user_queries, *_ = batch
             for question_id, user_query in zip(question_ids, user_queries):
-                answer = self.eval_model.generate_completion(user_query)
+                answer = self.test_model.generate(user_query)
+                answer = self.extract_response(answer)
                 self.dataset.update_sample(question_id, "local_llm_answers", answer)
+
 
     def generate_facts(self):
         """Generate facts for the questions in the dataset using the eval model."""
@@ -77,9 +79,11 @@ class HallucinationEvalPipeline:
             question_ids, user_queries, answers, *_ = batch
             for question_id, user_query, answer in zip(question_ids, user_queries, answers):
                 prompt = prompt_template.format(query=user_query, answer=answer)
-                facts = self.eval_model.generate_completion(prompt)
+                facts = self.eval_model.generate(prompt)
+                #print(facts)
                 #facts_lst = self.get_facts_lst(facts)
                 self.dataset.update_sample(question_id, "facts", facts)
+
 
     def evaluate_facts(self):
         """Evaluate the generated facts using the eval model."""
@@ -96,8 +100,9 @@ class HallucinationEvalPipeline:
             question_ids, _, _, facts, _ = batch
             for question_id, facts_lst in zip(question_ids, facts):
                 prompt = prompt_template.format(facts=facts_lst)
-                judge = self.eval_model.generate_completion(prompt)
+                judge = self.eval_model.generate(prompt)
                 self.dataset.update_sample(question_id, "judge", judge)
+
 
     def get_facts_lst(self, response: str) -> List[str]:
         """Extract facts list from the LLM response."""
@@ -119,6 +124,18 @@ class HallucinationEvalPipeline:
             print(f"Error parsing facts: {str(e)}")
             print(f"Response: {response}")
             return []
+
+
+    def extract_response(self, full_text: str) -> str:
+        """Extracts and returns only the portion of the response following the "### Response:" marker."""
+        marker = "### Response:"
+        if marker in full_text:
+            # Split the text at the marker and return the part after it, stripped of leading/trailing whitespace
+            return full_text.split(marker, 1)[1].strip()
+        else:
+            # Marker not found, return the whole text stripped
+            return full_text.strip()
+        
 
     def save_results(self):
         """Save the dataset with the generated data."""

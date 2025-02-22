@@ -1,4 +1,3 @@
-import json
 from typing import Dict, Any
 import importlib
 
@@ -34,7 +33,7 @@ def create_model(opt):
         >>> model = create_model(opt)
     """
     model = find_model_using_name(opt.model_name, opt.model_class)
-    instance = model(opt.config)
+    instance = model(opt.model_config)
     print("model [%s] was created" % type(instance).__name__)
     return instance
 
@@ -54,19 +53,3 @@ class BaseLLM:
         """Common generation interface"""
         raise NotImplementedError
 
-
-
-class BasePipeline:
-    """Common pipeline for data handling"""
-    def __init__(self, data_path: str, save_path: str):
-        self.data_path = data_path
-        self.save_path = save_path
-        self.save_data = []
-        
-    def load_data(self) -> list:
-        with open(self.data_path, 'r') as f:
-            return json.load(f)
-            
-    def save_results(self):
-        with open(self.save_path, 'w') as f:
-            json.dump(self.save_data, f, indent=2)
