@@ -1,7 +1,7 @@
 import argparse
 from pathlib import Path
 import yaml
-from models import get_model 
+from models import get_model, BaselineLLaMA, HallucinationEvalPipeline
 
 class CLI:
     @staticmethod

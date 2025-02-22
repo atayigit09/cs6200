@@ -1,0 +1,38 @@
+fact_checkers:
+  gpt:
+    model_type: "gpt"
+    model_name: "gpt-4o"
+    api_key: "${OPENAI_API_KEY}"  # Load from environment variable
+    data_path: "${data_path}/responses/"  # Inherits from main.yaml
+    save_path: "${results_path}/gpt_facts.json"  # Inherits from main.yaml
+    batch_size: 32
+    prompts:
+      fact_extraction: "prompts/evaluation/generate_facts.txt"
+      fact_validation: "prompts/evaluation/determine_truthfulness.txt"
+
+  claude:
+    model_type: "claude"
+    model_name: "claude-3-5-haiku-20241022"
+    api_key: "${ANTHROPIC_API_KEY}"  # Load from environment variable
+    data_path: "${data_path}/responses/"  # Inherits from main.yaml
+    save_path: "${results_path}/claude_facts.json"  # Inherits from main.yaml
+    batch_size: 32
+    prompts:
+      fact_extraction: "prompts/evaluation/generate_facts.txt"
+      fact_validation: "prompts/evaluation/determine_truthfulness.txt"
+
+prompts:
+  fact_extraction: |
+    Extract factual claims from the following response to a question.
+    List each fact on a new line starting with a number.
+    If no clear factual claims are present, respond with "NO FACTS".
+
+    Question: {query}
+    Response: {answer}
+
+  fact_validation: |
+    Evaluate the following facts for accuracy.
+    For each fact, respond with TRUE or FALSE and a brief explanation.
+    
+    Facts to verify:
+    {facts} 

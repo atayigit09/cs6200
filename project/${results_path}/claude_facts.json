@@ -1,0 +1,14 @@
+[
+  {
+    "user_query": "Who was Albert Einstein?",
+    "model_response": "Albert Einstein was born in 1879 in Ulm, Germany. He developed the theory of relativity and won the Nobel Prize in Physics in 1921. He moved to the United States in 1933 and worked at Princeton University until his death in 1955.",
+    "raw_facts": "1. Albert Einstein was born in 1879 in Ulm, Germany.\n2. Einstein developed the theory of relativity.\n3. Albert Einstein won the Nobel Prize in Physics in 1921.\n4. Einstein moved to the United States in 1933.\n5. He worked at Princeton University until his death in 1955.",
+    "extracted_facts": [
+      "Albert Einstein was born in 1879 in Ulm, Germany.",
+      "Einstein developed the theory of relativity.",
+      "Albert Einstein won the Nobel Prize in Physics in 1921.",
+      "Einstein moved to the United States in 1933.",
+      "He worked at Princeton University until his death in 1955."
+    ]
+  }
+]
