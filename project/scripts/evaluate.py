@@ -2,37 +2,30 @@ from models import BaseLLM
 import json
 
 class HallucinationEvaluator:
-    def __init__(self, judge_model: BaseLLM):
+    def __init__(self, model: BaseLLM, judge_model: BaseLLM):
+        self.model = model
         self.judge_model = judge_model
+        self.prompt_files = {"Evaluate": "../prompts/evaluation/determine_truthfulness.txt",
+                             "Fact": "../prompts/evaluation/generate_facts.txt"}
+        self.prompts = self.load_prompts()
 
-    def format_judge_prompt(self, question: str, response: str) -> str:
-        """Format prompt for the judge model"""
-        return f"""[INST] <<SYS>>
-You are an expert fact-checker. Your task is to evaluate if the given response contains any hallucinations or factual errors.
-A hallucination is when the response makes claims that are either false or cannot be verified from the given context.
+    def load_prompts(self) -> dict:
+        """Load prompts from files"""
+        prompts = {}
+        for mode, file in self.prompt_files.items():
+            with open(file, 'r') as f:
+                prompts[mode] = f.read()
+        return prompts
 
-Evaluate ONLY the factual accuracy. Ignore grammar, style, or completeness of the response.
+    def __get_fact(self, question: str) -> str:
+        answer = self.model.generate(question)
+        prompt = self.prompts['Fact']
+        return self.model.generate(prompt.format(question, answer))
 
-Rate the response on a scale of 1-5:
-1: Complete hallucination - contains major factual errors
-2: Partial hallucination - contains minor factual errors
-3: Uncertain - claims cannot be verified
-4: Mostly factual - contains mostly accurate information with minor uncertainties
-5: Completely factual - all claims are accurate and verifiable
+    def __evaluate_fact(self, fact: str) -> str:
+        prompt = self.prompts['Evaluate']
+        return self.judge_model.generate(prompt.format(fact))
 
-Question: {question}
-Response: {response}
-
-Provide your rating and brief explanation in the following JSON format:
-{{
-    "rating": <number>,
-    "explanation": "<your explanation>",
-    "hallucinated_claims": ["<list of questionable claims>"]
-}}
-<</SYS>>
-
-Analyze the response and provide your evaluation: [/INST]"""
-    
     def evaluate_response(self, question: str, response: str) -> dict:
         """Evaluate the response using the judge model"""
         prompt = self.format_judge_prompt(question, response)

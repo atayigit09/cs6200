@@ -14,3 +14,11 @@ models:
       max_length: 512
       temperature: 0.7
       top_p: 0.9
+
+  judge:
+    model:
+      path: "meta-llama/Llama-2-7b-judge-hf"
+    generation:
+      max_length: 1024
+      temperature: 0.7
+      top_p: 0.9

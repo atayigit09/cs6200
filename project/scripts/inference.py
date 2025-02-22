@@ -24,7 +24,7 @@ class CLI:
                           choices=['baseline', 'rag', 'finetuned'],
                           help='Model type to evaluate')
         parser.add_argument('--dataset', type=str, required=True,
-                          choices=['HEVAL2.0', 'FACTBENCH'],
+                          choices=['HaluEval2', 'FACTBENCH'],
                           help='Dataset to use for evaluation')
         parser.add_argument('--config', type=str, default='configs/main.yaml',
                           help='Path to configuration file')
@@ -38,13 +38,11 @@ def main():
     model_config = ConfigLoader.get_model_config(config, args.model)
     judge_model_config = ConfigLoader.get_model_config(config, 'judge')
 
-    judge_model = get_model(judge_model_config)
-
-    if args.model == 'baseline':
-        model = BaseLLaMA(model_config)
+    judge_model = BaseLLaMA(judge_model_config)
+    model = BaseLLaMA(model_config)
     
     # Pipeline setup
-    data_path = Path(config['data_path']) / f"{args.dataset}.json"
+    data_path = Path(config['data_path']) / f"{args.dataset}/Bio-Medical.json"
     save_path = Path(config['results_path']) / args.model / f"{args.dataset}_results.json"
     
     pipeline = HallucinationEvalPipeline(
