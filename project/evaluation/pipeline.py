@@ -3,7 +3,6 @@ import json
 from tqdm import tqdm
 from langchain.prompts import PromptTemplate
 from torch.utils.data import Dataset, DataLoader
-import torch
 
 class QuestionDataset(Dataset):
     def __init__(self, json_file):
