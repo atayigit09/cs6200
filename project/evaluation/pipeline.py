@@ -3,6 +3,7 @@ import json
 from tqdm import tqdm
 from langchain.prompts import PromptTemplate
 from torch.utils.data import Dataset, DataLoader
+import torch
 
 class QuestionDataset(Dataset):
     def __init__(self, json_file):
@@ -58,10 +59,14 @@ class HallucinationEvalPipeline:
         data_loader = self.load_data()
         for batch in tqdm(data_loader, desc="Generating Answers"):
             question_ids, user_queries, *_ = batch
+
             for question_id, user_query in zip(question_ids, user_queries):
                 answer = self.test_model.generate(user_query)
                 answer = self.extract_response(answer)
                 self.dataset.update_sample(question_id, "local_llm_answers", answer)
+
+            del batch  # Free batch memory
+            
 
 
     def generate_facts(self):

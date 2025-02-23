@@ -34,7 +34,7 @@ class BaselineLLaMA(BaseLLM):
             bnb_config = None
 
         load_params = {
-            "torch_dtype": torch.bfloat16,
+            "torch_dtype": torch.float16,
             "device_map": "auto",
             "low_cpu_mem_usage": True
         }
@@ -74,5 +74,10 @@ class BaselineLLaMA(BaseLLM):
             **kwargs
         }
 
-        outputs = self.model.generate(**inputs, **generation_config)
+        with torch.no_grad():
+            outputs = self.model.generate(**inputs, **generation_config)
+        
+        del inputs
+            
         return self.tokenizer.decode(outputs[0], skip_special_tokens=True)
+
