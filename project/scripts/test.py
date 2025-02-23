@@ -1,11 +1,9 @@
 import argparse
 import yaml
 from pathlib import Path
-
-from models import create_model
 from models.evaluator import EvalLLM  
+import yaml
 from evaluation.pipeline import HallucinationEvalPipeline
-
 def load_model_config(model_name):
     """Loads the configuration file based on the model_name."""
     config_path = Path(f"configs/{model_name}.yaml").resolve()
@@ -32,23 +30,16 @@ def parse_args():
     """Parse command line arguments."""
     parser = argparse.ArgumentParser(description="Hallucination Evaluation")
 
-    parser.add_argument('--model_name', type=str, required=True,
-                        choices=['base_model', 'rag', 'finetuned'],
-                        help='Model type to evaluate')
-    parser.add_argument("--model_class", type=str, required=True, 
-                        choices=['BaselineLLaMA'],
-                        help="Class of the model")
     parser.add_argument('--dataset', type=str, required=True,
                         choices=['HaluEval2'],
                         help='Dataset to use for evaluation')
     parser.add_argument('--field', type=str, default='Open-Domain',
-                        choices=['Bio-Medical','Education','Finance','Open-Domain','Science','test'],
+                        choices=['Bio-Medical','Education','Finance','Open-Domain','Science', 'test'],
                         help='Dataset field to use for evaluation')
 
     args = parser.parse_args()
     
     # Load config dynamically
-    args.model_config = load_model_config(args.model_name)
     args.eval_config = load_eval_config()
     args.pipeline_config = load_pipeline_config()
 
@@ -58,18 +49,19 @@ def parse_args():
 if __name__ == "__main__":
     opt = parse_args()
 
-    print("loading test LLm")
-    test_llm = create_model(opt)
+    print(opt)
+    # print("loading test LLm")
+    # model = create_model(opt)
+
+    test_llm = EvalLLM(opt.eval_config) #testing purpose so not using local llm
 
     print("loading Eval LLm")
     eval_llm = EvalLLM(opt.eval_config)
 
+
     print("loading pipeline")
+
     pipeline = HallucinationEvalPipeline(test_llm, eval_llm, opt)
+    pipeline.process()
 
-    pipeline.generate_answers()
-    pipeline.generate_facts()
-    pipeline.evaluate_facts()
-    pipeline.save_results()
     
-

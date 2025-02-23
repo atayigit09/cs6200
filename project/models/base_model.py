@@ -10,7 +10,6 @@ class BaselineLLaMA(BaseLLM):
     """
     def __init__(self, config: Dict[str, Any]):
         super().__init__(config)
-        self.device = self.config.get('device', "cpu")
         self.load_model()
         
     def load_model(self):
@@ -18,7 +17,7 @@ class BaselineLLaMA(BaseLLM):
         quant_config = self.config.get('quantization', {})
 
         self.tokenizer = AutoTokenizer.from_pretrained(
-            model_config['path'],
+            model_config['model_id'],
             use_fast=model_config.get('use_fast', True)
         )
 
@@ -44,48 +43,27 @@ class BaselineLLaMA(BaseLLM):
             load_params["quantization_config"] = bnb_config
 
         self.model = AutoModelForCausalLM.from_pretrained(
-            model_config['path'],
+            model_config['model_id'],
             **load_params
         )
 
-    def generate(self, prompt: str, **kwargs) -> str:
-        inputs = self.tokenizer(prompt, return_tensors="pt")
-        inputs = {key: value.to(self.model.device) for key, value in inputs.items()}
-        
-        generation_config = {
-            'max_new_tokens': self.config['generation']['max_length'],
-            'temperature': self.config['generation']['temperature'],
-            'top_p': self.config['generation']['top_p'],
-            **kwargs
-        }
-
-        outputs = self.model.generate(**inputs, **generation_config)
-        return self.tokenizer.decode(outputs[0], skip_special_tokens=True)
-
-class MPSBaselineLLaMA(BaseLLM):
-    """
-    Baseline LLaMA implementation using HF transformers with GGUF quantization
-    """
-    def __init__(self, config: Dict[str, Any]):
-        super().__init__(config)
-        self.device = self.config.get('device', "cpu")
-        self.load_model()
-        
-    def load_model(self):
-        model_config = self.config['model']
-
-        self.tokenizer = AutoTokenizer.from_pretrained(
-            model_config['model_id'],
-            gguf_file = model_config['file_name'],
-            #use_fast=model_config.get('use_fast', False)
+    def format_prompt(self, prompt: str) -> str:
+        """
+        Formats the input prompt for an instruction-tuned LLaMA model.
+        This template follows a structure that the model was fine-tuned on,
+        helping it distinguish between the instruction and the expected response.
+        """
+        return (
+            "Below is an instruction that describes a task. "
+            "Write a response that appropriately completes the request.\n\n"
+            "### Instruction:\n"
+            f"{prompt}\n\n"
+            "### Response:\n"
         )
 
-        self.model = AutoModelForCausalLM.from_pretrained(
-            model_config['model_id'],
-            gguf_file = model_config['file_name'],
-        )
-
+    
     def generate(self, prompt: str, **kwargs) -> str:
+        prompt = self.format_prompt(prompt) if self.config['generation']['format_prompt'] else prompt
         inputs = self.tokenizer(prompt, return_tensors="pt")
         inputs = {key: value.to(self.model.device) for key, value in inputs.items()}
         
