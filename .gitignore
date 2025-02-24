@@ -3,6 +3,5 @@ venv
 project/configs/*
 project/data/*
 project/results/*
-project/configs/evaluator.yaml
 .gitignore
 
