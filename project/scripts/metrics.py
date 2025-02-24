@@ -149,9 +149,9 @@ def main():
     # Optionally export metrics to Excel
     if args.output_excel:
         df_entries = pd.DataFrame(metrics_list)
-        df_entries.to_excel(f"{args.topic}_per_entry_metrics.xlsx", index=False)
+        df_entries.to_excel(f"results/{args.topic}_per_entry_metrics.xlsx", index=False)
         df_agg = pd.DataFrame([agg_metrics])
-        df_agg.to_excel(f"{args.topic}_aggregate_metrics.xlsx", index=False)
+        df_agg.to_excel(f"results/{args.topic}_aggregate_metrics.xlsx", index=False)
         print("Metrics exported to Excel files.")
 
 if __name__ == "__main__":
