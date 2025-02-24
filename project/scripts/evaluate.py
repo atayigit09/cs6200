@@ -42,7 +42,7 @@ def parse_args():
                         choices=['HaluEval2'],
                         help='Dataset to use for evaluation')
     parser.add_argument('--field', type=str, default='Open-Domain',
-                        choices=['Bio-Medical','Education','Finance','Open-Domain','Science','science_test'],
+                        choices=['Bio-Medical','Education','Finance','Open-Domain','Science', 'test'],
                         help='Dataset field to use for evaluation')
 
     args = parser.parse_args()
@@ -67,10 +67,9 @@ if __name__ == "__main__":
     print("loading pipeline")
     pipeline = HallucinationEvalPipeline(test_llm, eval_llm, opt)
 
-    pipeline.generate_answers()
     #pipeline.generate_answers_batches() ### THIS should be used when using clusters!!
+    pipeline.generate_answers()
     pipeline.generate_facts()
     pipeline.evaluate_facts()
-    pipeline.save_results()
     
 

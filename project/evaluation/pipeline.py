@@ -43,7 +43,7 @@ class HallucinationEvalPipeline:
         self.eval_model = eval_model
         self.config = opt.pipeline_config
         self.dataset = QuestionDataset(f'data/{opt.dataset}/{opt.field}.json')
-        self.save_path = "results/{opt.field}.json"
+        self.save_path = f"results/{opt.field}.json"
 
     def load_data(self):
         """Custom data loader"""
@@ -69,9 +69,11 @@ class HallucinationEvalPipeline:
             #saving the results
             self.save_results()
 
+        del data_loader
+
 
     def generate_answers_batches(self):
-        """Generate answers for the questions in the dataset using the test model."""
+        """Generate answers in batches for the questions in the dataset using the test model."""
         data_loader = self.load_data()
         for batch in tqdm(data_loader, desc="Generating Answers"):
             question_ids, user_queries, *_ = batch
@@ -84,6 +86,8 @@ class HallucinationEvalPipeline:
             del batch
             #saving the results
             self.save_results()
+        
+        del data_loader
             
 
 
@@ -110,6 +114,8 @@ class HallucinationEvalPipeline:
             del batch  # Free batch memory
             #saving the results
             self.save_results()
+        
+        del data_loader
 
 
     def evaluate_facts(self):
@@ -134,6 +140,7 @@ class HallucinationEvalPipeline:
             #saving the results
             self.save_results()
 
+        del data_loader
 
     def get_facts_lst(self, response: str) -> List[str]:
         """Extract facts list from the LLM response."""
@@ -172,10 +179,3 @@ class HallucinationEvalPipeline:
         """Save the dataset with the generated data."""
         with open(self.save_path, 'w') as f:
             json.dump(self.dataset.questions, f, indent=2)
-
-    def process(self):
-        """Run the evaluation pipeline."""
-        self.generate_answers()
-        self.generate_facts()
-        self.evaluate_facts()
-        self.save_results()
