@@ -2,26 +2,29 @@ import os
 import json
 import argparse
 import pandas as pd
+import re
 
 def parse_judges(judge_str):
     """
     Parse a judge string into a list of uppercase judgment labels.
-    Expected format per line: "1. TRUE" (or FALSE / UNKNOWN).
+    Expected format per line: "1. TRUE" (or FALSE / UNKNOWN), possibly followed by explanations.
     """
     lines = judge_str.strip().splitlines()
     results = []
+    
     for line in lines:
-        # Split on the period and take the judgment part
-        parts = line.split('.')
-        if len(parts) >= 2:
-            result = parts[1].strip().upper()
+        match = re.search(r'\b(TRUE|FALSE|UNKNOWN)\b', line, re.IGNORECASE)  # Extract only valid labels
+        if match:
+            result = match.group(0).upper()  # Ensure uppercase
             results.append(result)
+            print(result)  # Debugging output
+
     return results
 
 def compute_metrics(judges):
     """
     Compute metrics for a single entry given a list of judge labels.
-    Returns a dictionary with counts and rates.
+    Returns a dictionary with counts, rates, and F1-score.
     """
     count_true = judges.count("TRUE")
     count_false = judges.count("FALSE")
@@ -32,6 +35,11 @@ def compute_metrics(judges):
     false_rate = count_false / total if total > 0 else 0
     unknown_rate = count_unknown / total if total > 0 else 0
 
+    # F1-score components
+    precision = count_true / (count_true + count_false) if (count_true + count_false) > 0 else 0
+    recall = count_true / total if total > 0 else 0
+    f1_score = 2 * (precision * recall) / (precision + recall) if (precision + recall) > 0 else 0
+
     return {
         "true": count_true,
         "false": count_false,
@@ -39,7 +47,10 @@ def compute_metrics(judges):
         "total": total,
         "accuracy": accuracy,
         "false_rate": false_rate,
-        "unknown_rate": unknown_rate
+        "unknown_rate": unknown_rate,
+        "precision": precision,
+        "recall": recall,
+        "f1_score": f1_score
     }
 
 def process_file(file_path):
@@ -63,7 +74,7 @@ def process_file(file_path):
 def aggregate_metrics(metrics_list):
     """
     Aggregate per-entry metrics into overall metrics.
-    Computes overall (micro) accuracy and the macro average of per-entry accuracy.
+    Computes overall (micro) accuracy and the macro average of per-entry accuracy and F1-score.
     """
     total_entries = len(metrics_list)
     if total_entries == 0:
@@ -78,8 +89,9 @@ def aggregate_metrics(metrics_list):
     overall_false_rate = sum_false / sum_total if sum_total > 0 else 0
     overall_unknown_rate = sum_unknown / sum_total if sum_total > 0 else 0
 
-    # Macro accuracy: average accuracy per entry
+    # Macro averages
     macro_accuracy = sum(m["accuracy"] for m in metrics_list) / total_entries
+    macro_f1 = sum(m["f1_score"] for m in metrics_list) / total_entries  # Average F1-score
 
     return {
         "total_entries": total_entries,
@@ -90,11 +102,12 @@ def aggregate_metrics(metrics_list):
         "overall_accuracy": overall_accuracy,
         "overall_false_rate": overall_false_rate,
         "overall_unknown_rate": overall_unknown_rate,
-        "macro_accuracy": macro_accuracy
+        "macro_accuracy": macro_accuracy,
+        "macro_f1_score": macro_f1
     }
 
 def main():
-    parser = argparse.ArgumentParser(description="Llama Q&A Benchmark Metrics Calculation")
+    parser = argparse.ArgumentParser(description="HaluEval2 Q&A Benchmark Metrics Calculation")
     parser.add_argument("--topic", 
                         choices=["Bio-Medical", "Education", "Finance", "Open-Domain", "Science", "test"],
                         required=True,
@@ -121,7 +134,7 @@ def main():
     # Display per-entry metrics
     print("Per-entry Metrics:")
     for m in metrics_list:
-        print(f"ID: {m['id']} - Accuracy: {m['accuracy']:.2f}, False Rate: {m['false_rate']:.2f}, Unknown Rate: {m['unknown_rate']:.2f}")
+        print(f"ID: {m['id']} - Accuracy: {m['accuracy']:.2f}, False Rate: {m['false_rate']:.2f}, Unknown Rate: {m['unknown_rate']:.2f}, F1-Score: {m['f1_score']:.2f}")
 
     # Display aggregated metrics
     print("\nAggregate Metrics:")
@@ -131,6 +144,7 @@ def main():
     print(f"Overall False Rate: {agg_metrics['overall_false_rate']*100:.2f}%")
     print(f"Overall Unknown Rate: {agg_metrics['overall_unknown_rate']*100:.2f}%")
     print(f"Macro Accuracy: {agg_metrics['macro_accuracy']*100:.2f}%")
+    print(f"Macro F1-Score: {agg_metrics['macro_f1_score']*100:.2f}%")
 
     # Optionally export metrics to Excel
     if args.output_excel:

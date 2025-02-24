@@ -65,6 +65,8 @@ class HallucinationEvalPipeline:
                 self.dataset.update_sample(question_id, "local_llm_answers", answer)
 
             del batch  # Free batch memory
+            #saving the results
+            self.save_results()
             
 
 
@@ -88,6 +90,10 @@ class HallucinationEvalPipeline:
                 #facts_lst = self.get_facts_lst(facts)
                 self.dataset.update_sample(question_id, "facts", facts)
 
+            del batch  # Free batch memory
+            #saving the results
+            self.save_results()
+
 
     def evaluate_facts(self):
         """Evaluate the generated facts using the eval model."""
@@ -106,6 +112,10 @@ class HallucinationEvalPipeline:
                 prompt = prompt_template.format(facts=facts_lst)
                 judge = self.eval_model.generate(prompt)
                 self.dataset.update_sample(question_id, "judge", judge)
+
+            del batch  # Free batch memory
+            #saving the results
+            self.save_results()
 
 
     def get_facts_lst(self, response: str) -> List[str]:
