@@ -43,6 +43,7 @@ class HallucinationEvalPipeline:
         self.eval_model = eval_model
         self.config = opt.pipeline_config
         self.dataset = QuestionDataset(f'data/{opt.dataset}/{opt.field}.json')
+        self.save_path = "results/{opt.field}.json"
 
     def load_data(self):
         """Custom data loader"""
@@ -169,7 +170,7 @@ class HallucinationEvalPipeline:
 
     def save_results(self):
         """Save the dataset with the generated data."""
-        with open(self.config['save_path'], 'w') as f:
+        with open(self.save_path, 'w') as f:
             json.dump(self.dataset.questions, f, indent=2)
 
     def process(self):
