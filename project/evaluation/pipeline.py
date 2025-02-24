@@ -67,6 +67,22 @@ class HallucinationEvalPipeline:
             del batch  # Free batch memory
             #saving the results
             self.save_results()
+
+
+    def generate_answers_batches(self):
+        """Generate answers for the questions in the dataset using the test model."""
+        data_loader = self.load_data()
+        for batch in tqdm(data_loader, desc="Generating Answers"):
+            question_ids, user_queries, *_ = batch
+
+            answers = self.test_model.generate_batches(user_queries)
+            for question_id, answer in zip(question_ids, answers):
+                answer = self.extract_response(answer)
+                self.dataset.update_sample(question_id, "local_llm_answers", answer)
+
+            del batch
+            #saving the results
+            self.save_results()
             
 
 

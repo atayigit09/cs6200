@@ -81,3 +81,44 @@ class BaselineLLaMA(BaseLLM):
             
         return self.tokenizer.decode(outputs[0], skip_special_tokens=True)
 
+    def generate_batches(self, prompts: list, **kwargs) -> list:
+        # Optionally format each prompt if the configuration requires it.
+        if self.config['generation'].get('format_prompt', False):
+            prompts = [self.format_prompt(prompt) for prompt in prompts]
+
+        if self.tokenizer.pad_token is None:
+            self.tokenizer.pad_token = self.tokenizer.eos_token  # or set a custom token
+
+        # Tokenize the list of prompts as a batch.
+        inputs = self.tokenizer(
+            prompts, 
+            return_tensors="pt", 
+            padding=True, 
+            truncation=True
+        )
+        inputs = {key: value.to(self.model.device) for key, value in inputs.items()}
+
+        # Prepare the generation configuration.
+        generation_config = {
+            'max_new_tokens': self.config['generation']['max_length'],
+            'temperature': self.config['generation']['temperature'],
+            'top_p': self.config['generation']['top_p'],
+            **kwargs
+        }
+
+        # Generate outputs in batch without tracking gradients.
+        with torch.no_grad():
+            outputs_tensor = self.model.generate(**inputs, **generation_config)
+
+        # Decode each output in the batch.
+        outputs = [
+            self.tokenizer.decode(output, skip_special_tokens=True)
+            for output in outputs_tensor
+        ]
+
+        del inputs  # Cleanup to free memory.
+        
+        return outputs
+
+
+
