@@ -8,4 +8,7 @@ project/evaluation/__pycache__/*
 project/models/__pycache__/*
 project/scripts/__pycache__/*
 
+.DS_Store
+project/.DS_Store
+
 .gitignore
