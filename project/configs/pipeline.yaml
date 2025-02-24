@@ -1,5 +1,0 @@
-num_workers: 0
-batch_size: 2
-fact_prompt_path: /Users/atayigit/NEU/Lectures/information_retrieval/cs6200/project/prompts/evaluation/generate_facts.txt
-judge_prompt_path: /Users/atayigit/NEU/Lectures/information_retrieval/cs6200/project/prompts/evaluation/determine_truthfulness.txt
-save_path: results/Science.json
