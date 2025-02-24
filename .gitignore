@@ -1,7 +1,6 @@
 venv
 .env
 project/configs/*
-project/data/*
 project/results/*
 
 project/evaluation/__pycache__/*
