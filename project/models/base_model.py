@@ -2,9 +2,17 @@ from typing import Any, Dict
 from transformers import AutoTokenizer, AutoModelForCausalLM, BitsAndBytesConfig
 from models import BaseLLM
 import torch
+from typing import Dict, List, Any, Optional, Union
+import os
+import json
+from pathlib import Path
+from models import BaseLLM
 from peft import LoraConfig, get_peft_model, prepare_model_for_kbit_training
+from project.rag.document_store import RAGDocumentStore, Document, FaissVectorStore, ChromaVectorStore, load_documents_from_directory, split_document
+from project.models.embeddings import get_embedding_model
 
 
+##baseline model
 class BaselineLLaMA(BaseLLM):
     """
     Baseline LLaMA implementation using HF transformers with quantization
@@ -122,13 +130,7 @@ class BaselineLLaMA(BaseLLM):
         return outputs
 
 
-
-from typing import Any, Dict
-from transformers import AutoTokenizer, AutoModelForCausalLM, BitsAndBytesConfig
-from models import BaseLLM
-import torch
-from peft import LoraConfig, get_peft_model, prepare_model_for_kbit_training
-
+#fine tune model
 class LoraLLaMA(BaseLLM):
     """
     Unified LLaMA implementation that supports both QLoRA and standard LoRA fine tuning.
