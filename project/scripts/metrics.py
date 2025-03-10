@@ -108,10 +108,10 @@ def aggregate_metrics(metrics_list):
 
 def main():
     parser = argparse.ArgumentParser(description="HaluEval2 Q&A Benchmark Metrics Calculation")
-    parser.add_argument("--topic", 
+    parser.add_argument("--field", 
                         choices=["Bio-Medical", "Education", "Finance", "Open-Domain", "Science", "test"],
                         required=True,
-                        help="Select the topic file to process")
+                        help="Select the field file to process")
     parser.add_argument("--results-dir", 
                         default="./results",
                         help="Directory containing the results JSON files")
@@ -120,7 +120,7 @@ def main():
                         help="Export metrics to Excel files")
     args = parser.parse_args()
 
-    file_name = f"{args.topic}.json"
+    file_name = f"{args.field}.json"
     file_path = os.path.join(args.results_dir, file_name)
     
     if not os.path.exists(file_path):
