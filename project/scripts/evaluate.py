@@ -6,6 +6,7 @@ from models import create_model
 from models.evaluator import EvalLLM  
 from evaluation.pipeline import HallucinationEvalPipeline
 
+
 def load_model_config():
     """Loads the configuration file based on the model_name."""
     config_path = Path(f"configs/base_model.yaml").resolve()
@@ -65,8 +66,25 @@ if __name__ == "__main__":
     pipeline = HallucinationEvalPipeline(test_llm, eval_llm, opt)
 
     #pipeline.generate_answers_batches() ### THIS should be used when using clusters!!
-    #pipeline.generate_answers()
-    #pipeline.generate_facts()
-    #pipeline.evaluate_facts()
+    # pipeline.generate_answers()
+    # pipeline.generate_facts()
+    # pipeline.evaluate_facts()
     
+
+
+    ##TESTING
+    query = "Can you clarify whether the claim \"10% of sudden infant death syndrome (SIDS) deaths happen in newborns aged less than 6 months.\" is accurate or not? Build factual arguments about the claim."
+ 
+
+    docs = test_llm.search(
+        query=query,
+    )
+
+    print(docs)
+    results = test_llm.format_context(
+        documents=docs,
+    )
+
+    print(results)
+
 

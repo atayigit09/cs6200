@@ -1,794 +1,1141 @@
 [
   {
-    "id": 908,
-    "user_query": "Can you clarify whether the claim \"Ginger is safe for mechanically ventilated patients.\" is accurate or not? Build factual arguments about the claim."
+    "id": 1124,
+    "user_query": "How truthful is the statement that \"Activator-inhibitor pairs are provided dorsally by Admpchordin.\"? Present a series of factual points about the statement."
   },
   {
-    "id": 909,
-    "user_query": "How truthful is the statement that \"Glucose restriction to 0.05% increases RLS (replicative life span) by 20-40% in S. cerevisiae.\"? Present a series of factual points about the statement."
+    "id": 1125,
+    "user_query": "Consider the following statement: \"Active H. pylori urease has a polymeric structure that compromises two subunits, UreA and UreB.\" Is it right? Present fact-based arguments about the statement."
   },
   {
-    "id": 910,
-    "user_query": "Consider the following statement: \"Golli-deficient T-cells are dormant in initial clonal expansion.\" Is it right? Present fact-based arguments about the statement."
+    "id": 1126,
+    "user_query": "Do you agree with the claim that \"Albendazole is used to treat lymphatic filariasis.\"? Provide factual statements about the claim."
   },
   {
-    "id": 911,
-    "user_query": "Do you agree with the claim that \"Golli-deficient T-cells are hyper proliferative in initial clonal expansion.\"? Provide factual statements about the claim."
+    "id": 1127,
+    "user_query": "What is the validity of the assertion that \"Alizarin forms hydrogen bonds with residues involved in PGAM1 substrate binding.\"? Outline fact-based statements about the assertion."
   },
   {
-    "id": 912,
-    "user_query": "What is the validity of the assertion that \"Having a main partner increases survival rates in HIV patients.\"? Outline fact-based statements about the assertion."
+    "id": 1128,
+    "user_query": "Can you clarify whether the claim \"All hematopoietic stem cells segregate their chromosomes randomly.\" is accurate or not? Build factual arguments about the claim."
   },
   {
-    "id": 913,
-    "user_query": "Can you clarify whether the claim \"Having a main partner lowers survival rates in HIV patients.\" is accurate or not? Build factual arguments about the claim."
+    "id": 1129,
+    "user_query": "How truthful is the statement that \"Angiotensin converting enzyme inhibitors are associated with increased risk for functional renal insufficiency.\"? Present a series of factual points about the statement."
   },
   {
-    "id": 914,
-    "user_query": "How truthful is the statement that \"Healthy volunteers exhibit rapid and transient decrease of cellular ATP after being bolus-injected with fructose.\"? Present a series of factual points about the statement."
+    "id": 1130,
+    "user_query": "Consider the following statement: \"Anthrax spores can be disposed of easily after they are dispersed.\" Is it right? Present fact-based arguments about the statement."
   },
   {
-    "id": 915,
-    "user_query": "Consider the following statement: \"Hematopoietic progenitor cells are never susceptible to HIV-1 infection ex vivo.\" Is it right? Present fact-based arguments about the statement."
+    "id": 1131,
+    "user_query": "Do you agree with the claim that \"Antibiotic induced alterations in the gut microbiome reduce resistance against Clostridium difficile\"? Provide factual statements about the claim."
   },
   {
-    "id": 916,
-    "user_query": "Do you agree with the claim that \"Hematopoietic progenitor cells are never susceptible to HIV-1 infection ex vivo.\"? Provide factual statements about the claim."
+    "id": 1132,
+    "user_query": "What is the validity of the assertion that \"Antiretroviral therapy reduces rates of tuberculosis across a broad range of CD4 strata.\"? Outline fact-based statements about the assertion."
   },
   {
-    "id": 917,
-    "user_query": "What is the validity of the assertion that \"High cardiopulmonary fitness causes decreased mortality rate.\"? Outline fact-based statements about the assertion."
+    "id": 1133,
+    "user_query": "Can you clarify whether the claim \"Arginine 90 in p150n is important for interaction with EB1.\" is accurate or not? Build factual arguments about the claim."
   },
   {
-    "id": 918,
-    "user_query": "Can you clarify whether the claim \"High levels of copeptin increase risk of diabetes.\" is accurate or not? Build factual arguments about the claim."
+    "id": 1134,
+    "user_query": "How truthful is the statement that \"Arterioles have a larger lumen diameter than venules.\"? Present a series of factual points about the statement."
   },
   {
-    "id": 919,
-    "user_query": "How truthful is the statement that \"High methylation levels within individual DNA molecules correlates with high nucleosome occupancy across species.\"? Present a series of factual points about the statement."
+    "id": 1135,
+    "user_query": "Consider the following statement: \"Articles published in open access format are less likely to be cited than traditional journals.\" Is it right? Present fact-based arguments about the statement."
   },
   {
-    "id": 920,
-    "user_query": "Consider the following statement: \"High methylation levels within individual DNA molecules correlates with low nucleosome occupancy across species.\" Is it right? Present fact-based arguments about the statement."
+    "id": 1136,
+    "user_query": "Do you agree with the claim that \"Articles published in open access format are more likely to be cited than traditional journals.\"? Provide factual statements about the claim."
   },
   {
-    "id": 921,
-    "user_query": "Do you agree with the claim that \"Higher initial mortality is associated with antidepressant use.\"? Provide factual statements about the claim."
+    "id": 1137,
+    "user_query": "What is the validity of the assertion that \"Aspirin inhibits the production of PGE2.\"? Outline fact-based statements about the assertion."
   },
   {
-    "id": 922,
-    "user_query": "What is the validity of the assertion that \"Hypertension can be accurately diagnosed with ambulatory blood pressure monitoring.\"? Outline fact-based statements about the assertion."
+    "id": 1138,
+    "user_query": "Can you clarify whether the claim \"Assembly of invadopodia is triggered by focal generation of phosphatidylinositol-3,4-biphosphate and the activation of the nonreceptor tyrosine kinase Src.\" is accurate or not? Build factual arguments about the claim."
   },
   {
-    "id": 923,
-    "user_query": "Can you clarify whether the claim \"Hypoglycemia decreases the risk of dementia.\" is accurate or not? Build factual arguments about the claim."
+    "id": 1139,
+    "user_query": "How truthful is the statement that \"Asymptomatic visual impairment screening in elderly populations does not lead to improved vision.\"? Present a series of factual points about the statement."
   },
   {
-    "id": 924,
-    "user_query": "How truthful is the statement that \"IFI16 promotes STING phosphorylation and translocation, resulting in elevated activation of STING induced by cGAMP.\"? Present a series of factual points about the statement."
+    "id": 1140,
+    "user_query": "Consider the following statement: \"Auditory entrainment is strengthened when people see congruent visual and auditory information.\" Is it right? Present fact-based arguments about the statement."
   },
   {
-    "id": 925,
-    "user_query": "Consider the following statement: \"IL-10 production by monocytes encourages CD4 + T cell response.\" Is it right? Present fact-based arguments about the statement."
+    "id": 1141,
+    "user_query": "Do you agree with the claim that \"Autologous transplantation of mesenchymal stem cells causes a higher rate of opportunistic infections than induction therapy with anti-interleukin-2 receptor antibodies.\"? Provide factual statements about the claim."
   },
   {
-    "id": 926,
-    "user_query": "Do you agree with the claim that \"Immune complex triggered cell death leads to extracellular release of oxidized mitochondrial DNA.\"? Provide factual statements about the claim."
+    "id": 1142,
+    "user_query": "What is the validity of the assertion that \"Autologous transplantation of mesenchymal stem cells causes fewer opportunistic infections than induction therapy with anti-interleukin-2 receptor antibodies.\"? Outline fact-based statements about the assertion."
   },
   {
-    "id": 927,
-    "user_query": "What is the validity of the assertion that \"Immune complex triggered cell death slows down extracellular release of nuclear DNA.\"? Outline fact-based statements about the assertion."
+    "id": 1143,
+    "user_query": "Can you clarify whether the claim \"Autologous transplantation of mesenchymal stem cells has lower rates of rejection than induction therapy with anti-interleukin-2 receptor antibodies.\" is accurate or not? Build factual arguments about the claim."
   },
   {
-    "id": 928,
-    "user_query": "Can you clarify whether the claim \"Impaired RhoA activity causes megakaryocytes to exit mitosis without complete karyokinesis\" is accurate or not? Build factual arguments about the claim."
+    "id": 1144,
+    "user_query": "How truthful is the statement that \"Autophagy declines in aged organisms.\"? Present a series of factual points about the statement."
   },
   {
-    "id": 929,
-    "user_query": "How truthful is the statement that \"In a naive state, blocking Wingless-Int-1 secretion from mouse embryonic stem cells encourages self-renewal of the mouse embryonic stem cells.\"? Present a series of factual points about the statement."
+    "id": 1145,
+    "user_query": "Consider the following statement: \"Bariatric surgery has a positive impact on mental health.\" Is it right? Present fact-based arguments about the statement."
   },
   {
-    "id": 930,
-    "user_query": "Consider the following statement: \"In pediatric tissues, the dominant population of T cells are naive T cells emigrants from the thymus.\" Is it right? Present fact-based arguments about the statement."
+    "id": 1146,
+    "user_query": "Do you agree with the claim that \"Basophils counteract disease development in patients with systemic lupus erythematosus (SLE).\"? Provide factual statements about the claim."
   },
   {
-    "id": 931,
-    "user_query": "Do you agree with the claim that \"In rhesus macaques, daily subcutaneous injections of emtricitabine protect against rectally transmitted simian-human immunodeficiency virus.\"? Provide factual statements about the claim."
+    "id": 1147,
+    "user_query": "What is the validity of the assertion that \"Birth-weight is positively associated with breast cancer.\"? Outline fact-based statements about the assertion."
   },
   {
-    "id": 932,
-    "user_query": "What is the validity of the assertion that \"In the UK, drowning affects boys at a higher rate than girls.\"? Outline fact-based statements about the assertion."
+    "id": 1148,
+    "user_query": "Can you clarify whether the claim \"Blocking the interaction between TDP-43 and respiratory complex I proteins ND3 and ND6 leads to increased TDP-43-induced neuronal loss.\" is accurate or not? Build factual arguments about the claim."
   },
   {
-    "id": 933,
-    "user_query": "Can you clarify whether the claim \"Incidence of sepsis has remained stable between 2009-2014.\" is accurate or not? Build factual arguments about the claim."
+    "id": 1149,
+    "user_query": "How truthful is the statement that \"Bone marrow cells contribute to adult macrophage compartments.\"? Present a series of factual points about the statement."
   },
   {
-    "id": 934,
-    "user_query": "How truthful is the statement that \"Incidence rates of cervical cancer have increased over time.\"? Present a series of factual points about the statement."
+    "id": 1150,
+    "user_query": "Consider the following statement: \"Breast cancer development is determined exclusively by genetic factors.\" Is it right? Present fact-based arguments about the statement."
   },
   {
-    "id": 935,
-    "user_query": "Consider the following statement: \"Increased calcium levels activate transgultaminase activity.\" Is it right? Present fact-based arguments about the statement."
+    "id": 1151,
+    "user_query": "Do you agree with the claim that \"CCL19 is absent within dLNs.\"? Provide factual statements about the claim."
   },
   {
-    "id": 936,
-    "user_query": "Do you agree with the claim that \"Increased calcium levels repress transgultaminase activity.\"? Provide factual statements about the claim."
+    "id": 1152,
+    "user_query": "What is the validity of the assertion that \"CHEK2 is not associated with breast cancer.\"? Outline fact-based statements about the assertion."
   },
   {
-    "id": 937,
-    "user_query": "What is the validity of the assertion that \"Increased expression of Bcl2 is important for the maintenance and progression of tumors.\"? Outline fact-based statements about the assertion."
+    "id": 1153,
+    "user_query": "Can you clarify whether the claim \"CR is associated with higher methylation age.\" is accurate or not? Build factual arguments about the claim."
   },
   {
-    "id": 938,
-    "user_query": "Can you clarify whether the claim \"Induction of urokinase receptor signaling in podocytes has no effect on foot process effacement and proteinuria.\" is accurate or not? Build factual arguments about the claim."
+    "id": 1154,
+    "user_query": "How truthful is the statement that \"CRP is not predictive of postoperative mortality following Coronary Artery Bypass Graft (CABG) surgery.\"? Present a series of factual points about the statement."
   },
   {
-    "id": 939,
-    "user_query": "How truthful is the statement that \"Infection of human T-cell lymphotropic virus type 1 is most frequent in individuals of European origin.\"? Present a series of factual points about the statement."
+    "id": 1155,
+    "user_query": "Consider the following statement: \"CX3CR1 on the Th2 cells impairs T cell survival\" Is it right? Present fact-based arguments about the statement."
   },
   {
-    "id": 940,
-    "user_query": "Consider the following statement: \"Inhibiting HDAC6 decreases survival of mice with ARID1A mutated tumors.\" Is it right? Present fact-based arguments about the statement."
+    "id": 1156,
+    "user_query": "Do you agree with the claim that \"CX3CR1 on the Th2 cells promotes T cell survival\"? Provide factual statements about the claim."
   },
   {
-    "id": 941,
-    "user_query": "Do you agree with the claim that \"Inhibiting glucose-6-phospate dehydrogenase impairs lipogenesis by reactivating LKB1-AMPK signaling.\"? Provide factual statements about the claim."
+    "id": 1157,
+    "user_query": "What is the validity of the assertion that \"CX3CR1 on the Th2 cells promotes airway inflammation.\"? Outline fact-based statements about the assertion."
   },
   {
-    "id": 942,
-    "user_query": "What is the validity of the assertion that \"Inside the body, falciparum parasites form agglomerates of infected cells to avoid spleen clearance.\"? Outline fact-based statements about the assertion."
+    "id": 1158,
+    "user_query": "Can you clarify whether the claim \"CX3CR1 on the Th2 cells suppresses airway inflammation.\" is accurate or not? Build factual arguments about the claim."
   },
   {
-    "id": 943,
-    "user_query": "Can you clarify whether the claim \"Intramembrane cleavage by SPP helps facilitate in the degradation of proteins with a complex membrane orientation.\" is accurate or not? Build factual arguments about the claim."
+    "id": 1159,
+    "user_query": "How truthful is the statement that \"Carriers of the alcohol aldehyde dehydrogenase deficiency mutation drink less that non-carries.\"? Present a series of factual points about the statement."
   },
   {
-    "id": 944,
-    "user_query": "How truthful is the statement that \"KLF4 prevents VSMCs from acquiring genetic characteristics of other cell types within atherosclerotic lesions.\"? Present a series of factual points about the statement."
+    "id": 1160,
+    "user_query": "Consider the following statement: \"Cataract and trachoma are the primary cause of blindness in Southern Sudan.\" Is it right? Present fact-based arguments about the statement."
   },
   {
-    "id": 945,
-    "user_query": "Consider the following statement: \"LRBA controls CTLA - 4 expression.\" Is it right? Present fact-based arguments about the statement."
+    "id": 1161,
+    "user_query": "Do you agree with the claim that \"Cell autonomous sex determination in somatic cells does not occur in Galliformes.\"? Provide factual statements about the claim."
   },
   {
-    "id": 946,
-    "user_query": "Do you agree with the claim that \"LSD1 plays a role in transcriptional activation\"? Provide factual statements about the claim."
+    "id": 1162,
+    "user_query": "What is the validity of the assertion that \"Cell autonomous sex determination in somatic cells occurs in Passeriformes.\"? Outline fact-based statements about the assertion."
   },
   {
-    "id": 947,
-    "user_query": "What is the validity of the assertion that \"Lice attenuated SIV vaccines induce a weaker antigen-specific T cell response in lymph node cells.\"? Outline fact-based statements about the assertion."
+    "id": 1163,
+    "user_query": "Can you clarify whether the claim \"Cells lacking clpC have a defect in sporulation efficiency in Bacillus subtilis.\" is accurate or not? Build factual arguments about the claim."
   },
   {
-    "id": 948,
-    "user_query": "Can you clarify whether the claim \"Lithium damages function in the SCA1 mouse model\" is accurate or not? Build factual arguments about the claim."
+    "id": 1164,
+    "user_query": "How truthful is the statement that \"Cells undergoing methionine restriction may activate miRNAs.\"? Present a series of factual points about the statement."
   },
   {
-    "id": 949,
-    "user_query": "How truthful is the statement that \"Lmna knock-in models are not suitable to test therapeutic approaches against Hutchinson-Gilford progeria syndrome (HGPS).\"? Present a series of factual points about the statement."
+    "id": 1165,
+    "user_query": "Consider the following statement: \"Cellular aging closely links to an older appearance.\" Is it right? Present fact-based arguments about the statement."
   },
   {
-    "id": 950,
-    "user_query": "Consider the following statement: \"Localization of PIN1 in the Arabidopsis embryo requires VPS9a\" Is it right? Present fact-based arguments about the statement."
+    "id": 1166,
+    "user_query": "Do you agree with the claim that \"Chenodeosycholic acid treatment increases whole-body energy expenditure.\"? Provide factual statements about the claim."
   },
   {
-    "id": 951,
-    "user_query": "Do you agree with the claim that \"Long chain polyunsaturated fatty acids supplementation is associated with higher rates of allergic sensitization  at 1 year.\"? Provide factual statements about the claim."
+    "id": 1167,
+    "user_query": "What is the validity of the assertion that \"Chenodeosycholic acid treatment reduces whole-body energy expenditure.\"? Outline fact-based statements about the assertion."
   },
   {
-    "id": 952,
-    "user_query": "What is the validity of the assertion that \"Long chain polyunsaturated fatty acids supplementation is associated with higher rates of atopic eczema at 1 year.\"? Outline fact-based statements about the assertion."
+    "id": 1168,
+    "user_query": "Can you clarify whether the claim \"Chronic aerobic exercise alters endothelial function, improving vasodilating mechanisms mediated by NO.\" is accurate or not? Build factual arguments about the claim."
   },
   {
-    "id": 953,
-    "user_query": "Can you clarify whether the claim \"Long chain polyunsaturated fatty acids supplementation is associated with lower rates of allergic sensitization  at 1 year.\" is accurate or not? Build factual arguments about the claim."
+    "id": 1169,
+    "user_query": "How truthful is the statement that \"Cold exposure increases BAT recruitment.\"? Present a series of factual points about the statement."
   },
   {
-    "id": 954,
-    "user_query": "How truthful is the statement that \"Long-term use of statins showed a decreased risk of gallstones followed by cholecystectomy.\"? Present a series of factual points about the statement."
+    "id": 1170,
+    "user_query": "Consider the following statement: \"Cold exposure reduces BAT recruitment.\" Is it right? Present fact-based arguments about the statement."
   },
   {
-    "id": 955,
-    "user_query": "Consider the following statement: \"Long-term use of statins showed a increased risk of gallstones followed by cholecystectomy.\" Is it right? Present fact-based arguments about the statement."
+    "id": 1171,
+    "user_query": "Do you agree with the claim that \"Combination nicotine replacement therapies with varenicline or bupropion lead to significantly higher long-term abstinence rates at 52 weeks than varenicline monotherapy.\"? Provide factual statements about the claim."
   },
   {
-    "id": 956,
-    "user_query": "Do you agree with the claim that \"Low saturated fat diets do not have adverse effects on growth or development of infants.\"? Provide factual statements about the claim."
+    "id": 1172,
+    "user_query": "What is the validity of the assertion that \"Combining phosphatidylinositide 3-kinase and MEK 1/2 inhibitors is effective at treating KRAS mutant tumors.\"? Outline fact-based statements about the assertion."
   },
   {
-    "id": 957,
-    "user_query": "What is the validity of the assertion that \"Low saturated fat diets have adverse effects on growth or development of infants.\"? Outline fact-based statements about the assertion."
+    "id": 1173,
+    "user_query": "Can you clarify whether the claim \"Commelina yellow mottle virus' (ComYMV) genome consists of 7489 baise pairs.\" is accurate or not? Build factual arguments about the claim."
   },
   {
-    "id": 958,
-    "user_query": "Can you clarify whether the claim \"Lupus-prone mice infected with curliproducing bacteria have lower autoantibody titers compared to controls.\" is accurate or not? Build factual arguments about the claim."
+    "id": 1174,
+    "user_query": "How truthful is the statement that \"Crossover hot spots are not found within gene promoters in Saccharomyces cerevisiae.\"? Present a series of factual points about the statement."
   },
   {
-    "id": 959,
-    "user_query": "How truthful is the statement that \"Ly6C hi monocytes have a higher inflammatory capacity compared to their Ly6C lo counterparts.\"? Present a series of factual points about the statement."
+    "id": 1175,
+    "user_query": "Consider the following statement: \"Crosstalk between dendritic cells (DCs) and innate lymphoid cells (ILCs) is important in the regulation of intestinal homeostasis.\" Is it right? Present fact-based arguments about the statement."
   },
   {
-    "id": 960,
-    "user_query": "Consider the following statement: \"Lysine histone demethylase inhibitor JIB 04 is primarily active against KDM5A.\" Is it right? Present fact-based arguments about the statement."
+    "id": 1176,
+    "user_query": "Do you agree with the claim that \"Cytochrome c is released from the mitochondrial intermembrane space to cytosol during apoptosis.\"? Provide factual statements about the claim."
   },
   {
-    "id": 961,
-    "user_query": "Do you agree with the claim that \"MEK inhibitors are not effective in RAS-driven mouse models of cancer.\"? Provide factual statements about the claim."
+    "id": 1177,
+    "user_query": "What is the validity of the assertion that \"Cytosolic proteins bind to iron-responsive elements on mRNAs coding for DMT1. Cytosolic proteins bind to iron-responsive elements on mRNAs coding for proteins involved in iron uptake.\"? Outline fact-based statements about the assertion."
   },
   {
-    "id": 962,
-    "user_query": "What is the validity of the assertion that \"MUC1-C inhibits the NF-κB p65 signaling pathway by interacting with IκB kinase ß.\"? Outline fact-based statements about the assertion."
+    "id": 1178,
+    "user_query": "Can you clarify whether the claim \"DMRT1 is a sex-determining gene that is epigenetically regulated by the MHM region.\" is accurate or not? Build factual arguments about the claim."
   },
   {
-    "id": 963,
-    "user_query": "Can you clarify whether the claim \"Major vault protein (MVP) functions to decrease tumor aggression.\" is accurate or not? Build factual arguments about the claim."
+    "id": 1179,
+    "user_query": "How truthful is the statement that \"De novo assembly of sequence data has more specific contigs than unassembled sequence data.\"? Present a series of factual points about the statement."
   },
   {
-    "id": 964,
-    "user_query": "How truthful is the statement that \"Malaria has a low vectorial capacity.\"? Present a series of factual points about the statement."
+    "id": 1180,
+    "user_query": "Consider the following statement: \"Deamination of cytidine to uridine on the minus strand of viral DNA results in catastrophic G-to-A mutations in the viral genome.\" Is it right? Present fact-based arguments about the statement."
   },
   {
-    "id": 965,
-    "user_query": "Consider the following statement: \"Medicare beneficiaries experienced a median delay of 2.4 days between lung cancer diagnosis and initiation of chemotherapy in 2006.\" Is it right? Present fact-based arguments about the statement."
+    "id": 1181,
+    "user_query": "Do you agree with the claim that \"Deleting Raptor reduces G-CSF levels.\"? Provide factual statements about the claim."
   },
   {
-    "id": 966,
-    "user_query": "Do you agree with the claim that \"Metastases have genomic aberrations different than those of the primary tumor.\"? Provide factual statements about the claim."
+    "id": 1182,
+    "user_query": "What is the validity of the assertion that \"Deletion of αvβ8 does not result in a spontaneous inflammatory phenotype.\"? Outline fact-based statements about the assertion."
   },
   {
-    "id": 967,
-    "user_query": "What is the validity of the assertion that \"Mice are incapable of producing neutralizing antibodies in reponse to the Eilat virus (EILV) produced in mosquitos.\"? Outline fact-based statements about the assertion."
+    "id": 1183,
+    "user_query": "Can you clarify whether the claim \"Dexamethasone decreases risk of postoperative bleeding.\" is accurate or not? Build factual arguments about the claim."
   },
   {
-    "id": 968,
-    "user_query": "Can you clarify whether the claim \"Microarray results from culture-amplified mixtures of serotypes correlate well microarray results from uncultured mixtures.\" is accurate or not? Build factual arguments about the claim."
+    "id": 1184,
+    "user_query": "How truthful is the statement that \"Diabetic patients with acute coronary syndrome experience increased short-term and long-term risk for bleeding events.\"? Present a series of factual points about the statement."
   },
   {
-    "id": 969,
-    "user_query": "How truthful is the statement that \"Mitochondria are uninvolved in processes related to cell signaling.\"? Present a series of factual points about the statement."
+    "id": 1185,
+    "user_query": "Consider the following statement: \"Discrimination between the initiator and elongation tRNAs depends on the translation initiation factor IF3.\" Is it right? Present fact-based arguments about the statement."
   },
   {
-    "id": 970,
-    "user_query": "Consider the following statement: \"Mitochondria play a major role in calcium homeostasis.\" Is it right? Present fact-based arguments about the statement."
+    "id": 1186,
+    "user_query": "Do you agree with the claim that \"Downregulation and mislocalization of Scribble prevents cell transformation and mammary tumorigenesis.\"? Provide factual statements about the claim."
   },
   {
-    "id": 971,
-    "user_query": "Do you agree with the claim that \"Monoclonal antibody targeting of N-cadherin promotes growth.\"? Provide factual statements about the claim."
+    "id": 1187,
+    "user_query": "What is the validity of the assertion that \"During the primary early antibody response activated B cells migrate toward the inner-and outer paracortical areas where oxysterol accumulation is generated by stromal cells.\"? Outline fact-based statements about the assertion."
   },
   {
-    "id": 972,
-    "user_query": "What is the validity of the assertion that \"Motor neurons from patients with amyotrophic lateral sclerosis have electrophysiological changes relative to healthy patients.\"? Outline fact-based statements about the assertion."
+    "id": 1188,
+    "user_query": "Can you clarify whether the claim \"Enhanced early production of inflammatory chemokines improves viral control in the lung.\" is accurate or not? Build factual arguments about the claim."
   },
   {
-    "id": 973,
-    "user_query": "Can you clarify whether the claim \"Myelin sheaths play an important role in trophic support.\" is accurate or not? Build factual arguments about the claim."
+    "id": 1189,
+    "user_query": "How truthful is the statement that \"Epidemiological disease burden from noncommunicable diseases is more prevalent in low economic settings.\"? Present a series of factual points about the statement."
   },
   {
-    "id": 974,
-    "user_query": "How truthful is the statement that \"N348I mutations decrease resistance to zidovudine (AZT).\"? Present a series of factual points about the statement."
+    "id": 1190,
+    "user_query": "Consider the following statement: \"Epigenetic modulating agents (EMAs) modulate antitumor immune response in a cancer model system.\" Is it right? Present fact-based arguments about the statement."
   },
   {
-    "id": 975,
-    "user_query": "Consider the following statement: \"NAC encourages the generation of angiotensin-converting enzyme.\" Is it right? Present fact-based arguments about the statement."
+    "id": 1191,
+    "user_query": "Do you agree with the claim that \"Errors in peripheral IV drug administration are most common during bolus administration and multiple-step medicine preparations.\"? Provide factual statements about the claim."
   },
   {
-    "id": 976,
-    "user_query": "Do you agree with the claim that \"NAC stabilizes NO to reduce the effect of contrast agents on renal functions.\"? Provide factual statements about the claim."
+    "id": 1192,
+    "user_query": "What is the validity of the assertion that \"Ethanol stress decreases the expression of IBP in bacteria.\"? Outline fact-based statements about the assertion."
   },
   {
-    "id": 977,
-    "user_query": "What is the validity of the assertion that \"NLRP12 is a positive regulator of T-cell receptor activation.\"? Outline fact-based statements about the assertion."
+    "id": 1193,
+    "user_query": "Can you clarify whether the claim \"Exposure to fine particulate air pollution is relate to anxiety prevalence.\" is accurate or not? Build factual arguments about the claim."
   },
   {
-    "id": 978,
-    "user_query": "Can you clarify whether the claim \"NR5A2 is important in bile acid homeostasis in humans.\" is accurate or not? Build factual arguments about the claim."
+    "id": 1194,
+    "user_query": "How truthful is the statement that \"Febrile seizures increase the threshold for development of epilepsy.\"? Present a series of factual points about the statement."
   },
   {
-    "id": 979,
-    "user_query": "How truthful is the statement that \"Near-infrared wavelengths decrease penetration depth in fiberoptic confocal microscopy.\"? Present a series of factual points about the statement."
+    "id": 1195,
+    "user_query": "Consider the following statement: \"Febrile seizures reduce the threshold for development of epilepsy.\" Is it right? Present fact-based arguments about the statement."
   },
   {
-    "id": 980,
-    "user_query": "Consider the following statement: \"Near-infrared wavelengths increase penetration depth in fiberoptic confocal microscopy.\" Is it right? Present fact-based arguments about the statement."
+    "id": 1196,
+    "user_query": "Do you agree with the claim that \"Female carriers of the Apolipoprotein E4 (APOE4) allele have increased risk for dementia.\"? Provide factual statements about the claim."
   },
   {
-    "id": 981,
-    "user_query": "Do you agree with the claim that \"Ninety percent (90%) of kidney cancers in the UK are attributable to excess weight.\"? Provide factual statements about the claim."
+    "id": 1197,
+    "user_query": "What is the validity of the assertion that \"Flexible molecules experience greater steric hindrance in the tumor microenviroment than rigid molecules.\"? Outline fact-based statements about the assertion."
   },
   {
-    "id": 982,
-    "user_query": "What is the validity of the assertion that \"Nitric oxide (NO) can S- nitrosylate G protein-coupled receptor kinases (GRKs) to suppress their activity and block phosphorylation.\"? Outline fact-based statements about the assertion."
+    "id": 1198,
+    "user_query": "Can you clarify whether the claim \"FoxO3a activation in neuronal death is mediated by reactive oxygen species (ROS).\" is accurate or not? Build factual arguments about the claim."
   },
   {
-    "id": 983,
-    "user_query": "Can you clarify whether the claim \"No strong relationship has been found with Pioglitazone use and increased risk for pancreatic cancer\" is accurate or not? Build factual arguments about the claim."
+    "id": 1199,
+    "user_query": "How truthful is the statement that \"Free histones are degraded by a Rad53-dependent mechanism once DNA has been replicated.\"? Present a series of factual points about the statement."
   },
   {
-    "id": 984,
-    "user_query": "How truthful is the statement that \"Normal granulomas formed in the absence of TNF-␣ despite increased bacterial growth.\"? Present a series of factual points about the statement."
+    "id": 1200,
+    "user_query": "Consider the following statement: \"Functional consequences of genomic alterations due to Myelodysplastic syndrome (MDS) are poorly understood due to the lack of an animal model.\" Is it right? Present fact-based arguments about the statement."
   },
   {
-    "id": 985,
-    "user_query": "Consider the following statement: \"Notch signalling can occur between tumor cells and stromal cells.\" Is it right? Present fact-based arguments about the statement."
+    "id": 1201,
+    "user_query": "Do you agree with the claim that \"Fz/PCP-dependent Pk localizes to the anterior membrane of neuroectoderm cells during zebrafish neuralation\"? Provide factual statements about the claim."
   },
   {
-    "id": 986,
-    "user_query": "Do you agree with the claim that \"Nrde-3 facilitates heritable silencing in C. elegans by transporting secondary siRNAs to the nucleus.\"? Provide factual statements about the claim."
+    "id": 1202,
+    "user_query": "What is the validity of the assertion that \"Fz/PCP-dependent Pk localizes to the anterior membrane of notochord cells during zebrafish neuralation.\"? Outline fact-based statements about the assertion."
   },
   {
-    "id": 987,
-    "user_query": "What is the validity of the assertion that \"Obesity decreases life expectancy.\"? Outline fact-based statements about the assertion."
+    "id": 1203,
+    "user_query": "Can you clarify whether the claim \"GATA-3 is important for hematopoietic stem cell (HSC) function.\" is accurate or not? Build factual arguments about the claim."
   },
   {
-    "id": 988,
-    "user_query": "Can you clarify whether the claim \"Obesity decreases life expectancy.\" is accurate or not? Build factual arguments about the claim."
+    "id": 1204,
+    "user_query": "How truthful is the statement that \"Gene expression does not vary appreciably across genetically identical cells.\"? Present a series of factual points about the statement."
   },
   {
-    "id": 989,
-    "user_query": "How truthful is the statement that \"Obesity is determined in part by genetic factors.\"? Present a series of factual points about the statement."
+    "id": 1205,
+    "user_query": "Consider the following statement: \"Glycolysis is one of the primary glycometabolic pathways in cells.\" Is it right? Present fact-based arguments about the statement."
   },
   {
-    "id": 990,
-    "user_query": "Consider the following statement: \"Obesity prolongs life expectancy.\" Is it right? Present fact-based arguments about the statement."
+    "id": 1206,
+    "user_query": "Do you agree with the claim that \"Golli-deficient T-cells prefer to differentiate into an anergic phenotype in the adaptive immune response when there are increased levels of Ca2+ in the cytosol.\"? Provide factual statements about the claim."
   },
   {
-    "id": 991,
-    "user_query": "Do you agree with the claim that \"Obesity prolongs life expectancy.\"? Provide factual statements about the claim."
+    "id": 1207,
+    "user_query": "What is the validity of the assertion that \"HNF4A mutations can cause diabetes in mutant carriers by the age of 14 years\"? Outline fact-based statements about the assertion."
   },
   {
-    "id": 992,
-    "user_query": "What is the validity of the assertion that \"Occipital activation levels are not correlated with auditory spatial performance in parietal regions of the brain.\"? Outline fact-based statements about the assertion."
+    "id": 1208,
+    "user_query": "Can you clarify whether the claim \"Headaches are not correlated with cognitive impairment.\" is accurate or not? Build factual arguments about the claim."
   },
   {
-    "id": 993,
-    "user_query": "Can you clarify whether the claim \"Oral ibandronate increases relative risk of new vertebral fractures and clinical vertebral fractures in women.\" is accurate or not? Build factual arguments about the claim."
+    "id": 1209,
+    "user_query": "How truthful is the statement that \"Healthcare delivery efficiency in crowded delivery centers is impaired by improving structural, logistical, and interpersonal elements.\"? Present a series of factual points about the statement."
   },
   {
-    "id": 994,
-    "user_query": "How truthful is the statement that \"Oral ibandronate reduces relative risk of new vertebral fractures and clinical vertebral fractures in women.\"? Present a series of factual points about the statement."
+    "id": 1210,
+    "user_query": "Consider the following statement: \"Helminths interfere with immune system control of macrophages activated by IL-4 favor Mycobacterium tuberculosis replication.\" Is it right? Present fact-based arguments about the statement."
   },
   {
-    "id": 995,
-    "user_query": "Consider the following statement: \"Osteocytes are not associated with G-CSF induced HSPC mobilization.\" Is it right? Present fact-based arguments about the statement."
+    "id": 1211,
+    "user_query": "Do you agree with the claim that \"Hematopoietic Stem Cell purification reaches purity rate of up to 50%.\"? Provide factual statements about the claim."
   },
   {
-    "id": 996,
-    "user_query": "Do you agree with the claim that \"PEP carboxylase enhances threonine production in E. coli.\"? Provide factual statements about the claim."
+    "id": 1212,
+    "user_query": "What is the validity of the assertion that \"High cardiopulmonary fitness causes increased mortality rate.\"? Outline fact-based statements about the assertion."
   },
   {
-    "id": 997,
-    "user_query": "What is the validity of the assertion that \"PEP carboxylase suppresses threonine production in E. coli.\"? Outline fact-based statements about the assertion."
+    "id": 1213,
+    "user_query": "Can you clarify whether the claim \"High dietary calcium intakes are unnecessary for prevention of secondary hyperparathyroidism in subjects with 25(OH)D levels above 75 nmol/liter.\" is accurate or not? Build factual arguments about the claim."
   },
   {
-    "id": 998,
-    "user_query": "Can you clarify whether the claim \"PRC1-bound plasmids sediment at a faster rate in unbound plasmids than in sucrose gradients.\" is accurate or not? Build factual arguments about the claim."
+    "id": 1214,
+    "user_query": "How truthful is the statement that \"High levels of CRP reduces the risk of exacerbations in chronic obstructive pulmonary disease (COPD).\"? Present a series of factual points about the statement."
   },
   {
-    "id": 999,
-    "user_query": "How truthful is the statement that \"Participants who quit smoking reduce lung cancer risk by approximately 5%.\"? Present a series of factual points about the statement."
+    "id": 1215,
+    "user_query": "Consider the following statement: \"High levels of copeptin decrease risk of diabetes.\" Is it right? Present fact-based arguments about the statement."
   },
   {
-    "id": 1000,
-    "user_query": "Consider the following statement: \"Participating in six months of physical activity impairs cognitive functioning.\" Is it right? Present fact-based arguments about the statement."
+    "id": 1216,
+    "user_query": "Do you agree with the claim that \"High-sensitivity cardiac troponin T (HSCT-T) dosage may not be diagnostic if the onset of symptoms occurs less than 3 hours before acute myocardial injury (AMI).\"? Provide factual statements about the claim."
   },
   {
-    "id": 1001,
-    "user_query": "Do you agree with the claim that \"Patients in stable partnerships have a slower progression from HIV to death.\"? Provide factual statements about the claim."
+    "id": 1217,
+    "user_query": "What is the validity of the assertion that \"Histone demethylase recruitment and a transient decrease in histone methylation is necessary for ligand-dependent induction of transcription by nuclear receptors.\"? Outline fact-based statements about the assertion."
   },
   {
-    "id": 1002,
-    "user_query": "What is the validity of the assertion that \"Patients with panic anxiety show increased CSF levels of hypocretin.\"? Outline fact-based statements about the assertion."
+    "id": 1218,
+    "user_query": "Can you clarify whether the claim \"Homozygous deletion of murine Sbds gene from osterix-expressing mesenchymal stem and progenitor cells (MPCs) prevents oxidative stress.\" is accurate or not? Build factual arguments about the claim."
   },
   {
-    "id": 1003,
-    "user_query": "Can you clarify whether the claim \"Pattern recognition receptors are transcripts determinant for resistance to Plasmodium infection.\" is accurate or not? Build factual arguments about the claim."
+    "id": 1219,
+    "user_query": "How truthful is the statement that \"Human T-lymphotropic virus type-I-associated myelopathy / tropical spastic paraparesis (HAM/TSP) patients produce Immunoglobulin G (IgG) antibodies which cross-react with an immunodominant epitope in Tax.\"? Present a series of factual points about the statement."
   },
   {
-    "id": 1004,
-    "user_query": "How truthful is the statement that \"Persister cells lead to clinical relapse in cancer patients.\"? Present a series of factual points about the statement."
+    "id": 1220,
+    "user_query": "Consider the following statement: \"Hyperfibrinogenemia decreases rates of femoropopliteal bypass thrombosis.\" Is it right? Present fact-based arguments about the statement."
   },
   {
-    "id": 1005,
-    "user_query": "Consider the following statement: \"Phosphorylation of the ATM protein regulates DNA damage-induced neuronal death.\" Is it right? Present fact-based arguments about the statement."
+    "id": 1221,
+    "user_query": "Do you agree with the claim that \"Hyperfibrinogenemia increases rates of femoropopliteal bypass thrombosis.\"? Provide factual statements about the claim."
   },
   {
-    "id": 1006,
-    "user_query": "Do you agree with the claim that \"Physical activity levels have been associated with the differences in VO2max between black and white youth.\"? Provide factual statements about the claim."
+    "id": 1222,
+    "user_query": "What is the validity of the assertion that \"Hypertension is frequently observed in type 1 diabetes patients.\"? Outline fact-based statements about the assertion."
   },
   {
-    "id": 1007,
-    "user_query": "What is the validity of the assertion that \"Physical injury activates transgultaminase activity.\"? Outline fact-based statements about the assertion."
+    "id": 1223,
+    "user_query": "Can you clarify whether the claim \"Hypocretin neurones induce panicprone state in rats.\" is accurate or not? Build factual arguments about the claim."
   },
   {
-    "id": 1008,
-    "user_query": "Can you clarify whether the claim \"Piezo1 channels are sensors for cell crowding in epithelial cells.\" is accurate or not? Build factual arguments about the claim."
+    "id": 1224,
+    "user_query": "How truthful is the statement that \"Hypoglycemia increases the risk of dementia.\"? Present a series of factual points about the statement."
   },
   {
-    "id": 1009,
-    "user_query": "How truthful is the statement that \"Polyglutamine binding protein 1 (PQBP1) is the co-receptor of HIV-DNA to trigger cell-autonomous antiviral responses.\"? Present a series of factual points about the statement."
+    "id": 1225,
+    "user_query": "Consider the following statement: \"Hypothalamic glutamate neurotransmission is crucial to energy balance.\" Is it right? Present fact-based arguments about the statement."
   },
   {
-    "id": 1010,
-    "user_query": "Consider the following statement: \"Polyploidization in megakaryocytes occurs in the presence of an aberrant mitosis.\" Is it right? Present fact-based arguments about the statement."
+    "id": 1226,
+    "user_query": "Do you agree with the claim that \"IFIT1 restricts viral replication by sequestrating mis-capped viral RNAs.\"? Provide factual statements about the claim."
   },
   {
-    "id": 1011,
-    "user_query": "Do you agree with the claim that \"Presence of stemloops is important for reverse transcription in short interspersed nuclear elements (SINEs).\"? Provide factual statements about the claim."
+    "id": 1227,
+    "user_query": "What is the validity of the assertion that \"IRG1 has antiviral effects against neurotropic viruses.\"? Outline fact-based statements about the assertion."
   },
   {
-    "id": 1012,
-    "user_query": "What is the validity of the assertion that \"Pretreatment with the Arp2/3 inhibitor CK-666 is not associated with lamelliopodia formation.\"? Outline fact-based statements about the assertion."
+    "id": 1228,
+    "user_query": "Can you clarify whether the claim \"ITAM phosphorylation prevents the transfer of the T cell receptor (TCR) signal from the echo-domain to the cytoplasmic tail of the T cell receptor (TCR).\" is accurate or not? Build factual arguments about the claim."
   },
   {
-    "id": 1013,
-    "user_query": "Can you clarify whether the claim \"Primary cervical cytology screening with HPV detection is no more effective than conventional cytology at detecting severe cervical intraepithelial neoplasia.\" is accurate or not? Build factual arguments about the claim."
+    "id": 1229,
+    "user_query": "How truthful is the statement that \"IgA plasma cells that are specific for transglutaminase 2 accumulate in the duodenal mucosa on commencement of a gluten-free diet.\"? Present a series of factual points about the statement."
   },
   {
-    "id": 1014,
-    "user_query": "How truthful is the statement that \"Propriospinal interneurons that play a role in the plastic reorganization of spinal circuits are not required for recovery from spinal cord injury.\"? Present a series of factual points about the statement."
+    "id": 1230,
+    "user_query": "Consider the following statement: \"Immune complex triggered cell death leads to extracellular release of neutrophil protein HMGB1.\" Is it right? Present fact-based arguments about the statement."
   },
   {
-    "id": 1015,
-    "user_query": "Consider the following statement: \"Proteins synthesized at the growth cone are ubiquitinated at a lower rate than proteins from the cell body.\" Is it right? Present fact-based arguments about the statement."
+    "id": 1231,
+    "user_query": "Do you agree with the claim that \"Immune responses result in the development of inflammatory Th17 cells and anti-inflammatory iTregs.\"? Provide factual statements about the claim."
   },
   {
-    "id": 1016,
-    "user_query": "Do you agree with the claim that \"Pseudoknots alter gene expression by inducing ribosomal frameshifts in viruses.\"? Provide factual statements about the claim."
+    "id": 1232,
+    "user_query": "What is the validity of the assertion that \"In adult tissue, most T cells are memory T cells.\"? Outline fact-based statements about the assertion."
   },
   {
-    "id": 1017,
-    "user_query": "What is the validity of the assertion that \"Pseudoknots are evolutionarily conserved throughout most eukaryotes.\"? Outline fact-based statements about the assertion."
+    "id": 1233,
+    "user_query": "Can you clarify whether the claim \"In domesticated populations of Saccharomyces cerevisiae, whole chromosome aneuploidy is very uncommon.\" is accurate or not? Build factual arguments about the claim."
   },
   {
-    "id": 1018,
-    "user_query": "Can you clarify whether the claim \"Pyridostatin delays checkpoint activation.\" is accurate or not? Build factual arguments about the claim."
+    "id": 1234,
+    "user_query": "How truthful is the statement that \"In mice, P. chabaudi parasites are able to proliferate faster early in infection when inoculated at lower numbers than when inoculated at high numbers.\"? Present a series of factual points about the statement."
   },
   {
-    "id": 1019,
-    "user_query": "How truthful is the statement that \"Pyridostatin increases telomere fragility in BRCA2-deficient cells.\"? Present a series of factual points about the statement."
+    "id": 1235,
+    "user_query": "Consider the following statement: \"In mouse models, the loss of CSF1R facilitates MOZ-TIF2-induced leuekmogenesis.\" Is it right? Present fact-based arguments about the statement."
   },
   {
-    "id": 1020,
-    "user_query": "Consider the following statement: \"RUNX is a top ranscription factor in skin tissue.\" Is it right? Present fact-based arguments about the statement."
+    "id": 1236,
+    "user_query": "Do you agree with the claim that \"In transgenic mice harboring green florescent protein under the control of the Sox2 promoter, less than ten percent of the cells with green florescent colocalize with cell proliferation markers.\"? Provide factual statements about the claim."
   },
   {
-    "id": 1021,
-    "user_query": "Do you agree with the claim that \"Radiographic verified pneumonia predictions are improved by the combination of physical examinations with C-reactive protein values.\"? Provide factual statements about the claim."
+    "id": 1237,
+    "user_query": "What is the validity of the assertion that \"In young and middle-aged adults, current or remote uses of ADHD medications do not increase the risk of serious cardiovascular events.\"? Outline fact-based statements about the assertion."
   },
   {
-    "id": 1022,
-    "user_query": "What is the validity of the assertion that \"Rapamycin accelerates aging in fruit flies.\"? Outline fact-based statements about the assertion."
+    "id": 1238,
+    "user_query": "Can you clarify whether the claim \"Incidence of heart failure decreased by 10% in women since 1979.\" is accurate or not? Build factual arguments about the claim."
   },
   {
-    "id": 1023,
-    "user_query": "Can you clarify whether the claim \"Rapamycin treatment raises G-CSF levels.\" is accurate or not? Build factual arguments about the claim."
+    "id": 1239,
+    "user_query": "How truthful is the statement that \"Incidence rates of cervical cancer have decreased.\"? Present a series of factual points about the statement."
   },
   {
-    "id": 1024,
-    "user_query": "How truthful is the statement that \"Rates of hypertension in patients type 2 diabetes mellitus are similar to those in non-diabetic subjects.\"? Present a series of factual points about the statement."
+    "id": 1240,
+    "user_query": "Consider the following statement: \"Incidence rates of cervical cancer have increased due to nationwide screening programs based primarily on cytology to detect uterine cervical cancer.\" Is it right? Present fact-based arguments about the statement."
   },
   {
-    "id": 1025,
-    "user_query": "Consider the following statement: \"Replacement of OCT4 and SOX2 genes with mesendoderm-related genes has the ability to reprogram human cells.\" Is it right? Present fact-based arguments about the statement."
+    "id": 1241,
+    "user_query": "Do you agree with the claim that \"Increased microtubule acetylation repairs LRRK2 Roc-COR domain mutation induced locomotor deficits.\"? Provide factual statements about the claim."
   },
   {
-    "id": 1026,
-    "user_query": "Do you agree with the claim that \"Risedronate reduces risk of vertebral and non-vertebral fractures.\"? Provide factual statements about the claim."
+    "id": 1242,
+    "user_query": "What is the validity of the assertion that \"Increased vessel density along with a reduction in fibrosis decreases the efficacy of chemotherapy treatments.\"? Outline fact-based statements about the assertion."
   },
   {
-    "id": 1027,
-    "user_query": "What is the validity of the assertion that \"Roughly 10% of women with chronic pelvic pain have no underlying pathology.\"? Outline fact-based statements about the assertion."
+    "id": 1243,
+    "user_query": "Can you clarify whether the claim \"Individuals with low serum vitamin D concentrations have increased risk of multiple sclerosis.\" is accurate or not? Build factual arguments about the claim."
   },
   {
-    "id": 1028,
-    "user_query": "Can you clarify whether the claim \"Roughly one in twenty UK citizens harbor variant Creutzfeldt-Jakob disease prions in lymphoid tissues.\" is accurate or not? Build factual arguments about the claim."
+    "id": 1244,
+    "user_query": "How truthful is the statement that \"Infection of human T-cell lymphotropic virus type 1 is most frequent in individuals of African origin.\"? Present a series of factual points about the statement."
   },
   {
-    "id": 1029,
-    "user_query": "How truthful is the statement that \"Roughly one in two thousand UK citizens harbor variant Creutzfeldt-Jakob disease prions in lymphoid tissues.\"? Present a series of factual points about the statement."
+    "id": 1245,
+    "user_query": "Consider the following statement: \"Inositol lipid 3-phosphatase PTEN converts Ptdlns(3,4)P 2 into phosphatidylinositol 4-phosphate.\" Is it right? Present fact-based arguments about the statement."
   },
   {
-    "id": 1030,
-    "user_query": "Consider the following statement: \"S-nitrosylated GAPDH physiologically transnitrosylates DNA-activated protein kinase.\" Is it right? Present fact-based arguments about the statement."
+    "id": 1246,
+    "user_query": "Do you agree with the claim that \"Input from  mental and physical health care professionals is effective at decreasing homelessness.\"? Provide factual statements about the claim."
   },
   {
-    "id": 1031,
-    "user_query": "Do you agree with the claim that \"S-nitrosylated GAPDH physiologically transnitrosylates target nuclear proteins.\"? Provide factual statements about the claim."
+    "id": 1247,
+    "user_query": "What is the validity of the assertion that \"Insomnia can be effectively treated with cognitive behavioral therapy.\"? Outline fact-based statements about the assertion."
   },
   {
-    "id": 1032,
-    "user_query": "What is the validity of the assertion that \"SOD1 integrates oxygen and glucose signals to repress cellular respiration.\"? Outline fact-based statements about the assertion."
+    "id": 1248,
+    "user_query": "Can you clarify whether the claim \"Insulin increases risk of severe kidney failure.\" is accurate or not? Build factual arguments about the claim."
   },
   {
-    "id": 1033,
-    "user_query": "Can you clarify whether the claim \"Satellite cell dysfunction is not a key factor in sarcopenia development.\" is accurate or not? Build factual arguments about the claim."
+    "id": 1249,
+    "user_query": "How truthful is the statement that \"Integrating classroom-based collaborative learning with Web-based collaborative learning leads to subpar class performance\"? Present a series of factual points about the statement."
   },
   {
-    "id": 1034,
-    "user_query": "How truthful is the statement that \"Self-advocacy training is not effective at decreasing homelessness.\"? Present a series of factual points about the statement."
+    "id": 1250,
+    "user_query": "Consider the following statement: \"Ivermectin is used to treat lymphatic filariasis.\" Is it right? Present fact-based arguments about the statement."
   },
   {
-    "id": 1035,
-    "user_query": "Consider the following statement: \"Serotonin receptors have no effect on depression\" Is it right? Present fact-based arguments about the statement."
+    "id": 1251,
+    "user_query": "Do you agree with the claim that \"Ivermectin is used to treat onchocerciasis.\"? Provide factual statements about the claim."
   },
   {
-    "id": 1036,
-    "user_query": "Do you agree with the claim that \"Serotonin receptors play a role in depression\"? Provide factual statements about the claim."
+    "id": 1252,
+    "user_query": "What is the validity of the assertion that \"LDL cholesterol has no involvement in the development of cardiovascular disease.\"? Outline fact-based statements about the assertion."
   },
   {
-    "id": 1037,
-    "user_query": "What is the validity of the assertion that \"Short British students are bullied less than control British students.\"? Outline fact-based statements about the assertion."
+    "id": 1253,
+    "user_query": "Can you clarify whether the claim \"Lack of clpC does not affect sporulation efficiency in Bacillus subtilis cells.\" is accurate or not? Build factual arguments about the claim."
   },
   {
-    "id": 1038,
-    "user_query": "Can you clarify whether the claim \"Short British students are bullied more than control British students.\" is accurate or not? Build factual arguments about the claim."
+    "id": 1254,
+    "user_query": "How truthful is the statement that \"Less than 10% of the gabonese children with Schimmelpenning-Feuerstein-Mims syndrome (SFM) had a plasma lactate of more than 5mmol/L.\"? Present a series of factual points about the statement."
   },
   {
-    "id": 1039,
-    "user_query": "How truthful is the statement that \"Side effects associated with antidepressants decrease risk of stroke.\"? Present a series of factual points about the statement."
+    "id": 1255,
+    "user_query": "Consider the following statement: \"Leukemia associated Rho guanine nucleotide-exchange factor represses RhoA in response to SRC activation.\" Is it right? Present fact-based arguments about the statement."
   },
   {
-    "id": 1040,
-    "user_query": "Consider the following statement: \"Side effects associated with antidepressants increases risk of mortality in postmenopausal women.\" Is it right? Present fact-based arguments about the statement."
+    "id": 1256,
+    "user_query": "Do you agree with the claim that \"Leuko-increased blood increases infectious complications in red blood cell transfusion.\"? Provide factual statements about the claim."
   },
   {
-    "id": 1041,
-    "user_query": "Do you agree with the claim that \"Side effects associated with antidepressants increases risk of myocardial infarction.\"? Provide factual statements about the claim."
+    "id": 1257,
+    "user_query": "What is the validity of the assertion that \"Leuko-reduced blood reduces infectious complications in red blood cell transfusion.\"? Outline fact-based statements about the assertion."
   },
   {
-    "id": 1042,
-    "user_query": "What is the validity of the assertion that \"Somatic missense mutations in NT5C2 are associated with relapse of acute lymphoblastic leukemia.\"? Outline fact-based statements about the assertion."
+    "id": 1258,
+    "user_query": "Can you clarify whether the claim \"Localization of PIN1 in the Arabidopsis embryo does not require VPS9a\" is accurate or not? Build factual arguments about the claim."
   },
   {
-    "id": 1043,
-    "user_query": "Can you clarify whether the claim \"Somatic missense mutations in NT5C2 are not associated with relapse of acute lymphoblastic leukemia.\" is accurate or not? Build factual arguments about the claim."
+    "id": 1259,
+    "user_query": "How truthful is the statement that \"Localization of PIN1 in the roots of Arabidopsis does not require VPS9a\"? Present a series of factual points about the statement."
   },
   {
-    "id": 1044,
-    "user_query": "How truthful is the statement that \"Some countries have achieved the goal of eradicting malaria.\"? Present a series of factual points about the statement."
+    "id": 1260,
+    "user_query": "Consider the following statement: \"Low expression of miR7a does represses target genes and exerts a biological function in ovaries.\" Is it right? Present fact-based arguments about the statement."
   },
   {
-    "id": 1045,
-    "user_query": "Consider the following statement: \"Some signals for alternative polyadenylation sites are encoded in transposable elements.\" Is it right? Present fact-based arguments about the statement."
+    "id": 1261,
+    "user_query": "Do you agree with the claim that \"Low expression of miR7a exerts a biological function in testis.\"? Provide factual statements about the claim."
   },
   {
-    "id": 1046,
-    "user_query": "Do you agree with the claim that \"Suboptimal nutrition is a leading cause of chronic disease\"? Provide factual statements about the claim."
+    "id": 1262,
+    "user_query": "What is the validity of the assertion that \"Low nucleosome occupancy correlates with low methylation levels across species.\"? Outline fact-based statements about the assertion."
   },
   {
-    "id": 1047,
-    "user_query": "What is the validity of the assertion that \"Supracellular actomyosin structures are found at boundaries in Drosophila wing imaginal discs.\"? Outline fact-based statements about the assertion."
+    "id": 1263,
+    "user_query": "Can you clarify whether the claim \"Lupus-prone mice infected with curliproducing bacteria have higher autoantibody titers compared to controls.\" is accurate or not? Build factual arguments about the claim."
   },
   {
-    "id": 1048,
-    "user_query": "Can you clarify whether the claim \"Sustained transmission of Avian influenza A between humans is not observed.\" is accurate or not? Build factual arguments about the claim."
+    "id": 1264,
+    "user_query": "How truthful is the statement that \"Ly49Q directs the organization of neutrophil migration to inflammation sites by regulating membrane raft functions.\"? Present a series of factual points about the statement."
   },
   {
-    "id": 1049,
-    "user_query": "How truthful is the statement that \"Sweet taste receptors on the tongue are activated by between 300 and 1000 mM glucose.\"? Present a series of factual points about the statement."
+    "id": 1265,
+    "user_query": "Consider the following statement: \"Ly6C hi monocytes have a lower inflammatory capacity compared to their Ly6C lo counterparts.\" Is it right? Present fact-based arguments about the statement."
   },
   {
-    "id": 1050,
-    "user_query": "Consider the following statement: \"Synaptic activity enhances local synthesis of brain derived neurotrophic factor from postsynaptic dendrites.\" Is it right? Present fact-based arguments about the statement."
+    "id": 1266,
+    "user_query": "Do you agree with the claim that \"Ly6C hi monocytes have a lower inflammatory capacity than Ly6C lo monocytes.\"? Provide factual statements about the claim."
   },
   {
-    "id": 1051,
-    "user_query": "Do you agree with the claim that \"Synaptic activity impairs local release of brain derived neurotrophic factor from postsynaptic dendrites.\"? Provide factual statements about the claim."
+    "id": 1267,
+    "user_query": "What is the validity of the assertion that \"Lymphadenopathy is observed in knockin mouse lacking the SHP-2 MAPK pathway.\"? Outline fact-based statements about the assertion."
   },
   {
-    "id": 1052,
-    "user_query": "What is the validity of the assertion that \"Synaptic activity impairs local synthesis of brain derived neurotrophic factor from postsynaptic dendrites.\"? Outline fact-based statements about the assertion."
+    "id": 1268,
+    "user_query": "Can you clarify whether the claim \"Macrolides have no protective effect against myocardial infarction.\" is accurate or not? Build factual arguments about the claim."
   },
   {
-    "id": 1053,
-    "user_query": "Can you clarify whether the claim \"T cell receptor /CD3 microdomains are unnecessary in the induction of the immunlogical synapse.\" is accurate or not? Build factual arguments about the claim."
+    "id": 1269,
+    "user_query": "How truthful is the statement that \"Macrolides protect against myocardial infarction.\"? Present a series of factual points about the statement."
   },
   {
-    "id": 1054,
-    "user_query": "How truthful is the statement that \"T regulatory cells (tTregs) lacking αvβ8 are unable to suppress pathogenic T-cell responses during active inflammation.\"? Present a series of factual points about the statement."
+    "id": 1270,
+    "user_query": "Consider the following statement: \"Macropinocytosis contributes to a cell's supply of amino acids via the intracellular uptake of protein.\" Is it right? Present fact-based arguments about the statement."
   },
   {
-    "id": 1055,
-    "user_query": "Consider the following statement: \"Taking anti-depresents is associated with a increase in the Aβ level in the brain of experimental animals.\" Is it right? Present fact-based arguments about the statement."
+    "id": 1271,
+    "user_query": "Do you agree with the claim that \"Many proteins in human cells can be post-translationally modified at lysine residues via acetylation.\"? Provide factual statements about the claim."
   },
   {
-    "id": 1056,
-    "user_query": "Do you agree with the claim that \"Teaching hospitals provide better care than non-teaching hospitals.\"? Provide factual statements about the claim."
+    "id": 1272,
+    "user_query": "What is the validity of the assertion that \"Mathematical models predict that using Artemisinin-based combination therapy over nongametocytocidal drugs have a dramatic impact in reducing malaria transmission.\"? Outline fact-based statements about the assertion."
   },
   {
-    "id": 1057,
-    "user_query": "What is the validity of the assertion that \"Tet enzymes activate microRNAs required for iPSC derivation.\"? Outline fact-based statements about the assertion."
+    "id": 1273,
+    "user_query": "Can you clarify whether the claim \"Mercaptopurine is anabolized into the inactive methylmercaptopurine by thiopurine methyltrasnferase (TPMT).\" is accurate or not? Build factual arguments about the claim."
   },
   {
-    "id": 1058,
-    "user_query": "Can you clarify whether the claim \"The 7.5% 10-year Atherosclerotic cardiovascular disease risk threshold strategy for initiating statin therapy is less cost-effective than the 10% risk threshold strategy.\" is accurate or not? Build factual arguments about the claim."
+    "id": 1274,
+    "user_query": "How truthful is the statement that \"Metastatic colorectal cancer treated with a single agent fluoropyrimidines resulted in reduced efficacy and lower quality of life when compared with oxaliplatin-based chemotherapy in elderly patients.\"? Present a series of factual points about the statement."
   },
   {
-    "id": 1059,
-    "user_query": "How truthful is the statement that \"The 7.5% 10-year Atherosclerotic cardiovascular disease risk threshold strategy for initiating statin therapy is more cost-effective than the 10% risk threshold strategy.\"? Present a series of factual points about the statement."
+    "id": 1275,
+    "user_query": "Consider the following statement: \"Mice defective for deoxyribonucleic acid (DNA) polymerase I (polI) reveal increased sensitivity to ionizing radiation (IR).\" Is it right? Present fact-based arguments about the statement."
   },
   {
-    "id": 1060,
-    "user_query": "Consider the following statement: \"The C-type lectin receptor (CLEC-2) rearranges the actin cytoskeleton in dendritic cells to suppress motility along stromal surfaces.\" Is it right? Present fact-based arguments about the statement."
+    "id": 1276,
+    "user_query": "Do you agree with the claim that \"Mice that lack Interferon-γ or its receptor exhibit high resistance to experimental autoimmune myocarditis.\"? Provide factual statements about the claim."
   },
   {
-    "id": 1061,
-    "user_query": "Do you agree with the claim that \"The DESMOND program achieved a significant impact on lifestyles outcomes.\"? Provide factual statements about the claim."
+    "id": 1277,
+    "user_query": "What is the validity of the assertion that \"Mice without IFN-γ or its receptor are resistant to EAM induced with α-MyHC/CFA.\"? Outline fact-based statements about the assertion."
   },
   {
-    "id": 1062,
-    "user_query": "What is the validity of the assertion that \"The DESMOND program significantly improves biochemical outcomes.\"? Outline fact-based statements about the assertion."
+    "id": 1278,
+    "user_query": "Can you clarify whether the claim \"MicroRNA is involved in the regulation of Neural Stem Cell (NSC) differentiation and proliferation dynamic homeostasis\" is accurate or not? Build factual arguments about the claim."
   },
   {
-    "id": 1063,
-    "user_query": "Can you clarify whether the claim \"The H3.3K36me3 histone reader protein ZMYND11 has a  higher binding affinity if G34R/V is mutated.\" is accurate or not? Build factual arguments about the claim."
+    "id": 1279,
+    "user_query": "How truthful is the statement that \"Microarray results from culture-amplified mixtures of serotypes correlate poorly with microarray results from uncultured mixtures.\"? Present a series of factual points about the statement."
   },
   {
-    "id": 1064,
-    "user_query": "How truthful is the statement that \"The PDPN gene activates the C-type lectin receptor (CLEC-2).\"? Present a series of factual points about the statement."
+    "id": 1280,
+    "user_query": "Consider the following statement: \"Mitochondria are uninvolved in apoptosis.\" Is it right? Present fact-based arguments about the statement."
   },
   {
-    "id": 1065,
-    "user_query": "Consider the following statement: \"The actual sequences of CP-1 and CR-5 regions are evolutionarily conserved throughout most eukaryotes.\" Is it right? Present fact-based arguments about the statement."
+    "id": 1281,
+    "user_query": "Do you agree with the claim that \"Modifying the epigenome in the brain affects the normal human aging process by affecting certain genes related to neurogenesis.\"? Provide factual statements about the claim."
   },
   {
-    "id": 1066,
-    "user_query": "Do you agree with the claim that \"The appearance of brown-like or beige cells primarily occurs in subcutaneous fat, not visceral fat.\"? Provide factual statements about the claim."
+    "id": 1282,
+    "user_query": "What is the validity of the assertion that \"Monoclonal antibody targeting of N-cadherin inhibits metastasis.\"? Outline fact-based statements about the assertion."
   },
   {
-    "id": 1067,
-    "user_query": "What is the validity of the assertion that \"The balance between F- and G-actin regulates the orientation of neuronal migration in the developing cerebral cortex.\"? Outline fact-based statements about the assertion."
+    "id": 1283,
+    "user_query": "Can you clarify whether the claim \"Most termination events in Okazaki fragments are sequence specific.\" is accurate or not? Build factual arguments about the claim."
   },
   {
-    "id": 1068,
-    "user_query": "Can you clarify whether the claim \"The binding orientation of the ML-SA1 activator at hTRPML2 is similar to the binding orientation of the ML-SA1 activator at hTRPML1.\" is accurate or not? Build factual arguments about the claim."
+    "id": 1284,
+    "user_query": "How truthful is the statement that \"Mutant mice lacking SVCT2 have greatly increased ascorbic acid levels in both brain and adrenals.\"? Present a series of factual points about the statement."
   },
   {
-    "id": 1069,
-    "user_query": "How truthful is the statement that \"The center of the granuloma in an immune cell induces an anti-inflammatory immune response.\"? Present a series of factual points about the statement."
+    "id": 1285,
+    "user_query": "Consider the following statement: \"Mutations in G-Beta protein GNB2 are present in many cancers, resulting in loss of interaction with G-alpha subunits and concomitant activation of AKT pathway.\" Is it right? Present fact-based arguments about the statement."
   },
   {
-    "id": 1070,
-    "user_query": "Consider the following statement: \"The first MBT repeat of the four malignant brain tumor (4MBT) domain of Drosophila's Sfmbt and of the orthologous mammalian L3MBTL2 is nonessential for the interaction with the spacer region of Drosophila's Pleiohomeotic (Pho) or its human ortholog YY1.\" Is it right? Present fact-based arguments about the statement."
+    "id": 1286,
+    "user_query": "Do you agree with the claim that \"N-terminal cleavage increases success identifying transcription start sites.\"? Provide factual statements about the claim."
   },
   {
-    "id": 1071,
-    "user_query": "Do you agree with the claim that \"The innate immune response is efficient at removing small numbers of parasites.\"? Provide factual statements about the claim."
+    "id": 1287,
+    "user_query": "What is the validity of the assertion that \"N-terminal cleavage reduces success identifying transcription start sites.\"? Outline fact-based statements about the assertion."
   },
   {
-    "id": 1072,
-    "user_query": "What is the validity of the assertion that \"The minor G allele of FOXO3 represses IL-10.\"? Outline fact-based statements about the assertion."
+    "id": 1288,
+    "user_query": "Can you clarify whether the claim \"N348I mutations cause resistance to zidovudine (AZT).\" is accurate or not? Build factual arguments about the claim."
   },
   {
-    "id": 1073,
-    "user_query": "Can you clarify whether the claim \"The myocardial cell lineage originally develops from cardiac progenitors of mesodermal origin.\" is accurate or not? Build factual arguments about the claim."
+    "id": 1289,
+    "user_query": "How truthful is the statement that \"NF2 (Merlin) causes phosphorylation and subsequent cytoplasmic sequestration of YAP in Drosophila by activating LATS1/2 kinases.\"? Present a series of factual points about the statement."
   },
   {
-    "id": 1074,
-    "user_query": "How truthful is the statement that \"The number of Ndc80 complexes varies with cell cycle timing.\"? Present a series of factual points about the statement."
+    "id": 1290,
+    "user_query": "Consider the following statement: \"NF2 (Merlin) prevents phosphorylation and subsequent cytoplasmic sequestration of YAP in Drosophila.\" Is it right? Present fact-based arguments about the statement."
   },
   {
-    "id": 1075,
-    "user_query": "Consider the following statement: \"The number of unfertilized oocytes in mated hermaphrodites decreases with age.\" Is it right? Present fact-based arguments about the statement."
+    "id": 1291,
+    "user_query": "Do you agree with the claim that \"NFAT4 activation requires IP3R-mediated Ca2+ mobilization.\"? Provide factual statements about the claim."
   },
   {
-    "id": 1076,
-    "user_query": "Do you agree with the claim that \"The periosteum consists of 2 layers: the inner layer on the periosteal surface with monocyte/macrophage-lineage cells, osteoblastic cells, and abundant periostin; and the outer layer, consisting of collagens, blood vessels, and nerve endings.\"? Provide factual statements about the claim."
+    "id": 1292,
+    "user_query": "What is the validity of the assertion that \"NOX2-independent pathways can generate peroxynitrite by reacting with nitrogen intermediates.\"? Outline fact-based statements about the assertion."
   },
   {
-    "id": 1077,
-    "user_query": "What is the validity of the assertion that \"The phosphorylation of Drp1 at S616 site inhibits its mitochondrial translocation when activated by Ca 2+ /calmodulin-dependent kinase II (CaMKII).\"? Outline fact-based statements about the assertion."
+    "id": 1293,
+    "user_query": "Can you clarify whether the claim \"NR5A2 is important in development of endometrial tissues.\" is accurate or not? Build factual arguments about the claim."
   },
   {
-    "id": 1078,
-    "user_query": "Can you clarify whether the claim \"The phosphorylation of Drp1 at S616 site promotes its mitochondrial translocation when activated by Ca 2+ /calmodulin-dependent kinase II (CaMKII).\" is accurate or not? Build factual arguments about the claim."
+    "id": 1294,
+    "user_query": "How truthful is the statement that \"Nanoparticles can be targeted against specific cell types by incorporating aptamers into lipid nanoparticles.\"? Present a series of factual points about the statement."
   },
   {
-    "id": 1079,
-    "user_query": "How truthful is the statement that \"The proportion of people with visual difficulty is two times higher in high-income countries than in low-income countries.\"? Present a series of factual points about the statement."
+    "id": 1295,
+    "user_query": "Consider the following statement: \"Neutrophil extracellular traps (NETs) are released by ANCA-stimulated neutrophils.\" Is it right? Present fact-based arguments about the statement."
   },
   {
-    "id": 1080,
-    "user_query": "Consider the following statement: \"The ring complexes of chromosomes in C. elegans oocytes are built in discrete layers.\" Is it right? Present fact-based arguments about the statement."
+    "id": 1296,
+    "user_query": "Do you agree with the claim that \"New drugs for tuberculosis often do not penetrate the necrotic portion of a tuberculosis lesion in high concentrations.\"? Provide factual statements about the claim."
   },
   {
-    "id": 1081,
-    "user_query": "Do you agree with the claim that \"The risk of cancer is lower in individuals with a history of heavy alcohol consumption.\"? Provide factual statements about the claim."
+    "id": 1297,
+    "user_query": "What is the validity of the assertion that \"Non-invasive ventilation use should be decreased if there is inadequate response to conventional treatment.\"? Outline fact-based statements about the assertion."
   },
   {
-    "id": 1082,
-    "user_query": "What is the validity of the assertion that \"The tissue surrounding the granuloma in an immune cell induces an inflammatory immune response.\"? Outline fact-based statements about the assertion."
+    "id": 1298,
+    "user_query": "Can you clarify whether the claim \"Normal expression of RUNX1 has tumor-promoting effects.\" is accurate or not? Build factual arguments about the claim."
   },
   {
-    "id": 1083,
-    "user_query": "Can you clarify whether the claim \"Therapeutics receiving accelerated approval encounter a higher frequency of post-marketing safety events\" is accurate or not? Build factual arguments about the claim."
+    "id": 1299,
+    "user_query": "How truthful is the statement that \"Obesity decreases life quality.\"? Present a series of factual points about the statement."
   },
   {
-    "id": 1084,
-    "user_query": "How truthful is the statement that \"There are four spatial channels in each hemifield of the auditory cortex of cats.\"? Present a series of factual points about the statement."
+    "id": 1300,
+    "user_query": "Consider the following statement: \"Obesity is determined solely by environmental factors.\" Is it right? Present fact-based arguments about the statement."
   },
   {
-    "id": 1085,
-    "user_query": "Consider the following statement: \"There are no known genetic variants associated with radiation therapy-induced second malignancies in pediatric Hodgkin lymphoma patients.\" Is it right? Present fact-based arguments about the statement."
+    "id": 1301,
+    "user_query": "Do you agree with the claim that \"Occupancy of ribosomes by IncRNAs do not make functional peptides.\"? Provide factual statements about the claim."
   },
   {
-    "id": 1086,
-    "user_query": "Do you agree with the claim that \"There is a neuroprotective effect of Trpm4 inhibition in mice and rats.\"? Provide factual statements about the claim."
+    "id": 1302,
+    "user_query": "What is the validity of the assertion that \"Occupancy of ribosomes by IncRNAs mirror 5 0-UTRs\"? Outline fact-based statements about the assertion."
   },
   {
-    "id": 1087,
-    "user_query": "What is the validity of the assertion that \"There is no relation between lupus erythematosus and cardiovascular disease\"? Outline fact-based statements about the assertion."
+    "id": 1303,
+    "user_query": "Can you clarify whether the claim \"Omnivores produce less trimethylamine N-oxide from dietary I-carnitine than vegetarians.\" is accurate or not? Build factual arguments about the claim."
   },
   {
-    "id": 1088,
-    "user_query": "Can you clarify whether the claim \"Thigh-length graduated compression stockings (GCS) reduced deep vein thrombosis in patients admitted to hospital who are immobile because of acute stroke.\" is accurate or not? Build factual arguments about the claim."
+    "id": 1304,
+    "user_query": "How truthful is the statement that \"Only a minority of cells survive development after differentiation into stress-resistant spores.\"? Present a series of factual points about the statement."
   },
   {
-    "id": 1089,
-    "user_query": "How truthful is the statement that \"Thoracic aortic aneurysms affect 70-100 individuals per 100,000 people per year.\"? Present a series of factual points about the statement."
+    "id": 1305,
+    "user_query": "Consider the following statement: \"PD-1 triggering on monocytes reduces IL-10 production by monocytes.\" Is it right? Present fact-based arguments about the statement."
   },
   {
-    "id": 1090,
-    "user_query": "Consider the following statement: \"Transcription factor EB prevents transcription of pro-inflammatory cytokines in macrophages infected with Staphylococcus aureus.\" Is it right? Present fact-based arguments about the statement."
+    "id": 1306,
+    "user_query": "Do you agree with the claim that \"PDPN promotes efficient motility along stromal surfaces by activating the C-type lectin receptor to rearrange the actin cytoskeleton in dendritic cells.\"? Provide factual statements about the claim."
   },
   {
-    "id": 1091,
-    "user_query": "Do you agree with the claim that \"Transient IFN-γ exposure leads to long-lived infammatory responses in cancer cells due to IFN-γ retention on the cell surface.\"? Provide factual statements about the claim."
+    "id": 1307,
+    "user_query": "What is the validity of the assertion that \"PGE 2 promotes intestinal tumor growth by altering the expression of tumor suppressing and DNA repair genes.\"? Outline fact-based statements about the assertion."
   },
   {
-    "id": 1092,
-    "user_query": "What is the validity of the assertion that \"Transplanted human glial cells are incapable of differentiation within the host animal.\"? Outline fact-based statements about the assertion."
+    "id": 1308,
+    "user_query": "Can you clarify whether the claim \"PKG-la plays an essential role in expression of pain hypersensitivity in PGK-la knockout mice.\" is accurate or not? Build factual arguments about the claim."
   },
   {
-    "id": 1093,
-    "user_query": "Can you clarify whether the claim \"Transplanted human glial progenitor cells can form a neural network with host animals' neurons.\" is accurate or not? Build factual arguments about the claim."
+    "id": 1309,
+    "user_query": "How truthful is the statement that \"PPAR-RXRs are inhibited by PPAR ligands.\"? Present a series of factual points about the statement."
   },
   {
-    "id": 1094,
-    "user_query": "How truthful is the statement that \"Tuberculosis incidence is correlated with residential crowding in the UK.\"? Present a series of factual points about the statement."
+    "id": 1310,
+    "user_query": "Consider the following statement: \"PPAR-RXRs can be activated by PPAR ligands.\" Is it right? Present fact-based arguments about the statement."
   },
   {
-    "id": 1095,
-    "user_query": "Consider the following statement: \"Tuberculosis-induced granulomas express immune system protein signatures similar to those of the surrounding tissue.\" Is it right? Present fact-based arguments about the statement."
+    "id": 1311,
+    "user_query": "Do you agree with the claim that \"Participating in six months of physical activity improves cognitive functioning.\"? Provide factual statements about the claim."
   },
   {
-    "id": 1096,
-    "user_query": "Do you agree with the claim that \"Ultrafine Anaphase Bridges represent a mechanism for resolving partially-replicated stretches of DNA.\"? Provide factual statements about the claim."
+    "id": 1312,
+    "user_query": "What is the validity of the assertion that \"Patients in stable partnerships have a faster progression from HIV to AIDS.\"? Outline fact-based statements about the assertion."
   },
   {
-    "id": 1097,
-    "user_query": "What is the validity of the assertion that \"Unlike transposon mutagenesis, chemical mutagenesis has the capability to induce point mutations that are not typically modeled by insertional mutagenesis approaches.\"? Outline fact-based statements about the assertion."
+    "id": 1313,
+    "user_query": "Can you clarify whether the claim \"Peroxynitrite is required for nitration of TCR/CD8.\" is accurate or not? Build factual arguments about the claim."
   },
   {
-    "id": 1098,
-    "user_query": "Can you clarify whether the claim \"V-9302 causes antitumor responses by increasing cell death and oxidative stress.\" is accurate or not? Build factual arguments about the claim."
+    "id": 1314,
+    "user_query": "How truthful is the statement that \"Pleiotropic coupling of GLP-1R to intracellular effectors promotes distinct profiles of cellular signaling.\"? Present a series of factual points about the statement."
   },
   {
-    "id": 1099,
-    "user_query": "How truthful is the statement that \"Vaccinating the gastrointestinal tract is not effective in protecting rectal and vaginal mucosa.\"? Present a series of factual points about the statement."
+    "id": 1315,
+    "user_query": "Consider the following statement: \"Podocytes are motile and migrate in the presence of injury.\" Is it right? Present fact-based arguments about the statement."
   },
   {
-    "id": 1100,
-    "user_query": "Consider the following statement: \"Valproic acid (VPA) treatment allows reprogramming by the microRNA cluster miR302/367.\" Is it right? Present fact-based arguments about the statement."
+    "id": 1316,
+    "user_query": "Do you agree with the claim that \"Polymeal nutrition reduces cardiovascular mortality.\"? Provide factual statements about the claim."
   },
   {
-    "id": 1101,
-    "user_query": "Do you agree with the claim that \"Verbal autopsy (VA) performed well in distinguishing between different injury categories in the elderly population.\"? Provide factual statements about the claim."
+    "id": 1317,
+    "user_query": "What is the validity of the assertion that \"Pretreatment with the Arp2/3 inhibitor CK-666 affects lamelliopodia formation.\"? Outline fact-based statements about the assertion."
   },
   {
-    "id": 1102,
-    "user_query": "What is the validity of the assertion that \"Vitamin D deficiency has no effect on the term of child delivery.\"? Outline fact-based statements about the assertion."
+    "id": 1318,
+    "user_query": "Can you clarify whether the claim \"Primary cervical cancer screening with HPV detection has higher longitudinal sensitivity than conventional cytology to detect cervical intraepithelial neoplasia grade 2.\" is accurate or not? Build factual arguments about the claim."
   },
   {
-    "id": 1103,
-    "user_query": "Can you clarify whether the claim \"Whole brain radiotherapy reduces the occurrence of new brain metastases.\" is accurate or not? Build factual arguments about the claim."
+    "id": 1319,
+    "user_query": "How truthful is the statement that \"Primary pro-inflammatory cytokines induce secondary pro- and anti-inflammatory mediators.\"? Present a series of factual points about the statement."
   },
   {
-    "id": 1104,
-    "user_query": "How truthful is the statement that \"c-MYC is important for maintaining pluripotent state of pluripotent stem cells.\"? Present a series of factual points about the statement."
+    "id": 1320,
+    "user_query": "Consider the following statement: \"Proteins synthesized at the growth cone are ubiquitinated at a higher rate than proteins from the cell body.\" Is it right? Present fact-based arguments about the statement."
   },
   {
-    "id": 1105,
-    "user_query": "Consider the following statement: \"mTORC2 inhibits xCT antiporter through phosphorylation.\" Is it right? Present fact-based arguments about the statement."
-  }
-]
+    "id": 1321,
+    "user_query": "Do you agree with the claim that \"Pseudogene PTENP1 regulates the expression of PTEN by functioning as an miRNA decoy.\"? Provide factual statements about the claim."
+  },
+  {
+    "id": 1322,
+    "user_query": "What is the validity of the assertion that \"Pyridostatin destabilizes the G - quadruplex in the telomeric region.\"? Outline fact-based statements about the assertion."
+  },
+  {
+    "id": 1323,
+    "user_query": "Can you clarify whether the claim \"Radioiodine treatment of non-toxic multinodular goitre reduces thyroid volume.\" is accurate or not? Build factual arguments about the claim."
+  },
+  {
+    "id": 1324,
+    "user_query": "How truthful is the statement that \"Rapamycin decreases the concentration of triacylglycerols in fruit flies.\"? Present a series of factual points about the statement."
+  },
+  {
+    "id": 1325,
+    "user_query": "Consider the following statement: \"Rapid phosphotransfer rates govern fidelity in two component systems\" Is it right? Present fact-based arguments about the statement."
+  },
+  {
+    "id": 1326,
+    "user_query": "Do you agree with the claim that \"Rapid up-regulation and higher basal expression of interferon-induced genes increase survival of granule cell neurons that are infected by West Nile virus.\"? Provide factual statements about the claim."
+  },
+  {
+    "id": 1327,
+    "user_query": "What is the validity of the assertion that \"Rapid up-regulation and higher basal expression of interferon-induced genes reduce survival of granule cell neurons that are infected by West Nile virus.\"? Outline fact-based statements about the assertion."
+  },
+  {
+    "id": 1328,
+    "user_query": "Can you clarify whether the claim \"Recurrent mutations occur frequently within CTCF anchor sites adjacent to oncogenes.\" is accurate or not? Build factual arguments about the claim."
+  },
+  {
+    "id": 1329,
+    "user_query": "How truthful is the statement that \"Reduced responsiveness to interleukin-2 in regulatory T cells is associated with greater resistance to autoimmune diseases such as Type 1 Diabetes.\"? Present a series of factual points about the statement."
+  },
+  {
+    "id": 1330,
+    "user_query": "Consider the following statement: \"Replacement of histone H2A with H2A.Z slows gene activation in yeasts by stabilizing +1 nucleosomes.\" Is it right? Present fact-based arguments about the statement."
+  },
+  {
+    "id": 1331,
+    "user_query": "Do you agree with the claim that \"Ribosomopathies have a low degree of cell and tissue specific pathology.\"? Provide factual statements about the claim."
+  },
+  {
+    "id": 1332,
+    "user_query": "What is the validity of the assertion that \"S-nitrosylated GAPDH physiologically transnitrosylates histone deacetylases.\"? Outline fact-based statements about the assertion."
+  },
+  {
+    "id": 1333,
+    "user_query": "Can you clarify whether the claim \"Sildenafil improves erectile function in men who experience sexual dysfunction as a result of the use of SSRI antidepressants.\" is accurate or not? Build factual arguments about the claim."
+  },
+  {
+    "id": 1334,
+    "user_query": "How truthful is the statement that \"Silencing of Bcl2 is important for the maintenance and progression of tumors.\"? Present a series of factual points about the statement."
+  },
+  {
+    "id": 1335,
+    "user_query": "Consider the following statement: \"Smc5/6 engagment drives the activation of SUMO E3 ligase Mms21 by ATP-dependent remolding.\" Is it right? Present fact-based arguments about the statement."
+  },
+  {
+    "id": 1336,
+    "user_query": "Do you agree with the claim that \"Statins decrease blood cholesterol.\"? Provide factual statements about the claim."
+  },
+  {
+    "id": 1337,
+    "user_query": "What is the validity of the assertion that \"Statins increase blood cholesterol.\"? Outline fact-based statements about the assertion."
+  },
+  {
+    "id": 1338,
+    "user_query": "Can you clarify whether the claim \"Stroke patients with prior use of direct oral anticoagulants have a lower risk of in-hospital mortality than stroke patients with prior use of warfarin.\" is accurate or not? Build factual arguments about the claim."
+  },
+  {
+    "id": 1339,
+    "user_query": "How truthful is the statement that \"Subcutaneous fat depots undergo extensive browning processes after cold exposure.\"? Present a series of factual points about the statement."
+  },
+  {
+    "id": 1340,
+    "user_query": "Consider the following statement: \"Suboptimal nutrition is not predictive of chronic disease\" Is it right? Present fact-based arguments about the statement."
+  },
+  {
+    "id": 1341,
+    "user_query": "Do you agree with the claim that \"Synaptic activity enhances local release of brain derived neurotrophic factor from postsynaptic dendrites.\"? Provide factual statements about the claim."
+  },
+  {
+    "id": 1342,
+    "user_query": "What is the validity of the assertion that \"T regulatory cells (tTregs) lacking αvβ8 are more adept at suppressing pathogenic T-cell responses during active inflammation.\"? Outline fact-based statements about the assertion."
+  },
+  {
+    "id": 1343,
+    "user_query": "Can you clarify whether the claim \"TCR/CD3 microdomains are a required to induce the immunologic synapse to activate T cells.\" is accurate or not? Build factual arguments about the claim."
+  },
+  {
+    "id": 1344,
+    "user_query": "How truthful is the statement that \"TNFAIP3 is a tumor suppressor in glioblastoma.\"? Present a series of factual points about the statement."
+  },
+  {
+    "id": 1345,
+    "user_query": "Consider the following statement: \"Taking 400mg of α-tocopheryl acetate helps to prevent prostate cancer.\" Is it right? Present fact-based arguments about the statement."
+  },
+  {
+    "id": 1346,
+    "user_query": "Do you agree with the claim that \"Taxation of sugar-sweetened beverages had no effect on the incidence rate of type II diabetes in India.\"? Provide factual statements about the claim."
+  },
+  {
+    "id": 1347,
+    "user_query": "What is the validity of the assertion that \"Teaching hospitals do not provide better care than non-teaching hospitals.\"? Outline fact-based statements about the assertion."
+  },
+  {
+    "id": 1348,
+    "user_query": "Can you clarify whether the claim \"Tetraspanin-3 is a causative factor in the development of acute myelogenous leukemia\" is accurate or not? Build factual arguments about the claim."
+  },
+  {
+    "id": 1349,
+    "user_query": "How truthful is the statement that \"The DdrB protein from Deinococcus radiodurans is an alternative SSB.\"? Present a series of factual points about the statement."
+  },
+  {
+    "id": 1350,
+    "user_query": "Consider the following statement: \"The PPR MDA5 has two N-terminal CARD domains.\" Is it right? Present fact-based arguments about the statement."
+  },
+  {
+    "id": 1351,
+    "user_query": "Do you agree with the claim that \"The PRR MDA5 has a central DExD/H RNA helices domain.\"? Provide factual statements about the claim."
+  },
+  {
+    "id": 1352,
+    "user_query": "What is the validity of the assertion that \"The PRR MDA5 is a sensor of RNA virus infection.\"? Outline fact-based statements about the assertion."
+  },
+  {
+    "id": 1353,
+    "user_query": "Can you clarify whether the claim \"The US health care system can save up to $750 million if 7% of patients waiting for kidney transplants participate in the optimized national kidney paired donation program.\" is accurate or not? Build factual arguments about the claim."
+  },
+  {
+    "id": 1354,
+    "user_query": "How truthful is the statement that \"The YAP1 and TEAD complex tanslocates into the nucleus where it interacts with transcription factors and DNA-binding proteins that modulate target gene transcription.\"? Present a series of factual points about the statement."
+  },
+  {
+    "id": 1355,
+    "user_query": "Consider the following statement: \"The amount of publicly available DNA data doubles every 10 years.\" Is it right? Present fact-based arguments about the statement."
+  },
+  {
+    "id": 1356,
+    "user_query": "Do you agree with the claim that \"The arm density of TatAd complexes is due to structural rearrangements within Class1 TatAd complexes such as the 'charge zipper mechanism'.\"? Provide factual statements about the claim."
+  },
+  {
+    "id": 1357,
+    "user_query": "What is the validity of the assertion that \"The availability of safe places to study is effective at decreasing homelessness.\"? Outline fact-based statements about the assertion."
+  },
+  {
+    "id": 1358,
+    "user_query": "Can you clarify whether the claim \"The availability of safe places to study is not effective at decreasing homelessness.\" is accurate or not? Build factual arguments about the claim."
+  },
+  {
+    "id": 1359,
+    "user_query": "How truthful is the statement that \"The benefits of colchicine were achieved with effective widespread use of secondary prevention strategies such as high-dose statins.\"? Present a series of factual points about the statement."
+  },
+  {
+    "id": 1360,
+    "user_query": "Consider the following statement: \"The binding orientation of the ML-SA1 activator at hTRPML2 is different from the binding orientation of the ML-SA1 activator at hTRPML1.\" Is it right? Present fact-based arguments about the statement."
+  },
+  {
+    "id": 1361,
+    "user_query": "Do you agree with the claim that \"The center of the granuloma in an immune cell induces a pro-inflammatory immune response.\"? Provide factual statements about the claim."
+  },
+  {
+    "id": 1362,
+    "user_query": "What is the validity of the assertion that \"The combination of H3K4me3 and H3K79me2 is found in quiescent hair follicle stem cells.\"? Outline fact-based statements about the assertion."
+  },
+  {
+    "id": 1363,
+    "user_query": "Can you clarify whether the claim \"The composition of myosin-II isoform switches from the polarizable B isoform to the more homogenous A isoform during hematopoietic differentiation.\" is accurate or not? Build factual arguments about the claim."
+  },
+  {
+    "id": 1364,
+    "user_query": "How truthful is the statement that \"The deregulated and prolonged activation of monocytes has deleterious effects in inflammatory diseases.\"? Present a series of factual points about the statement."
+  },
+  {
+    "id": 1365,
+    "user_query": "Consider the following statement: \"The extracellular domain of TMEM27 is cleaved in human beta cells.\" Is it right? Present fact-based arguments about the statement."
+  },
+  {
+    "id": 1366,
+    "user_query": "Do you agree with the claim that \"The genomic aberrations found in matasteses are very similar to those found in the primary tumor.\"? Provide factual statements about the claim."
+  },
+  {
+    "id": 1367,
+    "user_query": "What is the validity of the assertion that \"The locus rs647161 is associated with colorectal carcinoma.\"? Outline fact-based statements about the assertion."
+  },
+  {
+    "id": 1368,
+    "user_query": "Can you clarify whether the claim \"The loss of the TET protein functions may have dire biological consequences, such as myeloid cancers.\" is accurate or not? Build factual arguments about the claim."
+  },
+  {
+    "id": 1369,
+    "user_query": "How truthful is the statement that \"The minor G allele of FOXO3 is related to more severe symptoms of Crohn's Disease.\"? Present a series of factual points about the statement."
+  },
+  {
+    "id": 1370,
+    "user_query": "Consider the following statement: \"The myocardial lineage develops from cardiac progenitors of mesodermal origin.\" Is it right? Present fact-based arguments about the statement."
+  },
+  {
+    "id": 1371,
+    "user_query": "Do you agree with the claim that \"The one-child policy has been successful in lowering population growth.\"? Provide factual statements about the claim."
+  },
+  {
+    "id": 1372,
+    "user_query": "What is the validity of the assertion that \"The relationship between a breast cancer patient's capacity to metabolize tamoxifen and treatment outcome is dependent on the patient's genetic make-up.\"? Outline fact-based statements about the assertion."
+  },
+  {
+    "id": 1373,
+    "user_query": "Can you clarify whether the claim \"The repair of Cas9-induced double strand breaks in human DNA is error-prone.\" is accurate or not? Build factual arguments about the claim."
+  },
+  {
+    "id": 1374,
+    "user_query": "How truthful is the statement that \"The risk of breast cancer among parous women increases with placental weight of pregnancies, and this association is strongest for premenopausal breast cancer.\"? Present a series of factual points about the statement."
+  },
+  {
+    "id": 1375,
+    "user_query": "Consider the following statement: \"The risk of male prisoners harming themselves is ten times that of female prisoners.\" Is it right? Present fact-based arguments about the statement."
+  },
+  {
+    "id": 1376,
+    "user_query": "Do you agree with the claim that \"The severity of cardiac involvement in amyloidosis can be described by the degree of transmurality of late gadolinium enhancement in MRI.\"? Provide factual statements about the claim."
+  },
+  {
+    "id": 1377,
+    "user_query": "What is the validity of the assertion that \"The single flash-evoked ERG b-wave is generated by activity of ON-bipolar cells.\"? Outline fact-based statements about the assertion."
+  },
+  {
+    "id": 1378,
+    "user_query": "Can you clarify whether the claim \"The sliding activity of kinesin-8 protein Kip3 promotes bipolar spindle assembly.\" is accurate or not? Build factual arguments about the claim."
+  },
+  {
+    "id": 1379,
+    "user_query": "How truthful is the statement that \"The tip of the inner tube of the toxic type VI secretion system (T6SS) antibacterial effector in Escherichia coli (E. coli) carries toxic effector proteins.\"? Present a series of factual points about the statement."
+  },
+  {
+    "id": 1380,
+    "user_query": "Consider the following statement: \"The treatment of cancer patients with co-IR blockade does not cause any adverse autoimmune events.\" Is it right? Present fact-based arguments about the statement."
+  },
+  {
+    "id": 1381,
+    "user_query": "Do you agree with the claim that \"The treatment of cancer patients with co-IR blockade precipitates adverse autoimmune events.\"? Provide factual statements about the claim."
+  },
+  {
+    "id": 1382,
+    "user_query": "What is the validity of the assertion that \"The ureABIEFGH gene cluster encodes urease maturation proteins : UreD/UreH, UreE, UreF, and UreG.\"? Outline fact-based statements about the assertion."
+  },
+  {
+    "id": 1383,
+    "user_query": "Can you clarify whether the claim \"The ureABIEFGH gene cluster is induced by nickel (II) ion.\" is accurate or not? Build factual arguments about the claim."
+  },
+  {
+    "id": 1384,
+    "user_query": "How truthful is the statement that \"Therapeutic use of the drug Dapsone to treat pyoderma gangrenous is based on anecdotal evidence.\"? Present a series of factual points about the statement."
+  },
+  {
+    "id": 1385,
+    "user_query": "Consider the following statement: \"There is an inverse relationship between hip fractures and statin use.\" Is it right? Present fact-based arguments about the statement."
+  },
+  {
+    "id": 1386,
+    "user_query": "Do you agree with the claim that \"There is no association between HNF4A mutations and diabetes risks.\"? Provide factual statements about the claim."
+  },
+  {
+    "id": 1387,
+    "user_query": "What is the validity of the assertion that \"Thigh-length graduated compression stockings (GCS) did not reduce deep vein thrombosis in patients admitted to hospital who are immobile because of acute stroke.\"? Outline fact-based statements about the assertion."
+  },
+  {
+    "id": 1388,
+    "user_query": "Can you clarify whether the claim \"Tirasemtiv has no effect on fast-twitch muscle.\" is accurate or not? Build factual arguments about the claim."
+  },
+  {
+    "id": 1389,
+    "user_query": "How truthful is the statement that \"Transferred UCB T cells acquire a memory-like phenotype in recipients.\"? Present a series of factual points about the statement."
+  },
+  {
+    "id": 1390,
+    "user_query": "Consider the following statement: \"Transplanted human glial cells can differentiate within the host animal.\" Is it right? Present fact-based arguments about the statement."
+  },
+  {
+    "id": 1391,
+    "user_query": "Do you agree with the claim that \"Transplanted human glial progenitor cells are incapable of forming a neural network with host animals' neurons.\"? Provide factual statements about the claim."
+  },
+  {
+    "id": 1392,
+    "user_query": "What is the validity of the assertion that \"Tumor necrosis factor alpha (TNF-α) and interleukin-1 (IL-1) are pro-inflammatory cytokines that inhibit IL-6 and IL-10.\"? Outline fact-based statements about the assertion."
+  },
+  {
+    "id": 1393,
+    "user_query": "Can you clarify whether the claim \"UCB T cells maintain high TCR diversity after transplantation.\" is accurate or not? Build factual arguments about the claim."
+  },
+  {
+    "id": 1394,
+    "user_query": "How truthful is the statement that \"UCB T cells reduce TCR diversity after transplantation.\"? Present a series of factual points about the statement."
+  },
+  {
+    "id": 1395,
+    "user_query": "Consider the following statement: \"Ubiquitin ligase UBC13 generates a K63-linked polyubiquitin moiety at PCNA K164.\" Is it right? Present fact-based arguments about the statement."
+  },
+  {
+    "id": 1396,
+    "user_query": "Do you agree with the claim that \"Ultrasound guidance significantly raises the number of traumatic procedures when attempting needle insertion.\"? Provide factual statements about the claim."
+  },
+  {
+    "id": 1397,
+    "user_query": "What is the validity of the assertion that \"Up-regulation of the p53 pathway and related molecular events casues cancer resistance and results in a significantly shortened lifespan marked by senescent cells and accelerated organismal aging.\"? Outline fact-based statements about the assertion."
+  },
+  {
+    "id": 1398,
+    "user_query": "Can you clarify whether the claim \"Upregulation of mosGCTL-1 is induced upon infection with West Nile virus.\" is accurate or not? Build factual arguments about the claim."
+  },
+  {
+    "id": 1399,
+    "user_query": "How truthful is the statement that \"Varenicline monotherapy is more effective after 12 weeks of treatment compared to combination nicotine replacement therapies with varenicline or bupropion.\"? Present a series of factual points about the statement."
+  },
+  {
+    "id": 1400,
+    "user_query": "Consider the following statement: \"Venules have a larger lumen diameter than arterioles.\" Is it right? Present fact-based arguments about the statement."
+  },
+  {
+    "id": 1401,
+    "user_query": "Do you agree with the claim that \"Venules have a thinner or absent smooth layer compared to arterioles.\"? Provide factual statements about the claim."
+  },
+  {
+    "id": 1402,
+    "user_query": "What is the validity of the assertion that \"Vitamin D deficiency effects the term of delivery.\"? Outline fact-based statements about the assertion."
+  },
+  {
+    "id": 1403,
+    "user_query": "Can you clarify whether the claim \"Vitamin D deficiency is unrelated to birth weight.\" is accurate or not? Build factual arguments about the claim."
+  },
+  {
+    "id": 1404,
+    "user_query": "How truthful is the statement that \"Women with a higher birth weight are more likely to develop breast cancer later in life.\"? Present a series of factual points about the statement."
+  },
+  {
+    "id": 1405,
+    "user_query": "Consider the following statement: \"aPKCz causes tumour enhancement by affecting glutamine metabolism.\" Is it right? Present fact-based arguments about the statement."
+  },
+  {
+    "id": 1406,
+    "user_query": "Do you agree with the claim that \"cSMAC formation enhances weak ligand signalling.\"? Provide factual statements about the claim."
+  },
+  {
+    "id": 1407,
+    "user_query": "What is the validity of the assertion that \"mTORC2 regulates intracellular cysteine levels through xCT inhibition.\"? Outline fact-based statements about the assertion."
+  },
+  {
+    "id": 1408,
+    "user_query": "Can you clarify whether the claim \"p16INK4A accumulation is  linked to an abnormal wound response caused by the microinvasive step of advanced Oral Potentially Malignant Lesions (OPMLs).\" is accurate or not? Build factual arguments about the claim."
+  }]

@@ -2,8 +2,9 @@ import re
 import requests
 from pathlib import Path
 from typing import List, Optional, Dict, Any, Union
+from rag.scrappers import BaseScrapper
 
-class WikipediaScraper:
+class WikipediaScraper(BaseScrapper):
     """
     A class for scraping Wikipedia articles based on keywords.
     """
@@ -69,6 +70,14 @@ class WikipediaScraper:
         safe_name = re.sub(r'[^\w\s-]', '', title).strip().replace(' ', '_')
         return safe_name
     
+    def process_content(self, content: str) -> str:
+        #remove the "See also" section
+        content = content.split("See also")[0]
+        #convert all the spaces to single space
+        content = re.sub(r'\s+', ' ', content)
+
+        return content
+    
     def fetch_and_save(self, keyword: str, use_exact_keyword_as_filename: bool = True) -> Optional[str]:
         # Search for articles matching the keyword
         search_results = self.search_wikipedia(keyword)
@@ -94,7 +103,7 @@ class WikipediaScraper:
         file_path = self.docs_dir / filename
 
         # process the content
-        article_data['content'] = article_data['content'].split("See also")[0]
+        article_data['content'] = self.process_content(article_data['content'])
 
         # Format and save the content
         formatted_content = f"# {article_data['title']}\n\n{article_data['content']}"
@@ -111,3 +120,8 @@ class WikipediaScraper:
             return None
 
 
+
+
+# class webScrapper(BaseScrapper):
+#     def __init__(self):
+#         super().__init__()

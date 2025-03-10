@@ -1,13 +1,16 @@
 venv
 .env
+
 project/configs/*
 project/results/*
-
 project/data/*
+project/notebooks/*
 
 project/evaluation/__pycache__/*
 project/models/__pycache__/*
 project/scripts/__pycache__/*
+project/rag/__pycache__/*
+project/rag/scrappers/__pycache__/*
 
 .DS_Store
 project/.DS_Store

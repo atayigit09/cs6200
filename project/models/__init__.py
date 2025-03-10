@@ -2,13 +2,13 @@ from typing import Dict, List, Any, Union
 import importlib
 
 
-def find_model_using_name(model_name, model_class):
+def find_model_using_name(model_class):
     """Import the module "models/[model_name].py".
     In the file, the class called DatasetNameModel() will
     be instantiated. It has to be a subclass of BaseLLM,
     and it is case-insensitive.
     """
-    model_filename = "models." + model_name 
+    model_filename = "models.base_model"
     modellib = importlib.import_module(model_filename)
     model = None
     for name, cls in modellib.__dict__.items():
@@ -24,11 +24,6 @@ def find_model_using_name(model_name, model_class):
 
 
 def find_embedding_using_name(model_class):
-    """Import the module "models/[model_name].py".
-    In the file, the class called DatasetNameModel() will
-    be instantiated. It has to be a subclass of BaseLLM,
-    and it is case-insensitive.
-    """
     model_filename = "models.embeddings"
     modellib = importlib.import_module(model_filename)
     model = None
@@ -54,15 +49,15 @@ def create_model(opt):
         >>> from models import create_model
         >>> model = create_model(opt)
     """
-    model = find_model_using_name(opt.model_name, opt.model_class)
+    model = find_model_using_name(opt.model_class)
     instance = model(opt.model_config)
     print("model [%s] was created" % type(instance).__name__)
     return instance
 
 
-def create_embedding_model(opt):
-    model = find_embedding_using_name(opt.embedding_type)
-    instance = model(opt.model_config.get('rag').get('embedding'))
+def create_embedding_model(embedding_config):
+    model = find_embedding_using_name(embedding_config.get('type'))
+    instance = model(embedding_config)
     print("model [%s] was created" % type(instance).__name__)
     return instance
 

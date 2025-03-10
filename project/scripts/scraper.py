@@ -6,7 +6,7 @@ from rag.scrappers.wiki_scrapper import WikipediaScraper
 
 def main():
     parser = argparse.ArgumentParser(description="Document Scraper")
-    parser.add_argument("--topic", 
+    parser.add_argument("--field", 
                         choices=["Bio-Medical", "Education", "Finance", "Open-Domain", "Science", "test"],
                         required=True,
                         help="Select the topic file to process")
@@ -19,7 +19,7 @@ def main():
                         help="Directory containing the results JSON files")
     args = parser.parse_args()
 
-    key_words_file = f"./data/keyWords/{args.topic}.json"
+    key_words_file = f"./data/keyWords/{args.field}.json"
 
 
     if not os.path.exists(key_words_file):
@@ -30,12 +30,11 @@ def main():
         key_words = json.load(f)
 
     if args.source == "Wiki":
-        scraper = WikipediaScraper(field=args.topic ,docs_dir=args.results_dir)
+        scraper = WikipediaScraper(field=args.field ,docs_dir=args.results_dir)
     
     elif args.source == "test":
         scraper = None
     
-
     seen = set()
 
     for docs in key_words:
@@ -47,7 +46,6 @@ def main():
             print(f"Processing {key_word}...")
             scraper.fetch_and_save(key_word)
 
-    
     
 
 if __name__ == "__main__":

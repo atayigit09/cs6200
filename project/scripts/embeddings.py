@@ -3,8 +3,7 @@ import yaml
 import os
 from pathlib import Path
 from dataclasses import dataclass
-from typing import List, Optional, Dict, Any
-import torch
+from typing import List, Dict, Any
 
 from models import create_embedding_model
 from rag.document_store import (
@@ -14,24 +13,23 @@ from rag.document_store import (
 
 @dataclass
 class DocumentProcessor:
-    """Class for processing documents from a topic directory."""
-    topic: str
+    """Class for processing documents from a field directory."""
+    field: str
+    chunk_size: int
+    chunk_overlap: int
     docs_dir: str = "data/docs"
-    chunk_size: int = 512
-    chunk_overlap: int = 50
-    
-    def get_topic_path(self) -> str:
-        """Get the path to the topic directory."""
-        return os.path.join(self.docs_dir, self.topic)
+    def get_field_path(self) -> str:
+        """Get the path to the field directory."""
+        return os.path.join(self.docs_dir, self.field)
     
     def load_documents(self) -> List[Document]:
-        """Load all documents from the topic directory."""
-        topic_path = self.get_topic_path()
-        if not os.path.exists(topic_path):
-            raise FileNotFoundError(f"Topic directory not found: {topic_path}")
+        """Load all documents from the field directory."""
+        field_path = self.get_field_path()
+        if not os.path.exists(field_path):
+            raise FileNotFoundError(f"field directory not found: {field_path}")
         
-        print(f"Loading documents from {topic_path}")
-        return load_documents_from_directory(topic_path)
+        print(f"Loading documents from {field_path}")
+        return load_documents_from_directory(field_path)
     
     def process_documents(self, documents: List[Document]) -> List[Document]:
         """
@@ -51,9 +49,37 @@ class DocumentProcessor:
         print(f"Created {len(chunked_docs)} chunks from {len(documents)} documents")
         return chunked_docs
 
+
+def initialize_vector_store(config: Dict[str, Any], field: str, output_dir: str) -> RAGDocumentStore:
+    """Initialize the vector store based on configuration."""
+    rag_config = config.get('rag', {})
+    vector_store_config = rag_config.get('vector_db', {})
+    embedding_config = rag_config.get('embedding', {})
+    vector_store_type = vector_store_config.get('type')
+    embedding_dim = embedding_config.get('embedding_dimension')
+    
+    # Create output directory if it doesn't exist
+    os.makedirs(output_dir, exist_ok=True)
+    topic_output_dir = os.path.join(output_dir, field)
+    os.makedirs(topic_output_dir, exist_ok=True)
+    
+    if vector_store_type.lower() == 'chroma':
+        vector_store = ChromaVectorStore(
+            collection_name=field,
+            persist_directory=topic_output_dir
+        )
+        print(f"Initialized Chroma vector store for topic '{field}'")
+    else:  # Default to FAISS
+        vector_store = FaissVectorStore(dimension=embedding_dim)
+        print(f"Initialized FAISS vector store with dimension {embedding_dim}")
+    
+    # Create the RAG document store with the vector store
+    return RAGDocumentStore(vector_store=vector_store)
+
+
 def load_model_config():
-    """Loads the configuration file."""
-    config_path = Path("configs/base_model.yaml").resolve()
+    """Loads the configuration file based on the model_name."""
+    config_path = Path(f"configs/base_model.yaml").resolve()
 
     if not config_path.exists():
         raise FileNotFoundError(f"Config file {config_path} not found!")
@@ -66,15 +92,9 @@ def load_model_config():
 def parse_args():
     parser = argparse.ArgumentParser(description="Document Embedding Generation")
     
-    parser.add_argument("--embedding_type", type=str, default="sentence_transformer",
-                      help="Type of embedding model to use")
+    parser.add_argument("--data_path", type=str, default="data/docs",
+                      help="directory containing the documents")
     
-    parser.add_argument("--topic", type=str, required=True,
-                      choices=["Bio-Medical", "Education", "Finance", "Open-Domain", "Science", "test"],
-                      help="Topic directory to process documents from")
-    
-    parser.add_argument("--output_dir", type=str, default="data/embeddings",
-                      help="Directory to save the vector database")
     
     args = parser.parse_args()
     
@@ -83,38 +103,13 @@ def parse_args():
     
     return args
 
-def initialize_vector_store(config: Dict[str, Any], topic: str, output_dir: str) -> RAGDocumentStore:
-    """Initialize the vector store based on configuration."""
-    rag_config = config.get('rag', {})
-    vector_store_config = rag_config.get('vector_db', {})
-    embedding_config = rag_config.get('embedding', {})
-    vector_store_type = vector_store_config.get('type', 'faiss')
-    embedding_dim = embedding_config.get('embedding_dimension', 768)
-    
-    # Create output directory if it doesn't exist
-    os.makedirs(output_dir, exist_ok=True)
-    topic_output_dir = os.path.join(output_dir, topic)
-    os.makedirs(topic_output_dir, exist_ok=True)
-    
-    if vector_store_type.lower() == 'chroma':
-        vector_store = ChromaVectorStore(
-            collection_name=topic,
-            persist_directory=topic_output_dir
-        )
-        print(f"Initialized Chroma vector store for topic '{topic}'")
-    else:  # Default to FAISS
-        vector_store = FaissVectorStore(dimension=embedding_dim)
-        print(f"Initialized FAISS vector store with dimension {embedding_dim}")
-    
-    # Create the RAG document store with the vector store
-    return RAGDocumentStore(vector_store=vector_store)
 
 if __name__ == "__main__":
     opt = parse_args()
     
     # Initialize document processor
     processor = DocumentProcessor(
-        topic=opt.topic,
+        field=opt.model_config.get("rag").get("field"),
         chunk_size=opt.model_config.get("rag").get("chunk_size"),
         chunk_overlap=opt.model_config.get("rag").get("chunk_overlap")
     )
@@ -122,28 +117,52 @@ if __name__ == "__main__":
     # Load and process documents
     original_docs = processor.load_documents()
     if not original_docs:
-        print(f"No documents found for topic '{opt.topic}'")
+        print(f"No documents found for field '{opt.model_config.get("rag").get("field")}'")
         exit(1)
     
     chunked_docs = processor.process_documents(original_docs)
 
+    ## Debugging  IDFK why it chunkes the same document multiple times !! i fucking hate this
+
+    print("Original Docs length")
+    print(len(original_docs))
+
+    print("Chunked Docs length")
+    print(len(chunked_docs))
+
+    ##not the fastest way to remove duplicates but i'm tired and it works :)
+    #for every doc in chunked_docs, create set of unique doc.content
+    content_set = set()
+    for doc in chunked_docs:
+        #check if the cotent is already in the set
+        if doc.content in content_set:
+            #delete doc from chunked_docs
+            chunked_docs.remove(doc)
+        
+        #add the content to the set
+        content_set.add(doc.content)
+
+    print("Chunked Docs length after removing duplicates")
+    print(len(chunked_docs))
+    
 
     # Load embedding model
     print("Loading embedding model...")
-    embedding_model = create_embedding_model(opt)
+    embedding_model = create_embedding_model(opt.model_config.get("rag").get("embedding"))
     
     # Initialize vector store
     doc_store = initialize_vector_store(
         config=opt.model_config,
-        topic=opt.topic,
-        output_dir=opt.output_dir
+        field=opt.model_config.get("rag").get("field"),
+        output_dir=opt.model_config.get("rag").get("vector_db").get("db_path")   
     )
     
     # Generate embeddings for all chunks
     print(f"Generating embeddings for {len(chunked_docs)} document chunks...")
     
     # Process in batches to avoid memory issues
-    batch_size = 128
+    batch_size = opt.model_config.get("rag").get("batch_size")
+    
     for i in range(0, len(chunked_docs), batch_size):
         batch = chunked_docs[i:i+batch_size]
         
@@ -159,12 +178,9 @@ if __name__ == "__main__":
         print(f"Processed batch {i//batch_size + 1}/{(len(chunked_docs)-1)//batch_size + 1}")
     
     # Save the document store with embeddings
-    save_path = os.path.join(opt.output_dir, opt.topic)
+    save_path = os.path.join(opt.model_config.get("rag").get("vector_db").get("db_path"), opt.model_config.get("rag").get("field"))
     doc_store.save(save_path)
     print(f"Saved document store with embeddings to {save_path}")
     
-    # If using FAISS, we need to explicitly save the vector store
-    if isinstance(doc_store.vector_store, FaissVectorStore):
-        doc_store.vector_store.save(os.path.join(save_path, "vector_store"))
     
     print("Document embedding generation complete!")
