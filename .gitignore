@@ -1,3 +1,4 @@
+.gitignore
 venv
 .env
 
@@ -15,4 +16,4 @@ project/rag/scrappers/__pycache__/*
 .DS_Store
 project/.DS_Store
 
-.gitignore
+requirements.txt
