@@ -17,6 +17,18 @@ Contains scripts for running, training, and evaluation. No class definitions sho
 ### 📂 Evaluation Folder
 Includes the code for the evaluation pipeline.
 
+### 📂 Rag Folder
+Contains the code for Scrappers and Document storage models.
+- **Scrappers**: Code for scraping documents from various sources.
+- **Document Storage**: Code for storing and managing documents in a vector database.
+
+### 📂 Data Folder
+Contains datasets and documents for training and evaluation:
+- **Datasets**: `data/HaluEval2/`
+- **Documents**: `data/docs/`   (Scraped documents)
+- **Keywords**: `data/keyWords/` (used for scraping documents)
+- **Embeddings**: `data/vector_db/` (Vector database storage)
+
 ### 📂 Configs Folder
 Stores configuration files for different components:
 - **Pipeline configurations**
@@ -121,17 +133,7 @@ rag:
 5. **Quantization Options**:
    - Using 8-bit or 4-bit quantization can reduce memory usage at the cost of some precision.
 
-### 📂 Rag Folder
-Contains the code for Scrappers and Document storage models.
-- **Scrappers**: Code for scraping documents from various sources.
-- **Document Storage**: Code for storing and managing documents in a vector database.
 
-### 📂 Data Folder
-Contains datasets and documents for training and evaluation:
-- **Datasets**: `data/HaluEval2/`
-- **Documents**: `data/docs/`   (Scraped documents)
-- **Keywords**: `data/keyWords/` (used for scraping documents)
-- **Embeddings**: `data/vector_db/` (Vector database storage)
 ---
 
 ## 🔧 Running Commands
