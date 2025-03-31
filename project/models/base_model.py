@@ -224,7 +224,7 @@ class RagLLaMA(BaseLLM):
         # Embed the query
         query_embedding = self.embedding_model.embed([query])[0]
         # Search for similar documents
-        results = self.doc_store.search(query_embedding, top_k=num_results*2)  # Retrieve more than needed to handle duplicates
+        results = self.doc_store.search(query_embedding, top_k=num_results)  # Retrieve more than needed to handle duplicates
         
         # Deduplicate results by content
         unique_results = []
@@ -304,6 +304,10 @@ class RagLLaMA(BaseLLM):
         # Format context and prompt
         documents = self.search(prompt)
         context = self.format_context(documents)
+
+        if self.config['rag'].get('debug',False):
+            print(f"Context: {context}")
+
         full_prompt = self.format_prompt(prompt, context)
         
         inputs = self.tokenizer(full_prompt, return_tensors="pt")
