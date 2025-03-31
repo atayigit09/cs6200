@@ -122,8 +122,6 @@ if __name__ == "__main__":
     
     chunked_docs = processor.process_documents(original_docs)
 
-    ## Debugging  IDFK why it chunkes the same document multiple times !! i fucking hate this
-
     print("Original Docs length")
     print(len(original_docs))
 
@@ -133,14 +131,16 @@ if __name__ == "__main__":
     ##not the fastest way to remove duplicates but i'm tired and it works :)
     #for every doc in chunked_docs, create set of unique doc.content
     content_set = set()
+    unique_chunked_docs = []
+    
+    # Safer way to deduplicate - build a new list instead of removing during iteration
     for doc in chunked_docs:
-        #check if the cotent is already in the set
-        if doc.content in content_set:
-            #delete doc from chunked_docs
-            chunked_docs.remove(doc)
-        
-        #add the content to the set
-        content_set.add(doc.content)
+        if doc.content not in content_set:
+            content_set.add(doc.content)
+            unique_chunked_docs.append(doc)
+    
+    # Replace the original list with the deduplicated one
+    chunked_docs = unique_chunked_docs
 
     print("Chunked Docs length after removing duplicates")
     print(len(chunked_docs))

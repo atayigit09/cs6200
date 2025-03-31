@@ -224,9 +224,22 @@ class RagLLaMA(BaseLLM):
         # Embed the query
         query_embedding = self.embedding_model.embed([query])[0]
         # Search for similar documents
-        results = self.doc_store.search(query_embedding, top_k=num_results)
+        results = self.doc_store.search(query_embedding, top_k=num_results*2)  # Retrieve more than needed to handle duplicates
         
-        return results
+        # Deduplicate results by content
+        unique_results = []
+        seen_content = set()
+        
+        for doc in results:
+            if doc.content not in seen_content:
+                seen_content.add(doc.content)
+                unique_results.append(doc)
+                
+            # Stop once we have enough unique documents
+            if len(unique_results) >= num_results:
+                break
+        
+        return unique_results[:num_results]
     
     
     def format_context(self, documents) -> str:
