@@ -41,17 +41,29 @@ def find_embedding_using_name(model_class):
 
 
 
-def create_model(opt):
+def create_model(opt, model_class=None):
     """Create a model given the option.
-    This function warps the class CappedDataLoader.
-    This is the main interface between this package and 'train.py'/'test.py'
-    Example:
-        >>> from models import create_model
-        >>> model = create_model(opt)
+    This function warps the class BaseLLM.
+    
+    Args:
+        opt: Options with model_config
+        model_class: Optional string specifying model class directly
+        
+    Returns:
+        model: A BaseLLM instance
     """
-    model = find_model_using_name(opt.model_class)
+    if model_class:
+        # If model_class is directly provided as a string
+        model_class_name = model_class
+    elif hasattr(opt, 'model_class'):
+        # If model_class is in opt
+        model_class_name = opt.model_class
+    else:
+        raise ValueError("model_class must be provided either as a parameter or in opt")
+    
+    model = find_model_using_name(model_class_name)
     instance = model(opt.model_config)
-    print("model [%s] was created" % type(instance).__name__)
+    print(f"model [{type(instance).__name__}] was created")
     return instance
 
 

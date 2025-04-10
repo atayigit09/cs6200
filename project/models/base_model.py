@@ -6,7 +6,7 @@ from typing import Dict, List, Any
 import os
 
 from models import BaseLLM
-from peft import LoraConfig, get_peft_model, prepare_model_for_kbit_training
+from peft import LoraConfig, get_peft_model, prepare_model_for_kbit_training, PeftModel
 from rag.document_store import RAGDocumentStore, Document, FaissVectorStore, ChromaVectorStore
 from models import create_embedding_model
 
@@ -343,6 +343,10 @@ class LoraLLaMA(BaseLLM):
     def load_model(self):
         model_config = self.config["model"]
         quant_config = self.config.get("quantization", {})
+        finetuning_config = self.config.get("finetuning", {})
+        
+        # Check if we should load from a checkpoint
+        lora_checkpoint = model_config.get("lora_checkpoint", None)
 
         self.tokenizer = AutoTokenizer.from_pretrained(
             model_config["model_id"],
@@ -375,10 +379,21 @@ class LoraLLaMA(BaseLLM):
             **load_params
         )
 
-        # Check fine tuning configuration.
-        finetuning_config = self.config.get("finetuning", {})
-
-        if finetuning_config.get("use_qlora", False):
+        # If we're loading from a checkpoint, load the fine-tuned model
+        if lora_checkpoint:
+            print(f"Loading LoRA weights from checkpoint: {lora_checkpoint}")
+            if os.path.exists(lora_checkpoint):
+                # Load the fine-tuned model using PEFT
+                self.model = PeftModel.from_pretrained(
+                    self.model,
+                    lora_checkpoint,
+                    is_trainable=False  # Set to True if we want to continue training
+                )
+                print(f"Successfully loaded LoRA weights from {lora_checkpoint}")
+            else:
+                print(f"Warning: LoRA checkpoint {lora_checkpoint} not found, using base model")
+        # If no checkpoint, configure for training if needed
+        elif finetuning_config.get("use_qlora", False):
             # QLoRA: Prepare the model for k-bit training before applying LoRA.
             self.model = prepare_model_for_kbit_training(self.model)
             lora_config = LoraConfig(
