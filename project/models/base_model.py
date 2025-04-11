@@ -1,14 +1,13 @@
-from typing import Any, Dict
+from typing import Any, Dict, List
 from transformers import AutoTokenizer, AutoModelForCausalLM, BitsAndBytesConfig
-from models import BaseLLM
+from project.models import BaseLLM
 import torch
-from typing import Dict, List, Any
 import os
+import dotenv
 
-from models import BaseLLM
 from peft import LoraConfig, get_peft_model, prepare_model_for_kbit_training, PeftModel
-from rag.document_store import RAGDocumentStore, Document, FaissVectorStore, ChromaVectorStore
-from models import create_embedding_model
+from project.rag.document_store import RAGDocumentStore, Document, FaissVectorStore, ChromaVectorStore
+from project.models import create_embedding_model
 
 
 ##baseline model
@@ -24,36 +23,80 @@ class BaselineLLaMA(BaseLLM):
         model_config = self.config['model']
         quant_config = self.config.get('quantization', {})
 
+        # Load HF token from .env file
+        dotenv.load_dotenv()
+        hf_token = os.getenv("token")
+        if hf_token:
+            print("Using Hugging Face token from .env file")
+        else:
+            print("WARNING: No Hugging Face token found in .env file")
+
         self.tokenizer = AutoTokenizer.from_pretrained(
             model_config['model_id'],
-            use_fast=model_config.get('use_fast', True)
+            use_fast=model_config.get('use_fast', True),
+            token=hf_token
         )
+
+        # Print quantization settings for debugging
+        print(f"Quantization settings:")
+        print(f"  load_in_4bit: {quant_config.get('load_in_4bit', False)}")
+        print(f"  load_in_8bit: {quant_config.get('load_in_8bit', False)}")
 
         # Define correct quantization settings
         if quant_config.get('load_in_4bit', False) or quant_config.get('load_in_8bit', False):
+            print("Applying quantization...")
+            compute_dtype = torch.bfloat16 if torch.cuda.is_available() and torch.cuda.get_device_capability()[0] >= 8 else torch.float16
+            
             bnb_config = BitsAndBytesConfig(
                 load_in_4bit=quant_config.get('load_in_4bit', False),
                 load_in_8bit=quant_config.get('load_in_8bit', False),
-                bnb_4bit_compute_dtype=torch.bfloat16 if quant_config.get('load_in_4bit', False) else torch.float16,
+                bnb_4bit_compute_dtype=compute_dtype,
                 bnb_4bit_use_double_quant=True,
                 bnb_4bit_quant_type="nf4"
             )
+            print(f"BitsAndBytesConfig: {bnb_config}")
         else:
             bnb_config = None
+            print("No quantization being applied")
 
         load_params = {
             "torch_dtype": torch.float16,
             "device_map": "auto",
-            "low_cpu_mem_usage": True
+            "low_cpu_mem_usage": True,
+            "token": hf_token
         }
 
         if bnb_config:
             load_params["quantization_config"] = bnb_config
 
+        print(f"Loading model with params: {load_params}")
+        
+        # Ensure required packages are available
+        try:
+            import bitsandbytes
+            print(f"bitsandbytes version: {bitsandbytes.__version__}")
+        except ImportError:
+            print("WARNING: bitsandbytes not installed! Quantization may not work correctly.")
+            print("Install with: pip install bitsandbytes")
+
         self.model = AutoModelForCausalLM.from_pretrained(
             model_config['model_id'],
             **load_params
         )
+        
+        # Verify quantization was applied correctly
+        if hasattr(self.model, 'is_quantized'):
+            print(f"Model quantization status: {self.model.is_quantized}")
+        
+        # Check model size in memory
+        total_params = sum(p.numel() for p in self.model.parameters())
+        print(f"Model loaded with {total_params/1_000_000:.2f}M parameters")
+        
+        # Check if model is actually quantized by examining the data type of weights
+        for name, module in self.model.named_modules():
+            if hasattr(module, 'weight') and hasattr(module.weight, 'dtype'):
+                print(f"Module {name}: weight dtype = {module.weight.dtype}")
+                break  # Just print the first one as an example
 
     def format_prompt(self, prompt: str) -> str:
         """
@@ -127,6 +170,50 @@ class BaselineLLaMA(BaseLLM):
         del inputs  # Cleanup to free memory.
         
         return outputs
+    
+    def generate_ft_data(self, document_content: str, **kwargs) -> str:
+            prompt_template = f"""
+            You are provided with the following document:
+ 
+            \"\"\"
+            {document_content}
+            \"\"\"
+ 
+            Your task is to extract straightforward, fact-based but detailed questions and their corresponding answers solely from the content of the document. Follow these rules:
+ 
+            1. **Source Strictness:** Only use the information explicitly provided in the document. Do not use any internal or external knowledge.
+            2. **Extraction:** Generate questions that cover key details of the document. Each question must have a corresponding answer that is clearly supported by the document's content.
+            3. **Quantity:** Produce at most 10 questions. If the document contains fewer key details, generate fewer questions accordingly.
+            4. **Format:** Output your results in valid JSON format, structured as an array of objects, where each object has two keys: "question" and "answer".
+ 
+            Example output format:
+            [
+            {{
+                "question": "Question text here?",
+                "answer": "Answer text here."
+            }},
+            ...
+            ]
+ 
+            Do not include any extra text or commentary. Provide only the JSON output.
+            """
+ 
+            inputs = self.tokenizer(prompt_template, return_tensors="pt")
+            inputs = {key: value.to(self.model.device) for key, value in inputs.items()}
+            
+            generation_config = {
+                'max_new_tokens': self.config['generation']['max_length'],
+                'temperature': 0.1,
+                'top_p': 1.0,
+                **kwargs
+            }
+ 
+            with torch.no_grad():
+                outputs = self.model.generate(**inputs, **generation_config)
+            
+            del inputs
+                
+            return self.tokenizer.decode(outputs[0], skip_special_tokens=True)
 
 
 ##rag model

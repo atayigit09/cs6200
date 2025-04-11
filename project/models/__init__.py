@@ -8,7 +8,7 @@ def find_model_using_name(model_class):
     be instantiated. It has to be a subclass of BaseLLM,
     and it is case-insensitive.
     """
-    model_filename = "models.base_model"
+    model_filename = "project.models.base_model"
     modellib = importlib.import_module(model_filename)
     model = None
     for name, cls in modellib.__dict__.items():
@@ -24,7 +24,7 @@ def find_model_using_name(model_class):
 
 
 def find_embedding_using_name(model_class):
-    model_filename = "models.embeddings"
+    model_filename = "project.models.embeddings"
     modellib = importlib.import_module(model_filename)
     model = None
     for name, cls in modellib.__dict__.items():
