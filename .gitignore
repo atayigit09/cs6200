@@ -17,3 +17,4 @@ project/rag/scrappers/__pycache__/*
 project/.DS_Store
 
 requirements.txt
+project/scripts/fine_tune_data.py

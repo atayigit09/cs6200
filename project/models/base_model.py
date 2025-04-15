@@ -128,7 +128,6 @@ class BaselineLLaMA(BaseLLM):
         
         return outputs
 
-
 ##rag model
 class RagLLaMA(BaseLLM):
     """
@@ -335,6 +334,8 @@ class LoraLLaMA(BaseLLM):
 
     The fine tuning mode is determined by the configuration under the "finetuning" key.
     Set either "use_qlora": true or "use_lora": true in your config. 
+    
+    The model can load from saved checkpoints under results/lora_model/checkpoint.
     """
     def __init__(self, config: Dict[str, Any]):
         super().__init__(config)
@@ -343,6 +344,11 @@ class LoraLLaMA(BaseLLM):
     def load_model(self):
         model_config = self.config["model"]
         quant_config = self.config.get("quantization", {})
+        # Check fine tuning configuration
+        finetuning_config = self.config.get("finetuning", {})
+        
+        # Default checkpoint path
+        checkpoint_path = finetuning_config.get("checkpoint_path", "results/lora_model/checkpoint")
 
         self.tokenizer = AutoTokenizer.from_pretrained(
             model_config["model_id"],
@@ -369,18 +375,23 @@ class LoraLLaMA(BaseLLM):
         if bnb_config:
             load_params["quantization_config"] = bnb_config
 
-        # Load the base model.
-        self.model = AutoModelForCausalLM.from_pretrained(
-            model_config["model_id"],
-            **load_params
-        )
-
-        # Check fine tuning configuration.
-        finetuning_config = self.config.get("finetuning", {})
-
-        if finetuning_config.get("use_qlora", False):
-            # QLoRA: Prepare the model for k-bit training before applying LoRA.
-            self.model = prepare_model_for_kbit_training(self.model)
+        # Check if we should load from checkpoint
+        if finetuning_config.get("load_from_checkpoint", False) and os.path.exists(checkpoint_path):
+            print(f"Loading model from checkpoint: {checkpoint_path}")
+            
+            # Load the base model with quantization
+            self.model = AutoModelForCausalLM.from_pretrained(
+                model_config["model_id"],
+                **load_params
+            )
+            
+            
+            
+            if finetuning_config.get("use_qlora", False):
+                # QLoRA: Prepare the model for k-bit training before loading
+                self.model = prepare_model_for_kbit_training(self.model)
+                
+            # Set up LoRA configuration for loading the adapter
             lora_config = LoraConfig(
                 r=finetuning_config.get("lora_r", 8),
                 lora_alpha=finetuning_config.get("lora_alpha", 32),
@@ -389,21 +400,55 @@ class LoraLLaMA(BaseLLM):
                 bias=finetuning_config.get("bias", "none"),
                 task_type="CAUSAL_LM"
             )
+            
+            # Convert to PEFT model
             self.model = get_peft_model(self.model, lora_config)
+            
+            # Load adapter weights from checkpoint
+            try:
+                self.model.load_state_dict(torch.load(
+                    os.path.join(checkpoint_path, "adapter_model.bin"),
+                    map_location="cpu"
+                ))
+                print("Successfully loaded adapter weights from checkpoint")
+            except Exception as e:
+                print(f"Error loading adapter weights: {e}")
+                
             self.print_trainable_parameters()
-
-        elif finetuning_config.get("use_lora", False):
-            # Standard LoRA without k-bit preparation.
-            lora_config = LoraConfig(
-                r=finetuning_config.get("lora_r", 8),
-                lora_alpha=finetuning_config.get("lora_alpha", 32),
-                target_modules=finetuning_config.get("target_modules", ["q_proj", "v_proj"]),
-                lora_dropout=finetuning_config.get("lora_dropout", 0.05),
-                bias=finetuning_config.get("bias", "none"),
-                task_type="CAUSAL_LM"
+            
+        else:
+            # Load the base model without checkpoint
+            self.model = AutoModelForCausalLM.from_pretrained(
+                model_config["model_id"],
+                **load_params
             )
-            self.model = get_peft_model(self.model, lora_config)
-            self.print_trainable_parameters()
+
+            if finetuning_config.get("use_qlora", False):
+                # QLoRA: Prepare the model for k-bit training before applying LoRA.
+                self.model = prepare_model_for_kbit_training(self.model)
+                lora_config = LoraConfig(
+                    r=finetuning_config.get("lora_r", 8),
+                    lora_alpha=finetuning_config.get("lora_alpha", 32),
+                    target_modules=finetuning_config.get("target_modules", ["q_proj", "v_proj"]),
+                    lora_dropout=finetuning_config.get("lora_dropout", 0.05),
+                    bias=finetuning_config.get("bias", "none"),
+                    task_type="CAUSAL_LM"
+                )
+                self.model = get_peft_model(self.model, lora_config)
+                self.print_trainable_parameters()
+
+            elif finetuning_config.get("use_lora", False):
+                # Standard LoRA without k-bit preparation.
+                lora_config = LoraConfig(
+                    r=finetuning_config.get("lora_r", 8),
+                    lora_alpha=finetuning_config.get("lora_alpha", 32),
+                    target_modules=finetuning_config.get("target_modules", ["q_proj", "v_proj"]),
+                    lora_dropout=finetuning_config.get("lora_dropout", 0.05),
+                    bias=finetuning_config.get("bias", "none"),
+                    task_type="CAUSAL_LM"
+                )
+                self.model = get_peft_model(self.model, lora_config)
+                self.print_trainable_parameters()
 
     def print_trainable_parameters(self):
         """

@@ -199,6 +199,30 @@ The script will compute:
 
 Results are displayed in the console and optionally exported to Excel files.
 
+### 🔧 Fine-tuning LLaMA with LoRA
+To fine-tune the LLaMA model using LoRA (Low-Rank Adaptation) on your QA dataset:
+```bash
+python -m project.scripts.lora_train --field Science --epochs 3 --batch-size 4
+```
+
+Where:
+- `field`: Choose from Bio-Medical, Education, Finance, Open-Domain, Science, or test
+- `epochs`: Number of training epochs (default: 3)
+- `batch-size`: Batch size for training (default: 4)
+- `learning-rate`: Learning rate for training (default: 2e-4)
+- `max-length`: Maximum sequence length (default: 512)
+- `config`: Path to the configuration file (default: project/configs/base_model.yaml)
+- `output-dir`: Directory to save the fine-tuned model (default: project/results/lora_model)
+
+The script will:
+1. Load the QA dataset from the specified field
+2. Initialize the LoraLLaMA model with the given configuration
+3. Format the data in the proper instruction format
+4. Train the model using Hugging Face's Trainer
+5. Save the fine-tuned model and configuration to the output directory
+
+Make sure your configuration in `configs/base_model.yaml` has appropriate settings for fine-tuning, with either `use_qlora: true` or `use_lora: true`.
+
 
 
 
