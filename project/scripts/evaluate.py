@@ -34,7 +34,7 @@ def parse_args():
     parser = argparse.ArgumentParser(description="Hallucination Evaluation")
 
     parser.add_argument("--model_class", type=str, required=True, 
-                        choices=['BaselineLLaMA','LoraLLaMA', 'RagLLaMA'],
+                        choices=['BaselineLLaMA','FTLora', 'RagLLaMA'],
                         help="Class of the model")
     parser.add_argument('--dataset', type=str, required=True,
                         choices=['HaluEval2'],
