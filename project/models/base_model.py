@@ -170,51 +170,6 @@ class BaselineLLaMA(BaseLLM):
         del inputs  # Cleanup to free memory.
         
         return outputs
-    
-    def generate_ft_data(self, document_content: str, **kwargs) -> str:
-            prompt_template = f"""
-            You are provided with the following document:
- 
-            \"\"\"
-            {document_content}
-            \"\"\"
- 
-            Your task is to extract straightforward, fact-based but detailed questions and their corresponding answers solely from the content of the document. Follow these rules:
- 
-            1. **Source Strictness:** Only use the information explicitly provided in the document. Do not use any internal or external knowledge.
-            2. **Extraction:** Generate questions that cover key details of the document. Each question must have a corresponding answer that is clearly supported by the document's content.
-            3. **Quantity:** Produce at most 10 questions. If the document contains fewer key details, generate fewer questions accordingly.
-            4. **Format:** Output your results in valid JSON format, structured as an array of objects, where each object has two keys: "question" and "answer".
- 
-            Example output format:
-            [
-            {{
-                "question": "Question text here?",
-                "answer": "Answer text here."
-            }},
-            ...
-            ]
- 
-            Do not include any extra text or commentary. Provide only the JSON output.
-            """
- 
-            inputs = self.tokenizer(prompt_template, return_tensors="pt")
-            inputs = {key: value.to(self.model.device) for key, value in inputs.items()}
-            
-            generation_config = {
-                'max_new_tokens': self.config['generation']['max_length'],
-                'temperature': 0.1,
-                'top_p': 1.0,
-                **kwargs
-            }
- 
-            with torch.no_grad():
-                outputs = self.model.generate(**inputs, **generation_config)
-            
-            del inputs
-                
-            return self.tokenizer.decode(outputs[0], skip_special_tokens=True)
-
 
 ##rag model
 class RagLLaMA(BaseLLM):
