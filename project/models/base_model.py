@@ -6,7 +6,8 @@ from typing import Dict, List, Any
 import os
 
 from models import BaseLLM
-from peft import LoraConfig, get_peft_model, prepare_model_for_kbit_training
+from peft import LoraConfig, get_peft_model, prepare_model_for_kbit_training, PeftModel, PeftConfig
+
 from rag.document_store import RAGDocumentStore, Document, FaissVectorStore, ChromaVectorStore
 from models import create_embedding_model
 
@@ -691,3 +692,155 @@ class RagOLLaMA(BaseLLM):
             
         return qas
     
+
+class FTLora(BaseLLM):
+    """
+    A class for loading fine-tuned LoRA models from checkpoints
+    and generating text with them. This class focuses on inference rather than
+    training.
+    """
+    def __init__(self, config: Dict[str, Any]):
+        super().__init__(config)
+        self.checkpoint_path = config['finetuning']['checkpoint_path']
+        self.load_model()
+
+    def load_model(self):
+        """
+        Load the base model and the fine-tuned LoRA adapter if a checkpoint path is provided.
+        """
+        model_config = self.config['model']
+        quant_config = self.config.get('quantization', {})
+
+        # Initialize tokenizer
+        self.tokenizer = AutoTokenizer.from_pretrained(
+            model_config['model_id'],
+            use_fast=model_config.get('use_fast', True)
+        )
+        
+        # Set up padding token if needed
+        if self.tokenizer.pad_token is None:
+            self.tokenizer.pad_token = self.tokenizer.eos_token
+
+        if quant_config.get('load_in_4bit', False) or quant_config.get('load_in_8bit', False):
+            bnb_config = BitsAndBytesConfig(
+                load_in_4bit=quant_config.get('load_in_4bit', False),
+                load_in_8bit=quant_config.get('load_in_8bit', False),
+                bnb_4bit_compute_dtype=torch.bfloat16 if quant_config.get('load_in_4bit', False) else torch.float16,
+                bnb_4bit_use_double_quant=True,
+                bnb_4bit_quant_type="nf4"
+            )
+        else:
+            bnb_config = None
+
+        # Set up model loading parameters
+        load_params = {
+            "torch_dtype": torch.float16,
+            "device_map": "cuda",
+            "low_cpu_mem_usage": True
+        }
+        
+        if bnb_config:
+            load_params["quantization_config"] = bnb_config
+
+        # Load the base model
+        print(f"Loading base model from {model_config['model_id']}...")
+        self.model = AutoModelForCausalLM.from_pretrained(
+            model_config['model_id'],
+            **load_params
+        )
+        
+        # Load the fine-tuned adapter if a checkpoint path was provided
+        if self.checkpoint_path:
+            self.load_adapter(self.checkpoint_path)
+            
+    def load_adapter(self, checkpoint_path: str):
+        """
+        Load a fine-tuned LoRA adapter from a checkpoint.
+        """
+        try:
+            print(f"Loading LoRA adapter from {checkpoint_path}...")
+            # Load the PEFT configuration to verify it's a LoRA adapter
+            peft_config = PeftConfig.from_pretrained(checkpoint_path)
+            
+            # Load the adapter weights
+            self.model = PeftModel.from_pretrained(
+                self.model,
+                checkpoint_path,
+                is_trainable=False  # Set to False for inference
+            )
+            
+            print(f"Successfully loaded adapter from {checkpoint_path}")
+            print(f"Adapter type: {peft_config.peft_type}")
+            
+            # Check if we should merge weights for faster inference
+            if self.config.get('inference', {}).get('merge_weights', False):
+                self.merge_lora_weights()
+                
+        except Exception as e:
+            print(f"Error loading adapter checkpoint: {str(e)}")
+            raise
+    
+    def merge_lora_weights(self):
+        """
+        Merge the LoRA adapter weights into the base model for faster inference.
+        """
+        if hasattr(self.model, "merge_and_unload"):
+            print("Merging LoRA weights into base model...")
+            self.model = self.model.merge_and_unload()
+            print("LoRA weights merged successfully")
+        else:
+            print("Model doesn't have LoRA adapters to merge")
+    
+    def format_prompt(self, prompt: str) -> str:
+        """
+        Format the input prompt based on the template used during fine-tuning.
+        This ensures consistent inputs between training and inference.
+        """
+        if self.config['generation'].get('format_prompt', False):
+            return (
+                "Below is an instruction that describes a task. "
+                "Write a response that appropriately completes the request.\n\n"
+                "### Instruction:\n"
+                f"{prompt}\n\n"
+                "### Response:\n"
+            )
+        return prompt
+    
+    def generate(self, prompt: str, **kwargs) -> str:
+        """
+        Generate a response for the given prompt using the fine-tuned model.
+        """
+        # Format the prompt if needed
+        formatted_prompt = self.format_prompt(prompt)
+        
+        # Tokenize the input
+        inputs = self.tokenizer(formatted_prompt, return_tensors="pt")
+        inputs = {key: value.to(self.model.device) for key, value in inputs.items()}
+        
+        # Set up generation parameters
+        generation_config = {
+            'max_new_tokens': self.config['generation'].get('max_length', 512),
+            'temperature': self.config['generation'].get('temperature', 0.7),
+            'top_p': self.config['generation'].get('top_p', 0.9),
+            'do_sample': self.config['generation'].get('do_sample', True),
+            **kwargs
+        }
+        
+        # Generate the response
+        with torch.no_grad():
+            outputs = self.model.generate(**inputs, **generation_config)
+        
+        # Clean up to save memory
+        del inputs
+        
+        # Decode and return the response
+        response = self.tokenizer.decode(outputs[0], skip_special_tokens=True)
+        
+        # If we formatted the prompt, we need to remove the prompt from the response
+        if self.config['generation'].get('format_prompt', False):
+            # Find where the response starts and only return that part
+            response_marker = "### Response:"
+            if response_marker in response:
+                response = response.split(response_marker)[-1].strip()
+        
+        return response
