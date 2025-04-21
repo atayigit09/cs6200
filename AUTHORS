@@ -1,0 +1,23 @@
+# Authors
+
+This project was created and is maintained by:
+
+* Ata Dundar Yigit (yigit.a@northeastern.edu)
+* Youjia Zheng (zheng.youj@northeastern.edu)
+* Kanan Aliyev (aliyev.k@northeastern.edu)
+
+All authors contributed equally to this project.
+
+## Citation
+
+If you use this software in your work, please cite it as follows:
+
+```
+@software{cs6200_project,
+  author = {Yigit, Ata Dundar and Zheng, Youjia and Aliyev, Kanan},
+  title = {CS6200 Information Retrieval Project},
+  year = {2024},
+  institution = {Northeastern University},
+  url = {https://github.com/yourusername/cs6200}
+}
+``` 

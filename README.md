@@ -223,6 +223,18 @@ The script will:
 
 Make sure your configuration in `configs/base_model.yaml` has appropriate settings for fine-tuning, with either `use_qlora: true` or `use_lora: true`.
 
+## 📄 License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## 👥 Authors
+
+* **Ata Dundar Yigit** - [yigit.a@northeastern.edu](mailto:yigit.a@northeastern.edu)
+* **Youjia Zheng** - [zheng.youj@northeastern.edu](mailto:zheng.youj@northeastern.edu)
+* **Kanan Aliyev** - [aliyev.k@northeastern.edu](mailto:aliyev.k@northeastern.edu)
+
+See also the list of [AUTHORS](AUTHORS) file for more information.
+
 
 
 
