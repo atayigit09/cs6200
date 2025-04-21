@@ -10,6 +10,8 @@ from peft import LoraConfig, get_peft_model, prepare_model_for_kbit_training
 from rag.document_store import RAGDocumentStore, Document, FaissVectorStore, ChromaVectorStore
 from models import create_embedding_model
 
+from ollama import chat
+from ollama import ChatResponse
 
 ##baseline model
 class BaselineLLaMA(BaseLLM):
@@ -519,3 +521,173 @@ class LoraLLaMA(BaseLLM):
         outputs = [self.tokenizer.decode(output, skip_special_tokens=True) for output in outputs_tensor]
         del inputs
         return outputs
+
+
+
+
+
+
+
+
+
+
+
+##rag ollama model
+class RagOLLaMA(BaseLLM):
+    """
+    Retrieval-Augmented Generation model implementation.
+    Extends the base LLM with retrieval capabilities.
+    """
+    def __init__(self, config: Dict[str, Any]):
+        super().__init__(config)
+        
+        # Initialize components
+        self.config = config
+        self.load_document_store()
+        self.initialize_embedding_model()
+        
+    
+    def load_document_store(self):
+        """Load the document store with vector database for a given field."""
+        rag_config = self.config.get('rag', {})
+        embedding_config = rag_config.get('embedding', {})
+        vector_config = rag_config.get('vector_db', {})
+        embedding_dim = embedding_config.get('embedding_dimension', 768)
+        db_path = vector_config.get('db_path')
+        vector_store_type = vector_config.get('type', 'faiss')
+        field = rag_config.get('field')
+        
+        field_dir = os.path.join(db_path, field)
+        
+        if not os.path.exists(field_dir):
+            raise FileNotFoundError(f"No embeddings found for field '{field}' at {field_dir}")
+        
+        if vector_store_type.lower() == 'chroma':
+            # For Chroma, we load the collection
+            vector_store = ChromaVectorStore(
+                collection_name=field,
+                persist_directory=field_dir
+            )
+            doc_store = RAGDocumentStore(vector_store=vector_store)
+            print(f"Loaded Chroma vector store for field '{field}'")
+        else:
+            # For FAISS, we load the index
+            vector_store = FaissVectorStore(dimension=embedding_dim)
+            vector_store = vector_store.load(os.path.join(field_dir, "vector_store"))
+            doc_store = RAGDocumentStore(vector_store=vector_store)
+            doc_store = doc_store.load(field_dir)
+            print(f"Loaded FAISS vector store for field '{field}'")
+
+            self.doc_store =  doc_store
+    
+    def initialize_embedding_model(self):
+        """Initialize the embedding model based on configuration."""
+        embedding_config = self.config.get("rag", {}).get("embedding", {})
+        self.embedding_model = create_embedding_model(embedding_config)
+       
+
+    def search(self, query: str) -> List[Document]:
+        num_results = self.config.get("rag", {}).get("top_k", 5)
+        """Search the document store for documents similar to the query."""
+        # Embed the query
+        query_embedding = self.embedding_model.embed([query])[0]
+        # Search for similar documents
+        results = self.doc_store.search(query_embedding, top_k=num_results)  # Retrieve more than needed to handle duplicates
+        
+        # Deduplicate results by content
+        unique_results = []
+        seen_content = set()
+        
+        for doc in results:
+            if doc.content not in seen_content:
+                seen_content.add(doc.content)
+                unique_results.append(doc)
+                
+            # Stop once we have enough unique documents
+            if len(unique_results) >= num_results:
+                break
+        
+        return unique_results[:num_results]
+    
+    
+    def format_context(self, documents) -> str:
+
+        rag_config = self.config.get("rag", {})
+        context_format = rag_config.get("context_format", "simple")
+        
+        if context_format == "simple":
+            # Simple concatenation with document separators
+            context_parts = []
+            for i, doc in enumerate(documents):
+                source = doc.metadata.get("source", f"Document {i+1}")
+                context_parts.append(f"Document {i+1} ({source}):\n{doc.content}\n")
+            
+            return "\n".join(context_parts)
+        
+        elif context_format == "compact":
+            # More compact format
+            return "\n\n".join([doc.content for doc in documents])
+        
+        else:
+            raise ValueError(f"Unknown context format: {context_format}")
+    
+    def format_prompt(self, query: str, context: str) -> str:
+        rag_config = self.config.get("rag", {})
+        prompt_template = rag_config.get("prompt_template", "default")
+        
+        if prompt_template == "default":
+            return (
+                "Below is an instruction that describes a task, paired with relevant context information. "
+                "Write a response that appropriately completes the request.\n\n"
+                "### Relevant Context:\n"
+                f"{context}\n\n"
+                "### Instruction:\n"
+                f"{query}\n\n"
+                "### Response:\n"
+            )
+        
+        elif prompt_template == "concise":
+            return (
+                f"Context information is below.\n"
+                f"---------------------\n"
+                f"{context}\n"
+                f"---------------------\n"
+                f"Given the context information and not prior knowledge, answer the query.\n"
+                f"Query: {query}\n"
+                f"Answer: "
+            )
+        
+        elif prompt_template == "custom":
+            custom_template = rag_config.get("custom_prompt_template", "")
+            if not custom_template:
+                raise ValueError("Custom prompt template not provided")
+            
+            return custom_template.format(query=query, context=context)
+        
+        else:
+            raise ValueError(f"Unknown prompt template: {prompt_template}")
+    
+    def generate(self, prompt: str, **kwargs) -> str:
+
+        # Format context and prompt
+        documents = self.search(prompt)
+        context = self.format_context(documents)
+
+        if self.config['rag'].get('debug',False):
+            print(f"Context: {context}")
+
+        full_prompt = self.format_prompt(prompt, context)
+        
+
+        response: ChatResponse = chat(model='llama3.1:8b', messages=[
+                {
+                    'role': 'user',
+                    'content': full_prompt,
+                },
+                ])
+                
+        qas = response['message']['content']
+        
+            
+        return qas
+    

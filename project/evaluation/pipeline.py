@@ -107,7 +107,7 @@ class HallucinationEvalPipeline:
             for question_id, user_query, answer in zip(question_ids, user_queries, answers):
                 prompt = prompt_template.format(query=user_query, answer=answer)
                 facts = self.eval_model.generate(prompt)
-                #print(facts)
+                print(facts)
                 #facts_lst = self.get_facts_lst(facts)
                 self.dataset.update_sample(question_id, "facts", facts)
 

@@ -40,6 +40,12 @@ def compute_metrics(judges):
     recall = count_true / total if total > 0 else 0
     f1_score = 2 * (precision * recall) / (precision + recall) if (precision + recall) > 0 else 0
 
+    # MiHR calculation - Micro Hallucination Rate (proportion of hallucinatory facts)
+    mihr = (count_false + count_unknown) / total if total > 0 else 0
+    
+    # For MaHR calculation, we need to know if the entry contains any hallucinations
+    is_hallucinatory = (count_false + count_unknown) > 0
+
     return {
         "true": count_true,
         "false": count_false,
@@ -50,7 +56,9 @@ def compute_metrics(judges):
         "unknown_rate": unknown_rate,
         "precision": precision,
         "recall": recall,
-        "f1_score": f1_score
+        "f1_score": f1_score,
+        "mihr": mihr,
+        "is_hallucinatory": is_hallucinatory
     }
 
 def process_file(file_path):
@@ -92,6 +100,13 @@ def aggregate_metrics(metrics_list):
     # Macro averages
     macro_accuracy = sum(m["accuracy"] for m in metrics_list) / total_entries
     macro_f1 = sum(m["f1_score"] for m in metrics_list) / total_entries  # Average F1-score
+    
+    # MiHR - Micro Hallucination Rate: proportion of hallucinatory statements
+    mihr = sum(m["mihr"] for m in metrics_list) / total_entries
+    
+    # MaHR - Macro Hallucination Rate: proportion of responses containing hallucinations
+    hallucinatory_responses = sum(1 for m in metrics_list if m["is_hallucinatory"])
+    mahr = hallucinatory_responses / total_entries if total_entries > 0 else 0
 
     return {
         "total_entries": total_entries,
@@ -103,7 +118,9 @@ def aggregate_metrics(metrics_list):
         "overall_false_rate": overall_false_rate,
         "overall_unknown_rate": overall_unknown_rate,
         "macro_accuracy": macro_accuracy,
-        "macro_f1_score": macro_f1
+        "macro_f1_score": macro_f1,
+        "mihr": mihr,
+        "mahr": mahr
     }
 
 def main():
@@ -134,7 +151,7 @@ def main():
     # Display per-entry metrics
     print("Per-entry Metrics:")
     for m in metrics_list:
-        print(f"ID: {m['id']} - Accuracy: {m['accuracy']:.2f}, False Rate: {m['false_rate']:.2f}, Unknown Rate: {m['unknown_rate']:.2f}, F1-Score: {m['f1_score']:.2f}")
+        print(f"ID: {m['id']} - Accuracy: {m['accuracy']:.2f}, False Rate: {m['false_rate']:.2f}, Unknown Rate: {m['unknown_rate']:.2f}, F1-Score: {m['f1_score']:.2f}, MiHR: {m['mihr']:.2f}")
 
     # Display aggregated metrics
     print("\nAggregate Metrics:")
@@ -145,11 +162,13 @@ def main():
     print(f"Overall Unknown Rate: {agg_metrics['overall_unknown_rate']*100:.2f}%")
     print(f"Macro Accuracy: {agg_metrics['macro_accuracy']*100:.2f}%")
     print(f"Macro F1-Score: {agg_metrics['macro_f1_score']*100:.2f}%")
+    print(f"MiHR (Micro Hallucination Rate): {agg_metrics['mihr']*100:.2f}%")
+    print(f"MaHR (Macro Hallucination Rate): {agg_metrics['mahr']*100:.2f}%")
 
     # Optionally export metrics to Excel
     if args.output_excel:
         #making directory named args.topic in results directory
-        save_path = f"{args.results_dir}/{args.topic}"
+        save_path = f"{args.results_dir}/{args.field}"
         os.makedirs(save_path, exist_ok=True)
         
         df_entries = pd.DataFrame(metrics_list)

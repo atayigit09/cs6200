@@ -34,7 +34,7 @@ def parse_args():
     parser = argparse.ArgumentParser(description="Hallucination Evaluation")
 
     parser.add_argument("--model_class", type=str, required=True, 
-                        choices=['BaselineLLaMA','LoraLLaMA', 'RagLLaMA'],
+                        choices=['BaselineLLaMA','LoraLLaMA', 'RagLLaMA','RagOLLaMA'],
                         help="Class of the model")
     parser.add_argument('--dataset', type=str, required=True,
                         choices=['HaluEval2'],
@@ -66,7 +66,7 @@ if __name__ == "__main__":
     pipeline = HallucinationEvalPipeline(test_llm, eval_llm, opt)
 
     #pipeline.generate_answers_batches() ### THIS should be used when using clusters!!
-    pipeline.generate_answers()
+    #pipeline.generate_answers()
     pipeline.generate_facts()
     pipeline.evaluate_facts()
     
