@@ -271,7 +271,7 @@ class RagLLaMA(BaseLLM):
         
         if prompt_template == "default":
             return (
-                "Below is an instruction that describes a task, paired with relevant context information. "
+                "Below is an instruction that describes a task, paired with context information that might be relevant and could be used to gain more information. "
                 "Write a response that appropriately completes the request.\n\n"
                 "### Relevant Context:\n"
                 f"{context}\n\n"
@@ -524,16 +524,7 @@ class LoraLLaMA(BaseLLM):
         return outputs
 
 
-
-
-
-
-
-
-
-
-
-##rag ollama model
+#rag ollama model
 class RagOLLaMA(BaseLLM):
     """
     Retrieval-Augmented Generation model implementation.

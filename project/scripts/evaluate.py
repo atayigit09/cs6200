@@ -66,7 +66,7 @@ if __name__ == "__main__":
     pipeline = HallucinationEvalPipeline(test_llm, eval_llm, opt)
 
     #pipeline.generate_answers_batches() ### THIS should be used when using clusters!!
-    #pipeline.generate_answers()
+    pipeline.generate_answers()
     pipeline.generate_facts()
     pipeline.evaluate_facts()
     

@@ -41,7 +41,7 @@ def compute_metrics(judges):
     f1_score = 2 * (precision * recall) / (precision + recall) if (precision + recall) > 0 else 0
 
     # MiHR calculation - Micro Hallucination Rate (proportion of hallucinatory facts)
-    mihr = (count_false + count_unknown) / total if total > 0 else 0
+    mihr = (count_false) / total if total > 0 else 0
     
     # For MaHR calculation, we need to know if the entry contains any hallucinations
     is_hallucinatory = (count_false + count_unknown) > 0

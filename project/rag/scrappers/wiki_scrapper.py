@@ -2,7 +2,7 @@ import re
 import requests
 from pathlib import Path
 from typing import List, Optional, Dict, Any, Union
-from rag.scrappers import BaseScrapper
+from project.rag.scrappers import BaseScrapper
 
 class WikipediaScraper(BaseScrapper):
     """
