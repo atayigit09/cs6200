@@ -42,6 +42,9 @@ def parse_args():
     parser.add_argument('--field', type=str, default='Open-Domain',
                         choices=['Bio-Medical','Education','Finance','Open-Domain','Science', 'test'],
                         help='Dataset field to use for evaluation')
+    parser.add_argument('--skip_first', default='0', type=int)
+    # parser.add_argument('--skip_g', default='0', type=int)
+
 
     args = parser.parse_args()
     
@@ -66,7 +69,7 @@ if __name__ == "__main__":
     pipeline = HallucinationEvalPipeline(test_llm, eval_llm, opt)
 
     #pipeline.generate_answers_batches() ### THIS should be used when using clusters!!
-    pipeline.generate_answers()
+    pipeline.generate_answers(opt.skip_first)
     pipeline.generate_facts()
     pipeline.evaluate_facts()
     

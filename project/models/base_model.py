@@ -11,8 +11,8 @@ from peft import LoraConfig, get_peft_model, prepare_model_for_kbit_training, Pe
 from rag.document_store import RAGDocumentStore, Document, FaissVectorStore, ChromaVectorStore
 from models import create_embedding_model
 
-from ollama import chat
-from ollama import ChatResponse
+# from ollama import chat
+# from ollama import ChatResponse
 
 ##baseline model
 class BaselineLLaMA(BaseLLM):
@@ -21,7 +21,15 @@ class BaselineLLaMA(BaseLLM):
     """
     def __init__(self, config: Dict[str, Any]):
         super().__init__(config)
+        self.seed = config.get('seed')
+        if self.seed is not None:
+            torch.manual_seed(self.seed)
+            if torch.cuda.is_available():
+                torch.cuda.manual_seed(self.seed)
+            torch.backends.cudnn.deterministic = True
+            torch.backends.cudnn.benchmark = False
         self.load_model()
+
         
     def load_model(self):
         model_config = self.config['model']
@@ -84,6 +92,9 @@ class BaselineLLaMA(BaseLLM):
             'top_p': self.config['generation']['top_p'],
             **kwargs
         }
+        
+        if self.seed is not None and 'seed' not in generation_config:
+            generation_config['seed'] = self.seed
 
         with torch.no_grad():
             outputs = self.model.generate(**inputs, **generation_config)
@@ -140,7 +151,15 @@ class RagLLaMA(BaseLLM):
     def __init__(self, config: Dict[str, Any]):
         super().__init__(config)
         
-        # Initialize components
+        self.seed = config.get('seed')
+        if self.seed is not None:
+            torch.manual_seed(self.seed)
+            if torch.cuda.is_available():
+                torch.cuda.manual_seed(self.seed)
+                torch.cuda.manual_seed_all(self.seed)
+            torch.backends.cudnn.deterministic = True
+            torch.backends.cudnn.benchmark = False
+        
         self.load_model()
         self.config = config
         self.load_document_store()
@@ -163,7 +182,6 @@ class RagLLaMA(BaseLLM):
             raise FileNotFoundError(f"No embeddings found for field '{field}' at {field_dir}")
         
         if vector_store_type.lower() == 'chroma':
-            # For Chroma, we load the collection
             vector_store = ChromaVectorStore(
                 collection_name=field,
                 persist_directory=field_dir
@@ -171,7 +189,6 @@ class RagLLaMA(BaseLLM):
             doc_store = RAGDocumentStore(vector_store=vector_store)
             print(f"Loaded Chroma vector store for field '{field}'")
         else:
-            # For FAISS, we load the index
             vector_store = FaissVectorStore(dimension=embedding_dim)
             vector_store = vector_store.load(os.path.join(field_dir, "vector_store"))
             doc_store = RAGDocumentStore(vector_store=vector_store)
@@ -194,7 +211,6 @@ class RagLLaMA(BaseLLM):
             use_fast=model_config.get('use_fast', True)
         )
 
-        # Define correct quantization settings
         if quant_config.get('load_in_4bit', False) or quant_config.get('load_in_8bit', False):
             bnb_config = BitsAndBytesConfig(
                 load_in_4bit=quant_config.get('load_in_4bit', False),
@@ -223,12 +239,9 @@ class RagLLaMA(BaseLLM):
     def search(self, query: str) -> List[Document]:
         num_results = self.config.get("rag", {}).get("top_k", 5)
         """Search the document store for documents similar to the query."""
-        # Embed the query
         query_embedding = self.embedding_model.embed([query])[0]
-        # Search for similar documents
-        results = self.doc_store.search(query_embedding, top_k=num_results)  # Retrieve more than needed to handle duplicates
+        results = self.doc_store.search(query_embedding, top_k=num_results)
         
-        # Deduplicate results by content
         unique_results = []
         seen_content = set()
         
@@ -237,7 +250,6 @@ class RagLLaMA(BaseLLM):
                 seen_content.add(doc.content)
                 unique_results.append(doc)
                 
-            # Stop once we have enough unique documents
             if len(unique_results) >= num_results:
                 break
         
@@ -245,12 +257,10 @@ class RagLLaMA(BaseLLM):
     
     
     def format_context(self, documents) -> str:
-
         rag_config = self.config.get("rag", {})
         context_format = rag_config.get("context_format", "simple")
         
         if context_format == "simple":
-            # Simple concatenation with document separators
             context_parts = []
             for i, doc in enumerate(documents):
                 source = doc.metadata.get("source", f"Document {i+1}")
@@ -259,7 +269,6 @@ class RagLLaMA(BaseLLM):
             return "\n".join(context_parts)
         
         elif context_format == "compact":
-            # More compact format
             return "\n\n".join([doc.content for doc in documents])
         
         else:
@@ -302,8 +311,6 @@ class RagLLaMA(BaseLLM):
             raise ValueError(f"Unknown prompt template: {prompt_template}")
     
     def generate(self, prompt: str, **kwargs) -> str:
-
-        # Format context and prompt
         documents = self.search(prompt)
         context = self.format_context(documents)
 
@@ -321,6 +328,9 @@ class RagLLaMA(BaseLLM):
             'top_p': self.config['generation']['top_p'],
             **kwargs
         }
+        
+        if self.seed is not None and 'seed' not in generation_config:
+            generation_config['seed'] = self.seed
 
         with torch.no_grad():
             outputs = self.model.generate(**inputs, **generation_config)
@@ -533,7 +543,19 @@ class RagOLLaMA(BaseLLM):
     def __init__(self, config: Dict[str, Any]):
         super().__init__(config)
         
-        # Initialize components
+        self.seed = config.get('seed')
+        if self.seed is not None:
+            torch.manual_seed(self.seed)
+            if torch.cuda.is_available():
+                torch.cuda.manual_seed(self.seed)
+                torch.cuda.manual_seed_all(self.seed)
+            torch.backends.cudnn.deterministic = True
+            torch.backends.cudnn.benchmark = False
+            
+            # Set Python's random seed as well for the Ollama API calls
+            import random
+            random.seed(self.seed)
+        
         self.config = config
         self.load_document_store()
         self.initialize_embedding_model()
@@ -555,7 +577,6 @@ class RagOLLaMA(BaseLLM):
             raise FileNotFoundError(f"No embeddings found for field '{field}' at {field_dir}")
         
         if vector_store_type.lower() == 'chroma':
-            # For Chroma, we load the collection
             vector_store = ChromaVectorStore(
                 collection_name=field,
                 persist_directory=field_dir
@@ -563,7 +584,6 @@ class RagOLLaMA(BaseLLM):
             doc_store = RAGDocumentStore(vector_store=vector_store)
             print(f"Loaded Chroma vector store for field '{field}'")
         else:
-            # For FAISS, we load the index
             vector_store = FaissVectorStore(dimension=embedding_dim)
             vector_store = vector_store.load(os.path.join(field_dir, "vector_store"))
             doc_store = RAGDocumentStore(vector_store=vector_store)
@@ -581,12 +601,9 @@ class RagOLLaMA(BaseLLM):
     def search(self, query: str) -> List[Document]:
         num_results = self.config.get("rag", {}).get("top_k", 5)
         """Search the document store for documents similar to the query."""
-        # Embed the query
         query_embedding = self.embedding_model.embed([query])[0]
-        # Search for similar documents
-        results = self.doc_store.search(query_embedding, top_k=num_results)  # Retrieve more than needed to handle duplicates
+        results = self.doc_store.search(query_embedding, top_k=num_results)
         
-        # Deduplicate results by content
         unique_results = []
         seen_content = set()
         
@@ -595,7 +612,6 @@ class RagOLLaMA(BaseLLM):
                 seen_content.add(doc.content)
                 unique_results.append(doc)
                 
-            # Stop once we have enough unique documents
             if len(unique_results) >= num_results:
                 break
         
@@ -603,12 +619,10 @@ class RagOLLaMA(BaseLLM):
     
     
     def format_context(self, documents) -> str:
-
         rag_config = self.config.get("rag", {})
         context_format = rag_config.get("context_format", "simple")
         
         if context_format == "simple":
-            # Simple concatenation with document separators
             context_parts = []
             for i, doc in enumerate(documents):
                 source = doc.metadata.get("source", f"Document {i+1}")
@@ -617,7 +631,6 @@ class RagOLLaMA(BaseLLM):
             return "\n".join(context_parts)
         
         elif context_format == "compact":
-            # More compact format
             return "\n\n".join([doc.content for doc in documents])
         
         else:
@@ -660,8 +673,6 @@ class RagOLLaMA(BaseLLM):
             raise ValueError(f"Unknown prompt template: {prompt_template}")
     
     def generate(self, prompt: str, **kwargs) -> str:
-
-        # Format context and prompt
         documents = self.search(prompt)
         context = self.format_context(documents)
 
@@ -670,19 +681,25 @@ class RagOLLaMA(BaseLLM):
 
         full_prompt = self.format_prompt(prompt, context)
         
+        # For Ollama API calls, we need to set a seed parameter if available
+        chat_params = {}
+        if self.seed is not None:
+            chat_params['seed'] = self.seed
 
-        response: ChatResponse = chat(model='llama3.1:8b', messages=[
+        response: ChatResponse = chat(
+            model='llama3.1:8b', 
+            messages=[
                 {
                     'role': 'user',
                     'content': full_prompt,
                 },
-                ])
+            ],
+            **chat_params
+        )
                 
         qas = response['message']['content']
         
-            
         return qas
-    
 
 class FTLora(BaseLLM):
     """

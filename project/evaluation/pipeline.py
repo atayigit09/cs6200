@@ -54,13 +54,16 @@ class HallucinationEvalPipeline:
             num_workers=self.config['num_workers']
         )
 
-    def generate_answers(self):
+    def generate_answers(self, skip_first):
         """Generate answers for the questions in the dataset using the test model."""
         data_loader = self.load_data()
+        self.dataset = QuestionDataset(self.save_path)
         for batch in tqdm(data_loader, desc="Generating Answers"):
             question_ids, user_queries, *_ = batch
 
             for question_id, user_query in zip(question_ids, user_queries):
+                if question_id < skip_first:
+                    continue
                 answer = self.test_model.generate(user_query)
                 answer = self.extract_response(answer)
                 self.dataset.update_sample(question_id, "local_llm_answers", answer)
