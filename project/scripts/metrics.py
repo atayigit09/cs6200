@@ -29,7 +29,9 @@ def compute_metrics(judges):
     count_true = judges.count("TRUE")
     count_false = judges.count("FALSE")
     count_unknown = judges.count("UNKNOWN")
-    total = len(judges)
+
+    valid_judges = [j for j in judges if j != "UNKNOWN"]
+    total = len(valid_judges)
     
     accuracy = count_true / total if total > 0 else 0
     false_rate = count_false / total if total > 0 else 0
@@ -44,7 +46,7 @@ def compute_metrics(judges):
     mihr = (count_false) / total if total > 0 else 0
     
     # For MaHR calculation, we need to know if the entry contains any hallucinations
-    is_hallucinatory = (count_false + count_unknown) > 0
+    is_hallucinatory = (count_false) > 0
 
     return {
         "true": count_true,
@@ -102,11 +104,12 @@ def aggregate_metrics(metrics_list):
     macro_f1 = sum(m["f1_score"] for m in metrics_list) / total_entries  # Average F1-score
     
     # MiHR - Micro Hallucination Rate: proportion of hallucinatory statements
-    mihr = sum(m["mihr"] for m in metrics_list) / total_entries
+    mihr = sum(m["mihr"] for m in metrics_list) / (total_entries)
     
     # MaHR - Macro Hallucination Rate: proportion of responses containing hallucinations
-    hallucinatory_responses = sum(1 for m in metrics_list if m["is_hallucinatory"])
-    mahr = hallucinatory_responses / total_entries if total_entries > 0 else 0
+    valid_entries = [m for m in metrics_list if m["total"] > 0]
+    mahr = sum(1 for m in valid_entries if m["is_hallucinatory"]) / len(valid_entries)
+
 
     return {
         "total_entries": total_entries,
